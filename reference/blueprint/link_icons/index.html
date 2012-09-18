@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Blueprint Link Icons | Compass API
+</title>
+</head>
+<body class=' reference blueprint' id='reference-blueprint-link-icons'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/blueprint/stylesheets/blueprint/_link-icons.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Blueprint Link Icons</h1>
+<p>Install this plugin to get the assets and an example stylesheet:</p>
+
+<pre><code>compass install blueprint/link_icons
+</code></pre>
+
+<p>
+This file can be imported using:
+<code>@import "blueprint/link-icons"</code>
+</p>
+
+
+
+
+<h2>Mixins</h2>
+<a href="#mixin-no-link-icon-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-no-link-icon">
+<a class="permalink" href="#mixin-no-link-icon">no-link-icon</a>
+</h3>
+<div class="mixin-source" id="mixin-no-link-icon-source">
+<pre class="brush: sass source-code sass">=no-link-icon
+  background: transparent none !important
+  padding: 0 !important
+  margin: 0 !important
+</pre>
+<pre class="brush: scss source-code scss">@mixin no-link-icon {
+  background: transparent none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-link-icon-base-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-link-icon-base">
+<a class="permalink" href="#mixin-link-icon-base">link-icon-base</a>
+</h3>
+<div class="mixin-source" id="mixin-link-icon-base-source">
+<pre class="brush: sass source-code sass">=link-icon-base
+  padding: 2px 22px 2px 0
+  margin: -2px 0
+  background-repeat: no-repeat
+  background-position: right center
+</pre>
+<pre class="brush: scss source-code scss">@mixin link-icon-base {
+  padding: 2px 22px 2px 0;
+  margin: -2px 0;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-link-icon-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-link-icon">
+<a class="permalink" href="#mixin-link-icon">link-icon(<span class="arg">$name</span>, <span class="arg" data-default-value="true">$include-base</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-link-icon-source">
+<pre class="brush: sass source-code sass">=link-icon($name, $include-base: true)
+  @if $include-base
+    +link-icon-base
+  background-image: image-url("link_icons/#{$name}")
+</pre>
+<pre class="brush: scss source-code scss">@mixin link-icon($name, $include-base: true) {
+  @if $include-base {
+    @include link-icon-base;
+  }
+  background-image: image-url("link_icons/#{$name}");
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-link-icons-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-link-icons">
+<a class="permalink" href="#mixin-link-icons">link-icons</a>
+</h3>
+<div class="mixin-source" id="mixin-link-icons-source">
+<pre class="brush: sass source-code sass">=link-icons
+  a[href^="http:"],
+  a[href^="mailto:"],
+  a[href^="http:"]:visited,
+  a[href$=".pdf"],
+  a[href$=".doc"],
+  a[href$=".xls"],
+  a[href$=".rss"],
+  a[href$=".rdf"],
+  a[href^="aim:"]
+    +link-icon-base
+  a[href^="http:"]
+    +link-icon("external.png", false)
+  a[href^="mailto:"]
+    +link-icon("email.png", false)
+  a[href^="http:"]:visited
+    +link-icon("visited.png", false)
+  a[href$=".pdf"]
+    +link-icon("pdf.png", false)
+  a[href$=".doc"]
+    +link-icon("doc.png", false)
+  a[href$=".xls"]
+    +link-icon("xls.png", false)
+  a[href$=".rss"],
+  a[href$=".rdf"]
+    +link-icon("feed.png", false)
+  a[href^="aim:"]
+    +link-icon("im.png", false)
+</pre>
+<pre class="brush: scss source-code scss">@mixin link-icons {
+  a[href^="http:"],
+  a[href^="mailto:"],
+  a[href^="http:"]:visited,
+  a[href$=".pdf"],
+  a[href$=".doc"],
+  a[href$=".xls"],
+  a[href$=".rss"],
+  a[href$=".rdf"],
+  a[href^="aim:"] {
+    @include link-icon-base;
+  }
+  a[href^="http:"] {
+    @include link-icon("external.png", false);
+  }
+  a[href^="mailto:"] {
+    @include link-icon("email.png", false);
+  }
+  a[href^="http:"]:visited {
+    @include link-icon("visited.png", false);
+  }
+  a[href$=".pdf"] {
+    @include link-icon("pdf.png", false);
+  }
+  a[href$=".doc"] {
+    @include link-icon("doc.png", false);
+  }
+  a[href$=".xls"] {
+    @include link-icon("xls.png", false);
+  }
+  a[href$=".rss"],
+  a[href$=".rdf"] {
+    @include link-icon("feed.png", false);
+  }
+  a[href^="aim:"] {
+    @include link-icon("im.png", false);
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div></section>
+
+</body>
+</html>

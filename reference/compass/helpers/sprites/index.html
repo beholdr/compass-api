@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+CSS Sprite Helpers for Compass | Compass API
+</title>
+</head>
+<body class=' reference core helpers' id='reference-compass-helpers-sprites'><section class='article'><h1>
+<strong>CSS Sprite</strong> Helpers for Compass</h1>
+<p>These helpers make it easier to build and to work with <em>css sprites</em>.</p>
+
+<p>While it is allowed to use these directly, to do so is considered "advanced usage".
+It is recommended that you instead use the css sprite mixins that are designed to work
+with these functions.</p>
+
+<p>See the <a href="/help/tutorials/spriting/">Spriting Tutorial</a> for more information.</p>
+<div class="helper" id="sprite-map">
+<h3>
+<a href="#sprite-map">
+sprite-map(<span class="arg">$glob</span>, <span class="arg">...</span>)
+</a>
+</h3>
+<div class="details">
+<p>Generates a css sprite map from the files matching the glob pattern. Uses the
+keyword-style arguments passed in to control the placement.</p>
+
+<p>Only PNG files can be made into css sprites at this time.</p>
+
+<p>The <code>$glob</code> should be glob pattern relative to the images directory that specifies
+what files will be in the css sprite. For example:</p>
+
+<pre><code>$icons: sprite-map("icons/*.png");
+background: $icons;
+</code></pre>
+
+<p>This will generate a css sprite map and return a reference to it. It's important to
+capture this to a variable, because you will need to use it later when creating
+css sprites. In the above example you might end up with a new file named
+<code>images/sprites/icons-a2ef041.png</code> and your css stylesheet will have:</p>
+
+<pre><code>background: url('/images/sprites/icons-a2ef041.png?1234678') no-repeat;
+</code></pre>
+
+<p>The exact image name is not something you should depend on as it may change based on the
+arguments you pass in. Instead, you can use the <code>sprite-url()</code> function to create a
+reference to the css sprite map without generating the image again. Alternatively, simply
+using the sprite map variable in an property will have the same effect as calling
+<code>sprite-url()</code>.</p>
+
+<p>For each sprite in the css sprite map you can control the position, spacing, and whether or
+not it repeats. You do this by passing arguments to this function that tell each sprite
+how to behave. For instance if there is a icons/new.png then you can control it like so:</p>
+
+<pre><code>$icon-sprite: sprite-map("icons/*.png",
+                $new-position: 100%, $new-spacing: 15px, $new-repeat: no-repeat);
+</code></pre>
+
+<p>If you don't specify these options they will default to <code>0%</code> for <code>position</code>,
+<code>0px</code> for spacing, and <code>no-repeat</code> for <code>repeat</code>.</p>
+
+<p>Default values for all sprites can be specified by passing values for <code>$position</code>,
+<code>$spacing</code>, and <code>$repeat</code>.</p>
+</div>
+</div>
+<div class="helper" id="sprite">
+<h3>
+<a href="#sprite">
+sprite(<span class="arg">$map</span>, <span class="arg">$sprite</span>, <span class="arg" data-default-value="0">$offset-x</span>, <span class="arg" data-default-value="0">$offset-y</span>)
+</a>
+</h3>
+<div class="details">
+<p>Returns the image and background position for use in a single shorthand property:</p>
+
+<pre><code>$icons: sprite-map("icons/*.png"); // contains icons/new.png among others.
+background: sprite($icons, new) no-repeat;
+</code></pre>
+
+<p>Becomes:</p>
+
+<pre><code>background: url('/images/icons.png?12345678') 0 -24px no-repeat;
+</code></pre>
+</div>
+</div>
+<div class="helper" id="sprite-map-name">
+<h3>
+<a href="#sprite-map-name">
+sprite-map-name(<span class="arg">$map</span>)
+</a>
+</h3>
+<div class="details">
+<p>Returns the name of a css sprite map
+The name is derived from the folder than contains the css sprites.</p>
+</div>
+</div>
+<div class="helper" id="sprite-file">
+<h3>
+<a href="#sprite-file">
+sprite-file(<span class="arg">$map</span>, <span class="arg">$sprite</span>)
+</a>
+</h3>
+<div class="details">
+<p>Returns the relative path (from the images directory) to the original file
+used when construction the sprite. This is suitable for passing to the
+<code>image-width</code> and <code>image-height</code> helpers.</p>
+</div>
+</div>
+<div class="helper" id="sprite-url">
+<h3>
+<a href="#sprite-url">
+sprite-url(<span class="arg">$map</span>)
+</a>
+</h3>
+<div class="details">
+<p>Returns a url to the sprite image.</p>
+</div>
+</div>
+<div class="helper" id="sprite-position">
+<h3>
+<a href="#sprite-position">
+sprite-position(<span class="arg">$map</span>, <span class="arg">$sprite</span>, <span class="arg" data-default-value="0">$offset-x</span>, <span class="arg" data-default-value="0">$offset-y</span>)
+</a>
+</h3>
+<div class="details">
+<p>Returns the position for the original image in the sprite.
+This is suitable for use as a value to background-position:</p>
+
+<pre><code>$icons: sprite-map("icons/*.png");
+background-position: sprite-position($icons, new);
+</code></pre>
+
+<p>Might generate something like:</p>
+
+<pre><code>background-position: 0 -34px;
+</code></pre>
+
+<p>You can adjust the background relative to this position by passing values for
+<code>$offset-x</code> and <code>$offset-y</code>:</p>
+
+<pre><code>$icons: sprite-map("icons/*.png");
+background-position: sprite-position($icons, new, 3px, -2px);
+</code></pre>
+
+<p>Would change the above output to:</p>
+
+<pre><code>background-position: 3px -36px;
+</code></pre>
+</div>
+</div></section>
+
+</body>
+</html>

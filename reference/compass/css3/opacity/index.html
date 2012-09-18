@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Opacity | Compass API
+</title>
+</head>
+<body class=' reference core css3' id='reference-compass-css3-opacity'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/compass/stylesheets/compass/css3/_opacity.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Compass Opacity</h1>
+<p>
+Provides cross-browser CSS opacity. See <a href="http://www.w3.org/TR/css3-color/#transparency">CSS3 spec: transparency</a>.
+</p>
+
+<p>
+This file can be imported using:
+<code>@import "compass/css3/opacity"</code>
+</p>
+<h2>Examples</h2>
+<dl class="examples">
+<dt><a href="/examples/compass/css3/opacity/">Opacity</a></dt>
+<dd>css3 mixin for opacity</dd>
+</dl><h2>Imports</h2>
+<ol>
+<li>
+<a href="/reference/compass/css3/shared/" title="@import shared">Shared Utilities</a>
+</li>
+</ol><h2>Mixins</h2>
+<a href="#mixin-opacity-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-opacity">
+<a class="permalink" href="#mixin-opacity">opacity(<span class="arg">$opacity</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-opacity-source">
+<pre class="brush: sass source-code sass">=opacity($opacity)
+  @if $legacy-support-for-ie6 or $legacy-support-for-ie7 or $legacy-support-for-ie8
+    filter: unquote("progid:DXImageTransform.Microsoft.Alpha(Opacity=#{round($opacity * 100)})")
+  opacity: $opacity
+</pre>
+<pre class="brush: scss source-code scss">@mixin opacity($opacity) {
+  @if $legacy-support-for-ie6 or $legacy-support-for-ie7 or $legacy-support-for-ie8 {
+    filter: unquote("progid:DXImageTransform.Microsoft.Alpha(Opacity=#{round($opacity * 100)})");
+  }
+  opacity: $opacity;
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Provides cross-browser CSS opacity. Takes a number between 0 and 1 as the argument, e.g. 0.5 for 50% opacity.</p>
+
+<pre><code>@param $opacity
+    A number between 0 and 1, where 0 is transparent and 1 is opaque.
+</code></pre>
+
+</div>
+<a href="#mixin-transparent-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-transparent">
+<a class="permalink" href="#mixin-transparent">transparent</a>
+</h3>
+<div class="mixin-source" id="mixin-transparent-source">
+<pre class="brush: sass source-code sass">=transparent
+  +opacity(0)
+</pre>
+<pre class="brush: scss source-code scss">@mixin transparent {
+  @include opacity(0);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Make an element completely transparent.</p>
+
+</div>
+<a href="#mixin-opaque-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-opaque">
+<a class="permalink" href="#mixin-opaque">opaque</a>
+</h3>
+<div class="mixin-source" id="mixin-opaque-source">
+<pre class="brush: sass source-code sass">=opaque
+  +opacity(1)
+</pre>
+<pre class="brush: scss source-code scss">@mixin opaque {
+  @include opacity(1);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Make an element completely opaque.</p>
+
+</div></section>
+
+</body>
+</html>

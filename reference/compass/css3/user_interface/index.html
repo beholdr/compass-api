@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass User Interface | Compass API
+</title>
+</head>
+<body class=' reference core css3' id='reference-compass-css3-user-interface'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/compass/stylesheets/compass/css3/_user-interface.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Compass User Interface</h1>
+<p>
+Provides mixins for the CSS3 User Interface module.
+</p>
+
+<p>
+This file can be imported using:
+<code>@import "compass/css3/user-interface"</code>
+</p>
+
+<h2>Imports</h2>
+<ol>
+<li>
+<a href="/reference/compass/css3/shared/" title="@import shared">Shared Utilities</a>
+</li>
+</ol><h2>Mixins</h2>
+<a href="#mixin-user-select-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-user-select">
+<a class="permalink" href="#mixin-user-select">user-select(<span class="arg">$select</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-user-select-source">
+<pre class="brush: sass source-code sass">=user-select($select)
+  $select: unquote($select)
+  +experimental(user-select, $select, -moz, -webkit, not -o, not -ms, -khtml, official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin user-select($select) {
+  $select: unquote($select);
+  @include experimental(user-select, $select, -moz, -webkit, not -o, not -ms, -khtml, official);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>This property controls the selection model and granularity of an element.</p>
+
+<p>@param $select
+  [ none | text | toggle | element | elements | all | inherit ]</p>
+
+</div></section>
+
+</body>
+</html>

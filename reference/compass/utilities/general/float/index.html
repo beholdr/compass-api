@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Float | Compass API
+</title>
+</head>
+<body class=' reference core utilities' id='reference-compass-utilities-general-float'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/compass/stylesheets/compass/utilities/general/_float.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Compass Float</h1>
+<p>This module provides mixins that help you work around the
+<a href="http://www.positioniseverything.net/explorer/doubled-margin.html">double-margin bug in IE5/6</a>.</p>
+
+<p>
+This file can be imported using:
+<code>@import "compass/utilities/general/float"</code>
+</p>
+
+
+
+
+<h2>Mixins</h2>
+<a href="#mixin-float-left-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-float-left">
+<a class="permalink" href="#mixin-float-left">float-left</a>
+</h3>
+<div class="mixin-source" id="mixin-float-left-source">
+<pre class="brush: sass source-code sass">=float-left
+  +float(left)
+</pre>
+<pre class="brush: scss source-code scss">@mixin float-left {
+  @include float(left);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Implementation of float:left with fix for the
+<a href="http://www.positioniseverything.net/explorer/doubled-margin.html">double-margin bug in IE5/6</a></p>
+
+</div>
+<a href="#mixin-float-right-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-float-right">
+<a class="permalink" href="#mixin-float-right">float-right</a>
+</h3>
+<div class="mixin-source" id="mixin-float-right-source">
+<pre class="brush: sass source-code sass">=float-right
+  +float(right)
+</pre>
+<pre class="brush: scss source-code scss">@mixin float-right {
+  @include float(right);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Implementation of float:right with fix for the
+<a href="http://www.positioniseverything.net/explorer/doubled-margin.html">double-margin bug in IE5/6</a></p>
+
+</div>
+<a href="#mixin-float-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-float">
+<a class="permalink" href="#mixin-float">float(<span class="arg" data-default-value="left">$side</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-float-source">
+<pre class="brush: sass source-code sass">=float($side: left)
+  display: inline
+  float: unquote($side)
+</pre>
+<pre class="brush: scss source-code scss">@mixin float($side: left) {
+  display: inline;
+  float: unquote($side);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Direction independent float mixin that fixes the
+<a href="http://www.positioniseverything.net/explorer/doubled-margin.html">double-margin bug in IE5/6</a></p>
+
+</div>
+<a href="#mixin-reset-float-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-reset-float">
+<a class="permalink" href="#mixin-reset-float">reset-float(<span class="arg" data-default-value="block">$display</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-reset-float-source">
+<pre class="brush: sass source-code sass">=reset-float($display: block)
+  float: none
+  display: $display
+</pre>
+<pre class="brush: scss source-code scss">@mixin reset-float($display: block) {
+  float: none;
+  display: $display;
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Resets floated elements back to their default of <code>float: none</code> and defaults
+to <code>display: block</code> unless you pass <code>inline</code> as an argument</p>
+
+<p>Usage Example:</p>
+
+<pre><code>body.homepage
+  #footer li
+    +float-left
+body.signup
+  #footer li
+    +reset-float
+</code></pre>
+
+</div></section>
+
+</body>
+</html>

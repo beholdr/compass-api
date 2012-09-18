@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Font Face | Compass API
+</title>
+</head>
+<body class=' reference core css3' id='reference-compass-css3-font-face'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/compass/stylesheets/compass/css3/_font-face.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Compass Font Face</h1>
+<p>
+Provides a mixin to support @font-face. See <a href="http://www.w3.org/TR/css3-fonts/#the-font-face-rule">CSS3 spec: @font-face</a>.
+</p>
+
+<p>
+This file can be imported using:
+<code>@import "compass/css3/font-face"</code>
+</p>
+<h2>Examples</h2>
+<dl class="examples">
+<dt><a href="/examples/compass/css3/font-face/">Compass Font Face Example</a></dt>
+<dd>How to use the @font-face mixin</dd>
+</dl><h2>Imports</h2>
+<ol>
+<li>
+<a href="/reference/compass/css3/shared/" title="@import shared">Shared Utilities</a>
+</li>
+</ol><h2>Mixins</h2>
+<a href="#mixin-font-face-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-font-face">
+<a class="permalink" href="#mixin-font-face">font-face(<span class="arg">$name</span>, <span class="arg">$font-files</span>, <span class="arg" data-default-value="false">$eot</span>, <span class="arg" data-default-value="false">$weight</span>, <span class="arg" data-default-value="false">$style</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-font-face-source">
+<pre class="brush: sass source-code sass">=font-face($name, $font-files, $eot: false, $weight: false, $style: false)
+  $iefont: unquote("#{$eot}?#iefix")
+  @font-face
+    font-family: quote($name)
+    @if $eot
+      src: font-url($eot)
+      $font-files: font-url($iefont) unquote("format('eot')"), $font-files
+    src: $font-files
+    @if $weight
+      font-weight: $weight
+    @if $style
+      font-style: $style
+</pre>
+<pre class="brush: scss source-code scss">@mixin font-face($name, $font-files, $eot: false, $weight: false, $style: false) {
+  $iefont: unquote("#{$eot}?#iefix");
+  @font-face {
+    font-family: quote($name);
+    @if $eot {
+      src: font-url($eot);
+      $font-files: font-url($iefont) unquote("format('eot')"), $font-files;
+    }
+    src: $font-files;
+    @if $weight {
+      font-weight: $weight;
+    }
+    @if $style {
+      font-style: $style;
+    }
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Cross-browser support for @font-face. Supports IE, Gecko, Webkit, Opera.</p>
+
+<ul>
+<li>$name is required, arbitrary, and what you will use in font stacks.</li>
+<li>$font-files is required using font-files('relative/location', 'format').
+for best results use this order: woff, opentype/truetype, svg</li>
+<li>$eot is required by IE, and is a relative location of the eot file.</li>
+<li>$weight shows if the font is bold, defaults to normal</li>
+<li>$style defaults to normal, might be also italic</li>
+<li>For android 2.2 Compatiblity, please ensure that your web page has
+a meta viewport tag.</li>
+<li>To support iOS &lt; 4.2, an SVG file must be provided</li>
+</ul>
+<p>If you need to generate other formats check out the Font Squirrel
+<a href="http://www.fontsquirrel.com/fontface/generator">font generator</a></p>
+
+<p>In order to refer to a specific style of the font in your stylesheets as
+e.g. "font-style: italic;",  you may add a couple of @font-face includes
+containing the respective font files for each style and specying
+respective the $style parameter.
+Order of the includes matters, and it is: normal, bold, italic, bold+italic.</p>
+
+</div></section>
+
+</body>
+</html>

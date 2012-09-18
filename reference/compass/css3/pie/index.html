@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+CSS3 Pie | Compass API
+</title>
+</head>
+<body class=' reference core css3' id='reference-compass-css3-pie'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/compass/stylesheets/compass/css3/_pie.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>CSS3 Pie</h1>
+<h3>Installing</h3>
+
+<p>CSS PIE is a javascript library that enhances Internet Explorer
+to render many modern CSS3 capabilities wherever possible. To install:</p>
+
+<pre><code>compass install compass/pie
+</code></pre>
+
+<p>This will install an example stylesheet and a PIE.htc behavior file
+that must be loaded into your pages for IE. This file must be delivered
+with the following mime-type:</p>
+
+<pre><code>Content-Type: text/x-component
+</code></pre>
+
+<h3>Conventions</h3>
+
+<p>The example stylesheet will walk you through setting up your project with
+css3pie support.</p>
+
+<h3>Properties Supported</h3>
+
+<p>The following css3 properties are supported:</p>
+
+<ul>
+<li>border-radius</li>
+<li>box-shadow</li>
+<li>border-image</li>
+<li>background (in the form of -pie-background, use the <a href="/reference/compass/css3/images/#mixin-background">background mixin</a>)</li>
+</ul><p>Additionally, PIE supports the following CSS3 features:</p>
+
+<ul>
+<li>rgba color values</li>
+<li>linear gradients in backgrounds</li>
+</ul><p><a href="http://css3pie.com/documentation/supported-css3-features/">Full Documentation on Supported Properties</a></p>
+
+<h3>Caveats</h3>
+
+<ol>
+<li>PIE only understands shortcut properties, long-hand properties don't
+work because the code, in order to be fast, does not attempt to resolve
+the stylesheet cascade and so it cannot determine which order to apply
+the long-hand properties.</li>
+<li>Each element that has a PIE behavior attached adds about 10ms to
+the page render time. Moderation is recommended.</li>
+<li>PIE generates content that contains the css3 graphical elements. It has to
+insert this content into your page and so it needs a little help from
+you. You have two choices:
+
+<ol>
+<li>You can make your element <code>position: relative</code>.</li>
+<li>You can give your element a z-index. If you do this you
+should also give apply a z-index to an ancestor element that comes before
+or itself has a background.
+The compass mixins below and the example stylesheet will help get you set up.</li>
+</ol>
+</li>
+</ol><h3>Best Practices</h3>
+
+<p>It is suggested that you use Sass's <code>@extend</code> directive to mark elements as
+PIE elements. The example stylesheet you get when you install <code>compass/pie</code>
+into your project will walk you through the process of setting that up.</p>
+
+<h3>Notes</h3>
+
+<ul>
+<li>For more information see the <a href="http://css3pie.com/">css3pie website</a>.</li>
+<li>CSS PIE is written by and copyright to: <a href="http://twitter.com/lojjic">Jason Johnston</a>
+</li>
+<li>Compass is using css3pie version 1.0-beta3. It can be upgraded by downloading
+a new behavior file and replacing the one that comes with compass.</li>
+</ul><p>
+This file can be imported using:
+<code>@import "compass/css3/pie"</code>
+</p>
+
+
+<h2>
+Configurable Variables
+<a class="help" href="/help/tutorials/configurable-variables/">help</a>
+</h2>
+<h3 class="constant" id="const-pie-base-class">
+<a class="permalink" href="#const-pie-base-class">$pie-base-class</a>
+<code>false</code>
+</h3>
+<p></p><p>It is recommended that you use Sass's @extend directive to apply the behavior
+to your PIE elements. To assist you, Compass provides this variable.
+When set, it will cause the <code>@include pie</code> mixin to extend this class.
+The class name you provide should <strong>not</strong> include the <code>.</code>.</p>
+
+<h3 class="constant" id="const-pie-default-approach">
+<a class="permalink" href="#const-pie-default-approach">$pie-default-approach</a>
+<code>relative</code>
+</h3>
+<p></p><p>The default approach to using PIE.
+Can be one of:</p>
+
+<ul>
+<li>relative (default)</li>
+<li>z-index</li>
+<li>none</li>
+</ul><h3 class="constant" id="const-pie-behavior">
+<a class="permalink" href="#const-pie-behavior">$pie-behavior</a>
+<code>stylesheet-url("PIE.htc")</code>
+</h3>
+<p></p><p>The location of your PIE behavior file
+This should be root-relative to your web server
+relative assets don't work. It is recommended that
+you set this yourself.</p>
+
+
+<h2>Constants</h2>
+<h3 class="constant" id="const-experimental-support-for-pie">
+<a class="permalink" href="#const-experimental-support-for-pie">$experimental-support-for-pie</a>
+<code>true</code>
+</h3>
+
+
+
+<h2>Mixins</h2>
+<a href="#mixin-pie-container-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-pie-container">
+<a class="permalink" href="#mixin-pie-container">pie-container(<span class="arg" data-default-value="0">$z-index</span>, <span class="arg" data-default-value="relative">$position</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-pie-container-source">
+<pre class="brush: sass source-code sass">=pie-container($z-index: 0, $position: relative)
+  z-index: $z-index
+  position: $position
+</pre>
+<pre class="brush: scss source-code scss">@mixin pie-container($z-index: 0, $position: relative) {
+  z-index: $z-index;
+  position: $position;
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>When using the z-index approach, the
+first ancestor of the PIE element at
+or before the container's opaque background
+should have a z-index set as well to ensure
+propert z-index stacking.</p>
+
+<p>The <code>$position</code> argument must be some non-static
+value (absolute, relative, etc.)</p>
+
+</div>
+<a href="#mixin-pie-element-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-pie-element">
+<a class="permalink" href="#mixin-pie-element">pie-element(<span class="arg" data-default-value="$pie-default-approach">$approach</span>, <span class="arg" data-default-value="0">$z-index</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-pie-element-source">
+<pre class="brush: sass source-code sass">=pie-element($approach: $pie-default-approach, $z-index: 0)
+  behavior: $pie-behavior
+  @if $approach == relative
+    position: relative
+  @else if $approach == z-index
+    z-index: $z-index
+</pre>
+<pre class="brush: scss source-code scss">@mixin pie-element($approach: $pie-default-approach, $z-index: 0) {
+  behavior: $pie-behavior;
+  @if $approach == relative {
+    position: relative;
+  }
+  @else if $approach == z-index {
+    z-index: $z-index;
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>PIE elements must have this behavior attached to them.
+IE is broken -- it doesn't think of behavior urls as
+relative to the stylesheet. It considers them relative
+to the webpage. As a result, you cannot reliably use
+compass's relative_assets with PIE.</p>
+
+<ul>
+<li>
+<code>$approach</code> - one of: relative, z-index, or none</li>
+<li>
+<code>$z-index</code> - when using the z-index approach, this
+
+<pre><code>         is the z-index that is applied.
+</code></pre>
+</li>
+</ul>
+</div>
+<a href="#mixin-pie-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-pie">
+<a class="permalink" href="#mixin-pie">pie(<span class="arg" data-default-value="$pie-base-class">$base-class</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-pie-source">
+<pre class="brush: sass source-code sass">=pie($base-class: $pie-base-class)
+  @if $base-class
+    @extend .#{$base-class}
+  @else
+    +pie-element
+</pre>
+<pre class="brush: scss source-code scss">@mixin pie($base-class: $pie-base-class) {
+  @if $base-class {
+    @extend .#{$base-class};
+  }
+  @else {
+    @include pie-element;
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>a smart mixin that knows to extend or include pie-element according
+to your stylesheet's configuration variables.</p>
+
+</div>
+<a href="#mixin-pie-watch-ancestors-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-pie-watch-ancestors">
+<a class="permalink" href="#mixin-pie-watch-ancestors">pie-watch-ancestors(<span class="arg">$n</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-pie-watch-ancestors-source">
+<pre class="brush: sass source-code sass">=pie-watch-ancestors($n)
+  -pie-watch-ancestors: $n
+</pre>
+<pre class="brush: scss source-code scss">@mixin pie-watch-ancestors($n) {
+  -pie-watch-ancestors: $n;
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Watch <code>$n</code> levels of ancestors for changes to their class attribute
+So that cascading styles will work correctly on the PIE element.</p>
+
+</div></section>
+
+</body>
+</html>

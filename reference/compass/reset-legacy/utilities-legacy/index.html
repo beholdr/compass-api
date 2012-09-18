@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Reset Utilities (legacy) | Compass API
+</title>
+</head>
+<body class=' reference core utilities' id='reference-compass-reset-legacy-utilities-legacy'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/compass/stylesheets/compass/reset/_utilities-legacy.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Compass Reset Utilities (legacy)</h1>
+<p class="warning">
+This import is deprecated. Please import
+<a href="/reference/compass/reset/utilities/" class="better">reset utilities</a> instead.
+</p>
+<p>These utilities are used to reset your document. The easiest way to use them
+is to simply <code>@import "compass/reset"</code> which will import this module and apply
+the appropriate mixins for you.</p>
+
+<p>
+This file can be imported using:
+<code>@import "compass/reset/utilities-legacy"</code>
+</p>
+
+
+
+
+<h2>Mixins</h2>
+<a href="#mixin-global-reset-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-global-reset">
+<a class="permalink" href="#mixin-global-reset">global-reset</a>
+</h3>
+<div class="mixin-source" id="mixin-global-reset-source">
+<pre class="brush: sass source-code sass">=global-reset
+  html, body, div, span, applet, object, iframe,
+  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+  a, abbr, acronym, address, big, cite, code,
+  del, dfn, em, font, img, ins, kbd, q, s, samp,
+  small, strike, strong, sub, sup, tt, var,
+  dl, dt, dd, ol, ul, li,
+  fieldset, form, label, legend,
+  table, caption, tbody, tfoot, thead, tr, th, td
+    +reset-box-model
+    +reset-font
+  body
+    +reset-body
+  ol, ul
+    +reset-list-style
+  table
+    +reset-table
+  caption, th, td
+    +reset-table-cell
+  q, blockquote
+    +reset-quotation
+  a img
+    +reset-image-anchor-border
+</pre>
+<pre class="brush: scss source-code scss">@mixin global-reset {
+  html, body, div, span, applet, object, iframe,
+  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+  a, abbr, acronym, address, big, cite, code,
+  del, dfn, em, font, img, ins, kbd, q, s, samp,
+  small, strike, strong, sub, sup, tt, var,
+  dl, dt, dd, ol, ul, li,
+  fieldset, form, label, legend,
+  table, caption, tbody, tfoot, thead, tr, th, td {
+    @include reset-box-model;
+    @include reset-font;
+  }
+  body {
+    @include reset-body;
+  }
+  ol, ul {
+    @include reset-list-style;
+  }
+  table {
+    @include reset-table;
+  }
+  caption, th, td {
+    @include reset-table-cell;
+  }
+  q, blockquote {
+    @include reset-quotation;
+  }
+  a img {
+    @include reset-image-anchor-border;
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Based on <a href="http://meyerweb.com/eric/thoughts/2007/05/01/reset-reloaded/">Eric Meyer's reset</a>
+Global reset rules.
+For more specific resets, use the reset mixins provided below</p>
+
+<p><em>Please Note</em>: tables still need <code>cellspacing="0"</code> in the markup.</p>
+
+</div>
+<a href="#mixin-nested-reset-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-nested-reset">
+<a class="permalink" href="#mixin-nested-reset">nested-reset</a>
+</h3>
+<div class="mixin-source" id="mixin-nested-reset-source">
+<pre class="brush: sass source-code sass">=nested-reset
+  div, span, object, iframe, h1, h2, h3, h4, h5, h6, p,
+  pre, a, abbr, acronym, address, code, del, dfn, em, img,
+  dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption, tbody, tfoot, thead, tr
+    +reset-box-model
+    +reset-font
+  table
+    +reset-table
+  caption, th, td
+    +reset-table-cell
+  q, blockquote
+    +reset-quotation
+  a img
+    +reset-image-anchor-border
+</pre>
+<pre class="brush: scss source-code scss">@mixin nested-reset {
+  div, span, object, iframe, h1, h2, h3, h4, h5, h6, p,
+  pre, a, abbr, acronym, address, code, del, dfn, em, img,
+  dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption, tbody, tfoot, thead, tr {
+    @include reset-box-model;
+    @include reset-font;
+  }
+  table {
+    @include reset-table;
+  }
+  caption, th, td {
+    @include reset-table-cell;
+  }
+  q, blockquote {
+    @include reset-quotation;
+  }
+  a img {
+    @include reset-image-anchor-border;
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Reset all elements within some selector scope. To reset the selector itself,
+mixin the appropriate reset mixin for that element type as well. This could be
+useful if you want to style a part of your page in a dramatically different way.</p>
+
+<p><em>Please Note</em>: tables still need <code>cellspacing="0"</code> in the markup.</p>
+
+</div>
+<a href="#mixin-reset-box-model-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-reset-box-model">
+<a class="permalink" href="#mixin-reset-box-model">reset-box-model</a>
+</h3>
+<div class="mixin-source" id="mixin-reset-box-model-source">
+<pre class="brush: sass source-code sass">=reset-box-model
+  margin: 0
+  padding: 0
+  border: 0
+  outline: 0
+</pre>
+<pre class="brush: scss source-code scss">@mixin reset-box-model {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Reset the box model measurements.</p>
+
+</div>
+<a href="#mixin-reset-font-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-reset-font">
+<a class="permalink" href="#mixin-reset-font">reset-font</a>
+</h3>
+<div class="mixin-source" id="mixin-reset-font-source">
+<pre class="brush: sass source-code sass">=reset-font
+  font:
+    weight: inherit
+    style: inherit
+    size: 100%
+    family: inherit
+  vertical-align: baseline
+</pre>
+<pre class="brush: scss source-code scss">@mixin reset-font {
+  font: {
+    weight: inherit;
+    style: inherit;
+    size: 100%;
+    family: inherit;
+  };
+  vertical-align: baseline;
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Reset the font and vertical alignment.</p>
+
+</div>
+<a href="#mixin-reset-focus-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-reset-focus">
+<a class="permalink" href="#mixin-reset-focus">reset-focus</a>
+</h3>
+<div class="mixin-source" id="mixin-reset-focus-source">
+<pre class="brush: sass source-code sass">=reset-focus
+  outline: 0
+</pre>
+<pre class="brush: scss source-code scss">@mixin reset-focus {
+  outline: 0;
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Resets the outline when focus.
+For accessibility you need to apply some styling in its place.</p>
+
+</div>
+<a href="#mixin-reset-body-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-reset-body">
+<a class="permalink" href="#mixin-reset-body">reset-body</a>
+</h3>
+<div class="mixin-source" id="mixin-reset-body-source">
+<pre class="brush: sass source-code sass">=reset-body
+  line-height: 1
+  color: black
+  background: white
+</pre>
+<pre class="brush: scss source-code scss">@mixin reset-body {
+  line-height: 1;
+  color: black;
+  background: white;
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Reset a body element.</p>
+
+</div>
+<a href="#mixin-reset-list-style-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-reset-list-style">
+<a class="permalink" href="#mixin-reset-list-style">reset-list-style</a>
+</h3>
+<div class="mixin-source" id="mixin-reset-list-style-source">
+<pre class="brush: sass source-code sass">=reset-list-style
+  list-style: none
+</pre>
+<pre class="brush: scss source-code scss">@mixin reset-list-style {
+  list-style: none;
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Reset the list style of an element.</p>
+
+</div>
+<a href="#mixin-reset-table-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-reset-table">
+<a class="permalink" href="#mixin-reset-table">reset-table</a>
+</h3>
+<div class="mixin-source" id="mixin-reset-table-source">
+<pre class="brush: sass source-code sass">=reset-table
+  border-collapse: separate
+  border-spacing: 0
+  vertical-align: middle
+</pre>
+<pre class="brush: scss source-code scss">@mixin reset-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle;
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Reset a table</p>
+
+</div>
+<a href="#mixin-reset-table-cell-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-reset-table-cell">
+<a class="permalink" href="#mixin-reset-table-cell">reset-table-cell</a>
+</h3>
+<div class="mixin-source" id="mixin-reset-table-cell-source">
+<pre class="brush: sass source-code sass">=reset-table-cell
+  text-align: left
+  font-weight: normal
+  vertical-align: middle
+</pre>
+<pre class="brush: scss source-code scss">@mixin reset-table-cell {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Reset a table cell (<code>th</code>, <code>td</code>)</p>
+
+</div>
+<a href="#mixin-reset-quotation-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-reset-quotation">
+<a class="permalink" href="#mixin-reset-quotation">reset-quotation</a>
+</h3>
+<div class="mixin-source" id="mixin-reset-quotation-source">
+<pre class="brush: sass source-code sass">=reset-quotation
+  quotes: "" ""
+  &amp;:before, &amp;:after
+    content: ""
+</pre>
+<pre class="brush: scss source-code scss">@mixin reset-quotation {
+  quotes: "" "";
+  &amp;:before, &amp;:after {
+    content: "";
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Reset a quotation (<code>q</code>, <code>blockquote</code>)</p>
+
+</div>
+<a href="#mixin-reset-image-anchor-border-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-reset-image-anchor-border">
+<a class="permalink" href="#mixin-reset-image-anchor-border">reset-image-anchor-border</a>
+</h3>
+<div class="mixin-source" id="mixin-reset-image-anchor-border-source">
+<pre class="brush: sass source-code sass">=reset-image-anchor-border
+  border: none
+</pre>
+<pre class="brush: scss source-code scss">@mixin reset-image-anchor-border {
+  border: none;
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Resets the border.</p>
+
+</div>
+<a href="#mixin-reset-html5-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-reset-html5">
+<a class="permalink" href="#mixin-reset-html5">reset-html5</a>
+</h3>
+<div class="mixin-source" id="mixin-reset-html5-source">
+<pre class="brush: sass source-code sass">=reset-html5
+  #{elements-of-type(html5-block)}
+    +reset-box-model
+    display: block
+</pre>
+<pre class="brush: scss source-code scss">@mixin reset-html5 {
+  #{elements-of-type(html5-block)} {
+    @include reset-box-model;
+    display: block;
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Unrecognized elements are displayed inline.
+This reset provides a basic reset for html5 elements
+so they are rendered correctly in browsers that don't recognize them
+and reset in browsers that have default styles for them.</p>
+
+</div>
+<a href="#mixin-reset-display-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-reset-display">
+<a class="permalink" href="#mixin-reset-display">reset-display(<span class="arg" data-default-value='""'>$selector</span>, <span class="arg" data-default-value="false">$important</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-reset-display-source">
+<pre class="brush: sass source-code sass">=reset-display($selector: "", $important: false)
+  #{append-selector(elements-of-type("inline"), $selector)}
+    @if $important
+      display: inline !important
+    @else
+      display: inline
+  #{append-selector(elements-of-type("block"), $selector)}
+    @if $important
+      display: block !important
+    @else
+      display: block
+</pre>
+<pre class="brush: scss source-code scss">@mixin reset-display($selector: "", $important: false) {
+  #{append-selector(elements-of-type("inline"), $selector)} {
+    @if $important {
+      display: inline !important;
+    }
+    @else {
+      display: inline;
+    }
+  }
+  #{append-selector(elements-of-type("block"), $selector)} {
+    @if $important {
+      display: block !important;
+    }
+    @else {
+      display: block;
+    }
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Resets the display of inline and block elements to their default display
+according to their tag type. Elements that have a default display that varies across
+versions of html or browser are not handled here, but this covers the 90% use case.
+Usage Example:</p>
+
+<pre><code>// Turn off the display for both of these classes
+.unregistered-only, .registered-only
+  display: none
+// Now turn only one of them back on depending on some other context.
+body.registered
+  +reset-display(".registered-only")
+body.unregistered
+  +reset-display(".unregistered-only")
+</code></pre>
+
+</div></section>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Color Contrast | Compass API
+</title>
+</head>
+<body class=' reference core utilities' id='reference-compass-utilities-color-contrast'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/compass/stylesheets/compass/utilities/color/_contrast.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Compass Color Contrast</h1>
+
+<p>
+This file can be imported using:
+<code>@import "compass/utilities/color/contrast"</code>
+</p>
+<h2>Examples</h2>
+<dl class="examples">
+<dt><a href="/examples/compass/utilities/contrast/">Compass Contrast Color Example</a></dt>
+<dd>Make text readable</dd>
+</dl><h2>
+Configurable Variables
+<a class="help" href="/help/tutorials/configurable-variables/">help</a>
+</h2>
+<h3 class="constant" id="const-contrasted-dark-default">
+<a class="permalink" href="#const-contrasted-dark-default">$contrasted-dark-default</a>
+<code><span class="color">black</span></code>
+</h3>
+<h3 class="constant" id="const-contrasted-light-default">
+<a class="permalink" href="#const-contrasted-light-default">$contrasted-light-default</a>
+<code><span class="color">white</span></code>
+</h3>
+<h3 class="constant" id="const-contrasted-lightness-threshold">
+<a class="permalink" href="#const-contrasted-lightness-threshold">$contrasted-lightness-threshold</a>
+<code>30%</code>
+</h3>
+
+
+<h2>Functions</h2>
+<a href="#function-contrast-color-source" rel="view source">view source</a>
+<h3 class="function" id="function-contrast-color">
+<a class="permalink" href="#function-contrast-color">contrast-color(<span class="arg">$color</span>, <span class="arg" data-default-value="$contrasted-dark-default">$dark</span>, <span class="arg" data-default-value="$contrasted-light-default">$light</span>, <span class="arg" data-default-value="$contrasted-lightness-threshold">$threshold</span>)</a>
+</h3>
+<div class="function-source" id="function-contrast-color-source">
+<pre class="brush: sass source-code sass">@function contrast-color($color, $dark: $contrasted-dark-default, $light: $contrasted-light-default, $threshold: $contrasted-lightness-threshold)
+  @return if(lightness($color) 
+<pre class="brush: scss source-code scss">@function contrast-color($color, $dark: $contrasted-dark-default, $light: $contrasted-light-default, $threshold: $contrasted-lightness-threshold) {
+  @return if(lightness($color) 
+</pre></pre>
+</div>
+<div class="source-documentation">
+<p>Returns the <code>$light</code> color when the <code>$color</code> is dark
+and the <code>$dark</code> color when the <code>$color</code> is light.
+The <code>$threshold</code> is a percent between <code>0%</code> and <code>100%</code> and it determines
+when the lightness of <code>$color</code> changes from "dark" to "light".</p>
+
+</div>
+
+<h2>Mixins</h2>
+<a href="#mixin-contrasted-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-contrasted">
+<a class="permalink" href="#mixin-contrasted">contrasted(<span class="arg">$background-color</span>, <span class="arg" data-default-value="$contrasted-dark-default">$dark</span>, <span class="arg" data-default-value="$contrasted-light-default">$light</span>, <span class="arg" data-default-value="$contrasted-lightness-threshold">$threshold</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-contrasted-source">
+<pre class="brush: sass source-code sass">=contrasted($background-color, $dark: $contrasted-dark-default, $light: $contrasted-light-default, $threshold: $contrasted-lightness-threshold)
+  background-color: $background-color
+  color: contrast-color($background-color, $dark, $light, $threshold)
+</pre>
+<pre class="brush: scss source-code scss">@mixin contrasted($background-color, $dark: $contrasted-dark-default, $light: $contrasted-light-default, $threshold: $contrasted-lightness-threshold) {
+  background-color: $background-color;
+  color: contrast-color($background-color, $dark, $light, $threshold);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Sets the specified background color and calculates a dark or light contrasted text color.
+The arguments are passed through to the <a href="#function-contrast-color">contrast-color function</a>.</p>
+
+</div></section>
+
+</body>
+</html>

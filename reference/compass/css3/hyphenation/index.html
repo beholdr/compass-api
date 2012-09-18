@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Hyphenation | Compass API
+</title>
+</head>
+<body class=' reference core css3' id='reference-compass-css3-hyphenation'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/compass/stylesheets/compass/css3/_hyphenation.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Compass Hyphenation</h1>
+<p>Provides mixins that pertain to CSS3 Word Breaking and Hyphenation.
+See the CSS3 specification: <a href="http://www.w3.org/TR/css3-text/#hyphens">hyphens</a> and <a href="http://www.w3.org/TR/css3-text/#word-break">word-break</a>.</p>
+
+<p>
+This file can be imported using:
+<code>@import "compass/css3/hyphenation"</code>
+</p>
+
+<h2>Imports</h2>
+<ol>
+<li>
+<a href="/reference/compass/css3/shared/" title="@import shared">Shared Utilities</a>
+</li>
+</ol><h2>Mixins</h2>
+<a href="#mixin-word-break-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-word-break">
+<a class="permalink" href="#mixin-word-break">word-break(<span class="arg" data-default-value="normal">$value</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-word-break-source">
+<pre class="brush: sass source-code sass">=word-break($value: normal)
+  @if $value == break-all
+    //Most browsers handle the break-all case the same...
+    +experimental(word-break, $value, not -moz, not -webkit, not -o, -ms, not -khtml, official)
+    //Webkit handles break-all differently... as break-word
+    +experimental(word-break, break-word, not -moz, not -webkit, not -o, not -ms, not -khtml, official)
+  @else
+    +experimental(word-break, $value, not -moz, not -webkit, not -o, -ms, not -khtml, official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin word-break($value: normal) {
+  @if $value == break-all {
+    //Most browsers handle the break-all case the same...
+    @include experimental(word-break, $value, not -moz, not -webkit, not -o, -ms, not -khtml, official);
+    //Webkit handles break-all differently... as break-word
+    @include experimental(word-break, break-word, not -moz, not -webkit, not -o, not -ms, not -khtml, official);
+  }
+  @else {
+    @include experimental(word-break, $value, not -moz, not -webkit, not -o, -ms, not -khtml, official);
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Mixins to support specific CSS Text Level 3 elements</p>
+
+<p>Mixin for word-break properties
+http://www.w3.org/css3-text/#word-break
+* legal values for $type : normal, keep-all, break-all</p>
+
+<p>Example:
+   p.wordBreak {@include word-break(break-all);}</p>
+
+<p>Which generates:
+   p.wordBreak {</p>
+
+<pre><code> -ms-word-break: break-all;
+ word-break: break-all;
+ word-break: break-word;}
+</code></pre>
+
+</div>
+<a href="#mixin-hyphens-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-hyphens">
+<a class="permalink" href="#mixin-hyphens">hyphens(<span class="arg" data-default-value="auto">$value</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-hyphens-source">
+<pre class="brush: sass source-code sass">=hyphens($value: auto)
+  +experimental(hyphens, $value, -moz, -webkit, not -o, not -ms, not -khtml, official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin hyphens($value: auto) {
+  @include experimental(hyphens, $value, -moz, -webkit, not -o, not -ms, not -khtml, official);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Mixin for the hyphens property</p>
+
+<p>W3C specification: http://www.w3.org/TR/css3-text/#hyphens
+* legal values for $type : auto, manual, none</p>
+
+<p>Example:
+ p {
+   @include hyphens(auto);}
+Which generates:
+ p {
+   -moz-hyphens: auto;
+   -webkit-hyphens: auto;
+   hyphens: auto;}</p>
+
+</div>
+<a href="#mixin-hyphenation-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-hyphenation">
+<a class="permalink" href="#mixin-hyphenation">hyphenation</a>
+</h3>
+<div class="mixin-source" id="mixin-hyphenation-source">
+<pre class="brush: sass source-code sass">=hyphenation
+  +word-break(break-all)
+  +hyphens
+</pre>
+<pre class="brush: scss source-code scss">@mixin hyphenation {
+  @include word-break(break-all);
+  @include hyphens;
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Mixin for x-browser hyphenation based on @auchenberg's post:
+Removes the need for the <wbr></wbr> HTML tag
+http://blog.kenneth.io/blog/2012/03/04/word-wrapping-hypernation-using-css/</p>
+
+<p> Example:
+ div {@include hyphenation;}</p>
+
+<p> Which generates:
+   div {</p>
+
+<pre><code> -ms-word-break: break-all;
+ word-break: break-all;
+ word-break: break-word;
+ -moz-hyphens: auto;
+ -webkit-hyphens: auto;
+ hyphens: auto;}
+</code></pre>
+
+</div></section>
+
+</body>
+</html>

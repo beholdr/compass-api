@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Blueprint IE Compatibility | Compass API
+</title>
+</head>
+<body class=' reference blueprint' id='reference-blueprint-ie'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/blueprint/stylesheets/blueprint/_ie.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Blueprint IE Compatibility</h1>
+<p>This module should be imported into a stylesheet that will
+only be served to legacy versions of Internet Explorer. If
+you've used the blueprint project generator, this will be
+done for you. In a standard blueprint project you'll need
+the following:</p>
+
+<pre class="brush: sass source-code sass">
+@import blueprint/ie
++blueprint-ie</pre>
+
+
+<p>Or if you prefer to use blueprint on only some pages you can
+nest these styles. E.g.</p>
+
+<pre class="brush: sass source-code sass">
+@import blueprint/ie
+body.blueprint
+  +blueprint-ie(true)</pre>
+
+
+<p>The stylesheet should then be linked like so:</p>
+
+<pre class="brush: html source-code html">&lt;!--[if lt IE 8]&gt;&lt;link rel="stylesheet" href="/stylesheets/ie.css"
+   type="text/css" media="screen, projection"&gt;&lt;![endif]--&gt;</pre>
+
+<p>
+This file can be imported using:
+<code>@import "blueprint/ie"</code>
+</p>
+
+
+
+
+<h2>Mixins</h2>
+<a href="#mixin-blueprint-ie-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-blueprint-ie">
+<a class="permalink" href="#mixin-blueprint-ie">blueprint-ie(<span class="arg" data-default-value="false">$nested</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-blueprint-ie-source">
+<pre class="brush: sass source-code sass">=blueprint-ie($nested: false)
+  @if $nested
+    +blueprint-ie-body
+    +blueprint-ie-defaults
+  @else
+    body
+      +blueprint-ie-body
+    +blueprint-ie-defaults
+</pre>
+<pre class="brush: scss source-code scss">@mixin blueprint-ie($nested: false) {
+  @if $nested {
+    @include blueprint-ie-body;
+    @include blueprint-ie-defaults;
+  }
+  @else {
+    body {
+      @include blueprint-ie-body;
+    }
+    @include blueprint-ie-defaults;
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<h2>Usage Examples</h2>
+
+<p>As a top-level mixin, apply to any page that includes the stylesheet:</p>
+
+<pre class="brush: sass source-code sass">
++blueprint-ie
+</pre>
+
+
+<p>Scoped by a presentational class:</p>
+
+<pre class="brush: sass source-code sass">
+body.blueprint
+ +blueprint-ie(true)
+</pre>
+
+
+<p>Scoped by semantic selectors:</p>
+
+<pre class="brush: sass source-code sass">
+body#page-1, body#page-2, body.a-special-page-type
+  +blueprint-ie(true)
+</pre>
+
+
+<p><strong>Deprecated:</strong> You can pass the body selector as the first argument when used as a top-level mixin</p>
+
+<pre class="brush: sass source-code sass">
++blueprint-ie("body#page-1, body#page-2, body.a-special-page-type")
+</pre>
+
+
+</div>
+<a href="#mixin-blueprint-ie-body-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-blueprint-ie-body">
+<a class="permalink" href="#mixin-blueprint-ie-body">blueprint-ie-body</a>
+</h3>
+<div class="mixin-source" id="mixin-blueprint-ie-body-source">
+<pre class="brush: sass source-code sass">=blueprint-ie-body
+  text-align: center
+  +blueprint-ie-hacks
+</pre>
+<pre class="brush: scss source-code scss">@mixin blueprint-ie-body {
+  text-align: center;
+  @include blueprint-ie-hacks;
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-blueprint-ie-hacks-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-blueprint-ie-hacks">
+<a class="permalink" href="#mixin-blueprint-ie-hacks">blueprint-ie-hacks</a>
+</h3>
+<div class="mixin-source" id="mixin-blueprint-ie-hacks-source">
+<pre class="brush: sass source-code sass">=blueprint-ie-hacks
+  * html &amp;
+    legend
+      margin: 0px -8px 16px 0
+      padding: 0
+  html &gt; &amp;
+    p code
+      *white-space: normal
+</pre>
+<pre class="brush: scss source-code scss">@mixin blueprint-ie-hacks {
+  * html &amp; {
+    legend {
+      margin: 0px -8px 16px 0;
+      padding: 0;
+    }
+  }
+  html &gt; &amp; {
+    p code {
+      *white-space: normal;
+    }
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-blueprint-inline-form-ie-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-blueprint-inline-form-ie">
+<a class="permalink" href="#mixin-blueprint-inline-form-ie">blueprint-inline-form-ie</a>
+</h3>
+<div class="mixin-source" id="mixin-blueprint-inline-form-ie-source">
+<pre class="brush: sass source-code sass">=blueprint-inline-form-ie
+  div, p
+    vertical-align: middle
+  input
+    &amp;.checkbox, &amp;.radio, &amp;.button, button
+      margin: 0.5em 0
+</pre>
+<pre class="brush: scss source-code scss">@mixin blueprint-inline-form-ie {
+  div, p {
+    vertical-align: middle;
+  }
+  input {
+    &amp;.checkbox, &amp;.radio, &amp;.button, button {
+      margin: 0.5em 0;
+    }
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Fixes for Blueprint "inline" forms in IE</p>
+
+</div>
+<a href="#mixin-blueprint-ie-defaults-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-blueprint-ie-defaults">
+<a class="permalink" href="#mixin-blueprint-ie-defaults">blueprint-ie-defaults</a>
+</h3>
+<div class="mixin-source" id="mixin-blueprint-ie-defaults-source">
+<pre class="brush: sass source-code sass">=blueprint-ie-defaults
+  .container
+    text-align: left
+  sup
+    vertical-align: text-top
+  sub
+    vertical-align: text-bottom
+  hr
+    margin: -8px auto 11px
+  img
+    -ms-interpolation-mode: bicubic
+  fieldset
+    padding-top: 0
+  legend
+    margin-top: -0.2em
+    margin-bottom: 1em
+    margin-left: -0.5em
+  fieldset, #IE8#HACK
+    padding-top: 1.4em
+  legend, #IE8#HACK
+    margin-top: 0
+    margin-bottom: 0
+  textarea
+    overflow: auto
+  label
+    position: relative
+    top: -0.25em
+  input
+    &amp;.text
+      margin: 0.5em 0
+      background-color: white
+      border: 1px solid #bbbbbb
+      &amp;:focus
+        border: 1px solid #666666
+    &amp;.title
+      margin: 0.5em 0
+      background-color: white
+      border: 1px solid #bbbbbb
+      &amp;:focus
+        border: 1px solid #666666
+    &amp;.checkbox
+      position: relative
+      top: 0.25em
+    &amp;.radio
+      position: relative
+      top: 0.25em
+    &amp;.button
+      position: relative
+      top: 0.25em
+  textarea
+    margin: 0.5em 0
+  select
+    margin: 0.5em 0
+  button
+    position: relative
+    top: 0.25em
+</pre>
+<pre class="brush: scss source-code scss">@mixin blueprint-ie-defaults {
+  .container {
+    text-align: left;
+  }
+  sup {
+    vertical-align: text-top;
+  }
+  sub {
+    vertical-align: text-bottom;
+  }
+  hr {
+    margin: -8px auto 11px;
+  }
+  img {
+    -ms-interpolation-mode: bicubic;
+  }
+  fieldset {
+    padding-top: 0;
+  }
+  legend {
+    margin-top: -0.2em;
+    margin-bottom: 1em;
+    margin-left: -0.5em;
+  }
+  fieldset, #IE8#HACK {
+    padding-top: 1.4em;
+  }
+  legend, #IE8#HACK {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  textarea {
+    overflow: auto;
+  }
+  label {
+    position: relative;
+    top: -0.25em;
+  }
+  input {
+    &amp;.text {
+      margin: 0.5em 0;
+      background-color: white;
+      border: 1px solid #bbbbbb;
+      &amp;:focus {
+        border: 1px solid #666666;
+      }
+    }
+    &amp;.title {
+      margin: 0.5em 0;
+      background-color: white;
+      border: 1px solid #bbbbbb;
+      &amp;:focus {
+        border: 1px solid #666666;
+      }
+    }
+    &amp;.checkbox {
+      position: relative;
+      top: 0.25em;
+    }
+    &amp;.radio {
+      position: relative;
+      top: 0.25em;
+    }
+    &amp;.button {
+      position: relative;
+      top: 0.25em;
+    }
+  }
+  textarea {
+    margin: 0.5em 0;
+  }
+  select {
+    margin: 0.5em 0;
+  }
+  button {
+    position: relative;
+    top: 0.25em;
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div></section>
+
+</body>
+</html>

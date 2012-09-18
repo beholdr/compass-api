@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Color Stops Helper | Compass API
+</title>
+</head>
+<body class=' reference core helpers' id='reference-compass-helpers-color-stops'><section class='article'><h1>Compass Color Stops Helper</h1>
+<div class="helper" id="color-stops">
+<h3>
+<a href="#color-stops">
+color-stops([<span class="arg">$color-stop</span>]*)
+</a>
+</h3>
+<div class="details">
+<p>
+The color-stops helper provides a way to pass an arbitrary number of
+colors stops to the <a href="/reference/compass/css3/gradient/">gradient mixins</a>.
+</p>
+<p>
+Any number of comma-delimited color stops can be passed, each color stop
+should take the form of a color followed by an optional stopping point (separated by a space).
+Where stop values are not provided they will be inferred by assuming an equal distribution
+of colors between any specified locations.
+</p>
+<dl>
+<dg class="head"><dt>Example Call</dt>
+<dd>Means</dd>
+</dg><dg id="ex1"><dt>
+color-stops(#FFF,#F00,#00C)
+</dt>
+<dd>
+#FFF 0%, #F00 50%, #00C 100%
+</dd>
+</dg><dg id="ex2"><dt>
+color-stops(#FFF, #F00 25%, #0C0, #00C)
+</dt>
+<dd>
+#FFF 0%, #F00 25%, #0C0 62.5%, #00C 100%
+</dd>
+</dg><dg id="ex3"><dt>
+color-stops(#FFF, #F00 5px, #0C0, #00C 25px)
+</dt>
+<dd>
+#FFF 0px, #F00 5px, #0C0 15px, #00C 25px
+</dd>
+</dg>
+</dl>
+</div>
+<div class="examples">
+<h4>Examples</h4>
+<ul>
+<li>
+<a href="/examples/compass/css3/gradient/">Example of Gradients</a>
+</li>
+</ul>
+</div>
+</div></section>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Inline Block | Compass API
+</title>
+</head>
+<body class=' reference core css3' id='reference-compass-css3-inline-block'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/compass/stylesheets/compass/css3/_inline-block.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Compass Inline Block</h1>
+<p>
+Provides a cross-browser method to implement <code>display: inline-block;</code>. Note that this was actually introduced in CSS2, but badly implemented across browsers. See <a href="http://www.w3.org/TR/CSS21/visuren.html#propdef-display">CSS2.1 spec: display</a>.
+</p>
+<blockquote>
+This value causes an element to generate a block box, which itself is flowed as a single inline box, similar to a replaced element. The inside of an inline-block is formatted as a block box, and the element itself is formatted as an inline replaced element.
+</blockquote>
+
+<p>
+This file can be imported using:
+<code>@import "compass/css3/inline-block"</code>
+</p>
+<h2>Examples</h2>
+<dl class="examples">
+<dt><a href="/examples/compass/css3/inline_block/">Inline-block</a></dt>
+<dd>css3 mixin for inline-block</dd>
+</dl><h2>Imports</h2>
+<ol>
+<li>
+<a href="/reference/compass/css3/shared/" title="@import shared">Shared Utilities</a>
+</li>
+</ol><h2>
+Configurable Variables
+<a class="help" href="/help/tutorials/configurable-variables/">help</a>
+</h2>
+<h3 class="constant" id="const-inline-block-alignment">
+<a class="permalink" href="#const-inline-block-alignment">$inline-block-alignment</a>
+<code>middle</code>
+</h3>
+<p></p><p>Set <code>$inline-block-alignment</code> to <code>none</code> or <code>false</code> to disable the output
+of a vertical-align property in the inline-block mixin.
+Or set it to a legal value for <code>vertical-align</code> to change the default.</p>
+
+
+
+
+<h2>Mixins</h2>
+<a href="#mixin-inline-block-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-inline-block">
+<a class="permalink" href="#mixin-inline-block">inline-block(<span class="arg" data-default-value="$inline-block-alignment">$alignment</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-inline-block-source">
+<pre class="brush: sass source-code sass">=inline-block($alignment: $inline-block-alignment)
+  @if $legacy-support-for-mozilla
+    display: -moz-inline-stack
+  display: inline-block
+  @if $alignment and $alignment != none
+    vertical-align: $alignment
+  @if $legacy-support-for-ie
+    *vertical-align: auto
+    zoom: 1
+    *display: inline
+</pre>
+<pre class="brush: scss source-code scss">@mixin inline-block($alignment: $inline-block-alignment) {
+  @if $legacy-support-for-mozilla {
+    display: -moz-inline-stack;
+  }
+  display: inline-block;
+  @if $alignment and $alignment != none {
+    vertical-align: $alignment;
+  }
+  @if $legacy-support-for-ie {
+    *vertical-align: auto;
+    zoom: 1;
+    *display: inline;
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Provides a cross-browser method to implement <code>display: inline-block;</code></p>
+
+</div></section>
+
+</body>
+</html>

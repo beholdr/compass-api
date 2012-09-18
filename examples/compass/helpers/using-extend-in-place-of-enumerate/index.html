@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Using @extend in place of the enumerate() helper. | Compass API
+</title>
+</head>
+<body class=' demo' id='examples-compass-helpers-using-extend-in-place-of-enumerate'><h1>Demo: Using @extend in place of the enumerate() helper.</h1>
+<div id='demo'><div class='example'>
+  <div class='class-1'>.class-1</div>
+  <div class='class-2'>.class-2</div>
+  <div class='class-3'>.class-3</div>
+  <div class='class-4'>.class-4</div>
+  <div class='class-5'>.class-5</div>
+</div>
+</div>
+
+<div id='how'>
+<section id='markup'>
+<div class='syntax_pref'>
+<a href='#' rel='html'>html</a>
+<a href='#' rel='haml'>haml</a>
+</div>
+<div class='example-source'>
+<pre class='source-code html'>&lt;div class='example'&gt;
+  &lt;div class='class-1'&gt;.class-1&lt;/div&gt;
+  &lt;div class='class-2'&gt;.class-2&lt;/div&gt;
+  &lt;div class='class-3'&gt;.class-3&lt;/div&gt;
+  &lt;div class='class-4'&gt;.class-4&lt;/div&gt;
+  &lt;div class='class-5'&gt;.class-5&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+<pre class='source-code haml'>.example
+  .class-1 .class-1
+  .class-2 .class-2
+  .class-3 .class-3
+  .class-4 .class-4
+  .class-5 .class-5
+</pre>
+</div>
+</section>
+<section id='styles'>
+<div class='syntax_pref'>
+<a href='#' rel='scss'>scss</a>
+<a href='#' rel='sass'>sass</a>
+<a href='#' rel='css'>css</a>
+</div>
+<div class='example-source'>
+<pre class='source-code scss'>.example {
+  .base-class {
+    background-color: #aaaaaa;
+    border: 2px solid #777777;
+    margin: 1em;
+  }
+  @for $i from 2 through 4 {
+    .class-#{$i} {
+      @extend .base-class;
+      margin-left: 1em * ($i - 1);
+    }
+  }
+}
+</pre>
+<pre class='source-code sass'>.example
+  .base-class
+    background-color: #aaa
+    border: 2px solid #777
+    margin: 1em
+  @for $i from 2 through 4
+    .class-#{$i}
+      @extend .base-class
+      margin-left: 1em * ($i - 1)
+</pre>
+<pre class='source-code css'>.example .base-class,.example .class-2,.example .class-3,.example .class-4{background-color:#aaa;border:2px solid #777;margin:1em}.example .class-2{margin-left:1em}.example .class-3{margin-left:2em}.example .class-4{margin-left:3em}
+</pre>
+</div>
+</section>
+</div>
+
+
+</body>
+</html>

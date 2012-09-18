@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Helper: elements-of-type | Compass API
+</title>
+</head>
+<body class=' demo' id='examples-compass-helpers-elements-of-type'><h1>Demo: Compass Helper: elements-of-type</h1>
+<div id='demo'><div class='example'>
+  <div>
+    This is a block element.
+    It has an
+    <span>inline span</span>
+    and an
+    <em>inline em</em>
+    and a
+    <blockquote>
+      Nested blockquote element
+    </blockquote>
+  </div>
+</div>
+</div>
+
+<div id='how'>
+<section id='markup'>
+<div class='syntax_pref'>
+<a href='#' rel='html'>html</a>
+<a href='#' rel='haml'>haml</a>
+</div>
+<div class='example-source'>
+<pre class='source-code html'>&lt;div class='example'&gt;
+  &lt;div&gt;
+    This is a block element.
+    It has an
+    &lt;span&gt;inline span&lt;/span&gt;
+    and an
+    &lt;em&gt;inline em&lt;/em&gt;
+    and a
+    &lt;blockquote&gt;
+      Nested blockquote element
+    &lt;/blockquote&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+<pre class='source-code haml'>.example
+  %div
+    This is a block element.
+    It has an
+    %span inline span
+    and an
+    %em inline em
+    and a
+    %blockquote
+      Nested blockquote element
+</pre>
+</div>
+</section>
+<section id='styles'>
+<div class='syntax_pref'>
+<a href='#' rel='scss'>scss</a>
+<a href='#' rel='sass'>sass</a>
+<a href='#' rel='css'>css</a>
+</div>
+<div class='example-source'>
+<pre class='source-code scss'>.example {
+  #{elements-of-type(block)} {
+    border: 1px solid #777777;
+    margin: 1em 3em;
+  }
+  #{elements-of-type(inline)} {
+    color: #cc0000;
+  }
+}
+</pre>
+<pre class='source-code sass'>.example
+  #{elements-of-type(block)}
+    border: 1px solid #777
+    margin: 1em 3em
+  #{elements-of-type(inline)}
+    color: #c00
+  </pre>
+<pre class='source-code css'>.example address,.example article,.example aside,.example blockquote,.example center,.example dir,.example div,.example dd,.example details,.example dl,.example dt,.example fieldset,.example figcaption,.example figure,.example form,.example footer,.example frameset,.example h1,.example h2,.example h3,.example h4,.example h5,.example h6,.example hr,.example header,.example hgroup,.example isindex,.example menu,.example nav,.example noframes,.example noscript,.example ol,.example p,.example pre,.example section,.example summary,.example ul{border:1px solid #777;margin:1em 3em}.example a,.example abbr,.example acronym,.example audio,.example b,.example basefont,.example bdo,.example big,.example br,.example canvas,.example cite,.example code,.example command,.example datalist,.example dfn,.example em,.example embed,.example font,.example i,.example img,.example input,.example keygen,.example kbd,.example label,.example mark,.example meter,.example output,.example progress,.example q,.example rp,.example rt,.example ruby,.example s,.example samp,.example select,.example small,.example span,.example strike,.example strong,.example sub,.example sup,.example textarea,.example time,.example tt,.example u,.example var,.example video,.example wbr{color:#c00}
+</pre>
+</div>
+</section>
+</div>
+
+
+</body>
+</html>

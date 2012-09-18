@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Blueprint Buttons | Compass API
+</title>
+</head>
+<body class=' reference blueprint' id='reference-blueprint-buttons'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/blueprint/stylesheets/blueprint/_buttons.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Blueprint Buttons</h1>
+<p>Install the buttons module with:</p>
+
+<pre><code>compass install blueprint/buttons
+</code></pre>
+
+<p>
+This file can be imported using:
+<code>@import "blueprint/buttons"</code>
+</p>
+
+<h2>Imports</h2>
+<ol>
+<li>
+<a href="/reference/compass/css3/inline_block/" title="@import compass/css3/inline-block">Inline Block</a>
+– Declare an element inline block for all browsers.
+</li>
+<li>
+<a href="/reference/compass/utilities/general/float/" title="@import compass/utilities/general/float">Float</a>
+– Mixins for cross-browser floats.
+</li>
+</ol><h2>
+Configurable Variables
+<a class="help" href="/help/tutorials/configurable-variables/">help</a>
+</h2>
+<h3 class="constant" id="const-blueprint-button-font-family">
+<a class="permalink" href="#const-blueprint-button-font-family">$blueprint-button-font-family</a>
+<code>"Lucida Grande", Tahoma, Arial, Verdana, sans-serif</code>
+</h3>
+<p></p><p>Button Font</p>
+
+<h3 class="constant" id="const-blueprint-button-border-color">
+<a class="permalink" href="#const-blueprint-button-border-color">$blueprint-button-border-color</a>
+<code><span class="color">#dedede</span></code>
+</h3>
+<p></p><p>Default Button Colors</p>
+
+<h3 class="constant" id="const-blueprint-button-background-color">
+<a class="permalink" href="#const-blueprint-button-background-color">$blueprint-button-background-color</a>
+<code><span class="color">whitesmoke</span></code>
+</h3>
+<h3 class="constant" id="const-blueprint-button-font-color">
+<a class="permalink" href="#const-blueprint-button-font-color">$blueprint-button-font-color</a>
+<code><span class="color">#565656</span></code>
+</h3>
+<h3 class="constant" id="const-blueprint-button-hover-border-color">
+<a class="permalink" href="#const-blueprint-button-hover-border-color">$blueprint-button-hover-border-color</a>
+<code><span class="color">#c2e1ef</span></code>
+</h3>
+<p></p><p>Default Button Hover Colors</p>
+
+<h3 class="constant" id="const-blueprint-button-hover-background-color">
+<a class="permalink" href="#const-blueprint-button-hover-background-color">$blueprint-button-hover-background-color</a>
+<code><span class="color">#dff4ff</span></code>
+</h3>
+<h3 class="constant" id="const-blueprint-button-hover-font-color">
+<a class="permalink" href="#const-blueprint-button-hover-font-color">$blueprint-button-hover-font-color</a>
+<code><span class="color">#336699</span></code>
+</h3>
+<h3 class="constant" id="const-blueprint-button-active-border-color">
+<a class="permalink" href="#const-blueprint-button-active-border-color">$blueprint-button-active-border-color</a>
+<code><span class="color">#6299c5</span></code>
+</h3>
+<p></p><p>Default Button Active Colors</p>
+
+<h3 class="constant" id="const-blueprint-button-active-background-color">
+<a class="permalink" href="#const-blueprint-button-active-background-color">$blueprint-button-active-background-color</a>
+<code><span class="color">#6299c5</span></code>
+</h3>
+<h3 class="constant" id="const-blueprint-button-active-font-color">
+<a class="permalink" href="#const-blueprint-button-active-font-color">$blueprint-button-active-font-color</a>
+<code><span class="color">white</span></code>
+</h3>
+
+
+
+<h2>Mixins</h2>
+<a href="#mixin-button-colors-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-button-colors">
+<a class="permalink" href="#mixin-button-colors">button-colors(<span class="arg" data-default-value="$blueprint-button-font-color">$font-color</span>, <span class="arg" data-default-value="$blueprint-button-background-color">$bg-color</span>, <span class="arg" data-default-value="$blueprint-button-border-color">$border-color</span>, <span class="arg" data-default-value="$border-color + #101010">$border-highlight-color</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-button-colors-source">
+<pre class="brush: sass source-code sass">=button-colors($font-color: $blueprint-button-font-color, $bg-color: $blueprint-button-background-color, $border-color: $blueprint-button-border-color, $border-highlight-color: $border-color + #101010)
+  background-color: $bg-color
+  border-color: $border-highlight-color $border-color $border-color $border-highlight-color
+  color: $font-color
+</pre>
+<pre class="brush: scss source-code scss">@mixin button-colors($font-color: $blueprint-button-font-color, $bg-color: $blueprint-button-background-color, $border-color: $blueprint-button-border-color, $border-highlight-color: $border-color + #101010) {
+  background-color: $bg-color;
+  border-color: $border-highlight-color $border-color $border-color $border-highlight-color;
+  color: $font-color;
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Sets the colors for a button
+@param border-highlight-color
+  The highlight color defaults to whatever is the value of the border-color but it's one shade lighter.</p>
+
+</div>
+<a href="#mixin-button-active-colors-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-button-active-colors">
+<a class="permalink" href="#mixin-button-active-colors">button-active-colors(<span class="arg" data-default-value="$blueprint-button-active-font-color">$font-color</span>, <span class="arg" data-default-value="$blueprint-button-active-background-color">$bg-color</span>, <span class="arg" data-default-value="$blueprint-button-active-border-color">$border-color</span>, <span class="arg" data-default-value="$border-color + #101010">$border-highlight-color</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-button-active-colors-source">
+<pre class="brush: sass source-code sass">=button-active-colors($font-color: $blueprint-button-active-font-color, $bg-color: $blueprint-button-active-background-color, $border-color: $blueprint-button-active-border-color, $border-highlight-color: $border-color + #101010)
+  &amp;:active
+    +button-colors($font-color, $bg-color, $border-color, $border-highlight-color)
+</pre>
+<pre class="brush: scss source-code scss">@mixin button-active-colors($font-color: $blueprint-button-active-font-color, $bg-color: $blueprint-button-active-background-color, $border-color: $blueprint-button-active-border-color, $border-highlight-color: $border-color + #101010) {
+  &amp;:active {
+    @include button-colors($font-color, $bg-color, $border-color, $border-highlight-color);
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Sets the colors for a button in the active state
+@param border-highlight-color
+  The highlight color defaults to whatever is the value of the border-color but it's one shade lighter.</p>
+
+</div>
+<a href="#mixin-button-hover-colors-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-button-hover-colors">
+<a class="permalink" href="#mixin-button-hover-colors">button-hover-colors(<span class="arg" data-default-value="$blueprint-button-hover-font-color">$font-color</span>, <span class="arg" data-default-value="$blueprint-button-hover-background-color">$bg-color</span>, <span class="arg" data-default-value="$blueprint-button-hover-border-color">$border-color</span>, <span class="arg" data-default-value="$border-color + #101010">$border-highlight-color</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-button-hover-colors-source">
+<pre class="brush: sass source-code sass">=button-hover-colors($font-color: $blueprint-button-hover-font-color, $bg-color: $blueprint-button-hover-background-color, $border-color: $blueprint-button-hover-border-color, $border-highlight-color: $border-color + #101010)
+  &amp;:hover
+    +button-colors($font-color, $bg-color, $border-color, $border-highlight-color)
+</pre>
+<pre class="brush: scss source-code scss">@mixin button-hover-colors($font-color: $blueprint-button-hover-font-color, $bg-color: $blueprint-button-hover-background-color, $border-color: $blueprint-button-hover-border-color, $border-highlight-color: $border-color + #101010) {
+  &amp;:hover {
+    @include button-colors($font-color, $bg-color, $border-color, $border-highlight-color);
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Sets the colors for a button in the hover state.
+@param border-highlight-color
+  The highlight color defaults to whatever is the value of the border-color but it's one shade lighter.</p>
+
+</div>
+<a href="#mixin-button-base-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-button-base">
+<a class="permalink" href="#mixin-button-base">button-base(<span class="arg" data-default-value="false">$float</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-button-base-source">
+<pre class="brush: sass source-code sass">=button-base($float: false)
+  @if $float
+    +float($float)
+    display: block
+  @else
+    +inline-block
+  margin: 0.7em 0.5em 0.7em 0
+  border-width: 1px
+  border-style: solid
+  font-family: $blueprint-button-font-family
+  font-size: 100%
+  line-height: 130%
+  font-weight: bold
+  text-decoration: none
+  cursor: pointer
+  img
+    margin: 0 3px -3px 0 !important
+    padding: 0
+    border: none
+    width: 16px
+    height: 16px
+    float: none
+</pre>
+<pre class="brush: scss source-code scss">@mixin button-base($float: false) {
+  @if $float {
+    @include float($float);
+    display: block;
+  }
+  @else {
+    @include inline-block;
+  }
+  margin: 0.7em 0.5em 0.7em 0;
+  border-width: 1px;
+  border-style: solid;
+  font-family: $blueprint-button-font-family;
+  font-size: 100%;
+  line-height: 130%;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  img {
+    margin: 0 3px -3px 0 !important;
+    padding: 0;
+    border: none;
+    width: 16px;
+    height: 16px;
+    float: none;
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-anchor-button-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-anchor-button">
+<a class="permalink" href="#mixin-anchor-button">anchor-button(<span class="arg" data-default-value="false">$float</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-anchor-button-source">
+<pre class="brush: sass source-code sass">=anchor-button($float: false)
+  +button-base($float)
+  padding: 5px 10px 5px 7px
+</pre>
+<pre class="brush: scss source-code scss">@mixin anchor-button($float: false) {
+  @include button-base($float);
+  padding: 5px 10px 5px 7px;
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-button-button-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-button-button">
+<a class="permalink" href="#mixin-button-button">button-button(<span class="arg" data-default-value="false">$float</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-button-button-source">
+<pre class="brush: sass source-code sass">=button-button($float: false)
+  +button-base($float)
+  width: auto
+  overflow: visible
+  padding: 4px 10px 3px 7px
+  &amp;[type]
+    padding: 4px 10px 4px 7px
+    line-height: 17px
+  *:first-child + html &amp;[type]
+    padding: 4px 10px 3px 7px
+</pre>
+<pre class="brush: scss source-code scss">@mixin button-button($float: false) {
+  @include button-base($float);
+  width: auto;
+  overflow: visible;
+  padding: 4px 10px 3px 7px;
+  &amp;[type] {
+    padding: 4px 10px 4px 7px;
+    line-height: 17px;
+  }
+  *:first-child + html &amp;[type] {
+    padding: 4px 10px 3px 7px;
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div></section>
+
+</body>
+</html>

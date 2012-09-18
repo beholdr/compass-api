@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Transition | Compass API
+</title>
+</head>
+<body class=' demo' id='examples-compass-css3-transition'><div id='reference'><a href="/reference/compass/css3/transition/">Reference Documentation</a></div>
+<h1>Demo: Transition</h1>
+<div id='demo'><p>
+  this box has a width transition on hover
+</p>
+<div class='transition-example' id='width'></div>
+<p>
+  this box has a width transition on hover, with a set duration
+</p>
+<div class='transition-example' id='width-duration'></div>
+<p>
+  this box has a width transition on hover, with a set duration, and uses the 'easein' timing function
+</p>
+<div class='transition-example' id='width-duration-easein'></div>
+<p>
+  this box has a few seconds delay, so wait a little before the transition occurs
+</p>
+<div class='transition-example' id='width-delay'></div>
+</div>
+
+<div id='how'>
+<section id='markup'>
+<div class='syntax_pref'>
+<a href='#' rel='html'>html</a>
+<a href='#' rel='haml'>haml</a>
+</div>
+<div class='example-source'>
+<pre class='source-code html'>&lt;p&gt;
+  this box has a width transition on hover
+&lt;/p&gt;
+&lt;div class='transition-example' id='width'&gt;&lt;/div&gt;
+&lt;p&gt;
+  this box has a width transition on hover, with a set duration
+&lt;/p&gt;
+&lt;div class='transition-example' id='width-duration'&gt;&lt;/div&gt;
+&lt;p&gt;
+  this box has a width transition on hover, with a set duration, and uses the 'easein' timing function
+&lt;/p&gt;
+&lt;div class='transition-example' id='width-duration-easein'&gt;&lt;/div&gt;
+&lt;p&gt;
+  this box has a few seconds delay, so wait a little before the transition occurs
+&lt;/p&gt;
+&lt;div class='transition-example' id='width-delay'&gt;&lt;/div&gt;
+</pre>
+<pre class='source-code haml'>%p
+  this box has a width transition on hover
+
+#width.transition-example
+
+%p
+  this box has a width transition on hover, with a set duration
+
+#width-duration.transition-example
+
+%p
+  this box has a width transition on hover, with a set duration, and uses the 'easein' timing function
+
+#width-duration-easein.transition-example
+
+%p
+  this box has a few seconds delay, so wait a little before the transition occurs
+
+#width-delay.transition-example</pre>
+</div>
+</section>
+<section id='styles'>
+<div class='syntax_pref'>
+<a href='#' rel='scss'>scss</a>
+<a href='#' rel='sass'>sass</a>
+<a href='#' rel='css'>css</a>
+</div>
+<div class='example-source'>
+<pre class='source-code scss'>@import &quot;compass/css3&quot;;
+
+.transition-example {
+  width: 40px;
+  height: 40px;
+  background: red;
+  margin: 20px;
+}
+
+#width {
+  @include transition-property(width);
+}
+
+#width:hover {
+  width: 80px;
+}
+
+#width-duration {
+  @include transition-property(width);
+  @include transition-duration(2s);
+}
+
+#width-duration:hover {
+  width: 80px;
+}
+
+#width-duration-easein {
+  @include transition-property(width);
+  @include transition-duration(2s);
+  @include transition-timing-function(ease-in);
+}
+
+#width-duration-easein:hover {
+  width: 80px;
+}
+
+#width-delay {
+  @include transition-property(width);
+  @include transition-delay(2s);
+}
+
+#width-delay:hover {
+  width: 80px;
+}
+</pre>
+<pre class='source-code sass'>@import compass/css3
+
+.transition-example
+  width: 40px
+  height: 40px
+  background: red
+  margin: 20px
+
+#width
+  +transition-property(width)
+
+#width:hover
+  width: 80px
+
+#width-duration
+  +transition-property(width)
+  +transition-duration(2s)
+
+#width-duration:hover
+  width: 80px
+
+#width-duration-easein
+  +transition-property(width)
+  +transition-duration(2s)
+  +transition-timing-function(ease-in)
+
+#width-duration-easein:hover
+  width: 80px
+
+#width-delay
+  +transition-property(width)
+  +transition-delay(2s)
+
+#width-delay:hover
+  width: 80px</pre>
+<pre class='source-code css'>.transition-example{width:40px;height:40px;background:red;margin:20px}#width{-webkit-transition-property:width;-moz-transition-property:width;-o-transition-property:width;transition-property:width}#width:hover{width:80px}#width-duration{-webkit-transition-property:width;-moz-transition-property:width;-o-transition-property:width;transition-property:width;-webkit-transition-duration:2s;-moz-transition-duration:2s;-o-transition-duration:2s;transition-duration:2s}#width-duration:hover{width:80px}#width-duration-easein{-webkit-transition-property:width;-moz-transition-property:width;-o-transition-property:width;transition-property:width;-webkit-transition-duration:2s;-moz-transition-duration:2s;-o-transition-duration:2s;transition-duration:2s;-webkit-transition-timing-function:ease-in;-moz-transition-timing-function:ease-in;-o-transition-timing-function:ease-in;transition-timing-function:ease-in}#width-duration-easein:hover{width:80px}#width-delay{-webkit-transition-property:width;-moz-transition-property:width;-o-transition-property:width;transition-property:width;-webkit-transition-delay:2s;-moz-transition-delay:2s;-o-transition-delay:2s;transition-delay:2s}#width-delay:hover{width:80px}
+</pre>
+</div>
+</section>
+</div>
+
+
+</body>
+</html>

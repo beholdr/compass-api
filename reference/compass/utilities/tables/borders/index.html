@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Table Borders | Compass API
+</title>
+</head>
+<body class=' reference core utilities' id='reference-compass-utilities-tables-borders'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/compass/stylesheets/compass/utilities/tables/_borders.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Compass Table Borders</h1>
+
+<p>
+This file can be imported using:
+<code>@import "compass/utilities/tables/borders"</code>
+</p>
+<h2>Examples</h2>
+<dl class="examples">
+<dt><a href="/examples/compass/tables/borders/">Compass Table Borders Example</a></dt>
+<dd>How to use the table border mixins.</dd>
+</dl><h2>Mixins</h2>
+<a href="#mixin-outer-table-borders-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-outer-table-borders">
+<a class="permalink" href="#mixin-outer-table-borders">outer-table-borders(<span class="arg" data-default-value="2px">$width</span>, <span class="arg" data-default-value="black">$color</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-outer-table-borders-source">
+<pre class="brush: sass source-code sass">=outer-table-borders($width: 2px, $color: black)
+  border: $width solid $color
+  thead
+    th
+      border-bottom: $width solid $color
+  tfoot
+    th, td
+      border-top: $width solid $color
+  th
+    &amp;:first-child
+      border-right: $width solid $color
+</pre>
+<pre class="brush: scss source-code scss">@mixin outer-table-borders($width: 2px, $color: black) {
+  border: $width solid $color;
+  thead {
+    th {
+      border-bottom: $width solid $color;
+    }
+  }
+  tfoot {
+    th, td {
+      border-top: $width solid $color;
+    }
+  }
+  th {
+    &amp;:first-child {
+      border-right: $width solid $color;
+    }
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-inner-table-borders-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-inner-table-borders">
+<a class="permalink" href="#mixin-inner-table-borders">inner-table-borders(<span class="arg" data-default-value="2px">$width</span>, <span class="arg" data-default-value="black">$color</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-inner-table-borders-source">
+<pre class="brush: sass source-code sass">=inner-table-borders($width: 2px, $color: black)
+  th, td
+    border:
+      right: $width solid $color
+      bottom: $width solid $color
+      left-width: 0px
+      top-width: 0px
+    &amp;:last-child,
+    &amp;.last
+      border-right-width: 0px
+  // IE8 ignores rules that are included on the same line as :last-child
+  // see http://www.richardscarrott.co.uk/posts/view/ie8-last-child-bug for details
+  tbody, tfoot
+    tr:last-child
+      th, td
+        border-bottom-width: 0px
+    tr.last
+      th, td
+        border-bottom-width: 0px
+</pre>
+<pre class="brush: scss source-code scss">@mixin inner-table-borders($width: 2px, $color: black) {
+  th, td {
+    border: {
+      right: $width solid $color;
+      bottom: $width solid $color;
+      left-width: 0px;
+      top-width: 0px;
+    };
+    &amp;:last-child,
+    &amp;.last {
+      border-right-width: 0px;
+    }
+  }
+  // IE8 ignores rules that are included on the same line as :last-child
+  // see http://www.richardscarrott.co.uk/posts/view/ie8-last-child-bug for details
+  tbody, tfoot {
+    tr:last-child {
+      th, td {
+        border-bottom-width: 0px;
+      }
+    }
+    tr.last {
+      th, td {
+        border-bottom-width: 0px;
+      }
+    }
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div></section>
+
+</body>
+</html>

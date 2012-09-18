@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass URL Helpers | Compass API
+</title>
+</head>
+<body class=' reference core helpers' id='reference-compass-helpers-urls'><section class='article'><h1>Compass URL Helpers</h1>
+<p>These url helpers isolate your stylesheets from environmental differences.
+They allow you to write the same stylesheets and use them locally without
+a web server, and then change them to be using asset hosts in production.</p>
+
+<p>They might also insulate you against some code reorganization changes.</p>
+<div class="helper" id="stylesheet-url">
+<h3>
+<a href="#stylesheet-url">
+stylesheet-url(<span class="arg">$path</span>, <span class="arg" data-default-value="false" title="Defaults to: false">$only-path</span>)
+</a>
+</h3>
+<div class="details">
+<p>
+Generates a path to an asset found relative to the project's css directory.
+<br>
+Passing a true value as the second argument will cause the only the path to be returned
+instead of a <code>url()</code> function
+</p>
+</div>
+</div>
+<div class="helper" id="font-url">
+<h3>
+<a href="#font-url">
+font-url(<span class="arg">$path</span>, <span class="arg" data-default-value="false" title="Defaults to: false">$only-path</span>)
+</a>
+</h3>
+<div class="details">
+<p>
+Generates a path to an asset found relative to the project's font directory.
+<br>
+Passing a true value as the second argument will cause the only the path to be returned
+instead of a <code>url()</code> function
+</p>
+</div>
+</div>
+<div class="helper" id="image-url">
+<h3>
+<a href="#image-url">
+image-url(<span class="arg">$path</span>, <span class="arg" data-default-value="false" title="Defaults to: false">$only-path</span>, <span class="arg" data-default-value="true" title="Defaults to: true">$cache-buster</span>)
+</a>
+</h3>
+<div class="details">
+<p>
+Generates a path to an asset found relative to the project's images directory.
+</p>
+<p>
+Passing a true value as the second argument will cause the only the path to be returned
+instead of a <code>url()</code> function
+</p>
+<p>
+The third argument is used to control the cache buster on a per-use basis.
+When set to <code>false</code> no cache buster will be used. When a string, that
+value will be used as the cache buster.
+</p>
+</div>
+</div>
+<div class="helper" id="generated-image-url">
+<h3>
+<a href="#generated-image-url">
+generated-image-url($path, $cache-buster: false)
+</a>
+</h3>
+<div class="details">
+<p>
+Generates a path to an image generated during compilation using the
+<code>generated_image</code> related configuration properties.
+</p>
+<p>
+Most users will never call this helper directly, it is primarily provided
+for use by plugins that need to generate paths to images they create. E.g.
+The <code>sprite-url()</code> helper calls this helper.
+</p>
+<p>
+The second argument is used to control the cache buster on a per-use basis.
+Defaults to <code>false</code>, meaning that no cache buster will be used.
+When a string, that value will be used as the cache buster, when <code>true</code>
+Compass will generate a cache-buster based on the image's modification time.
+</p>
+</div>
+</div></section>
+
+</body>
+</html>

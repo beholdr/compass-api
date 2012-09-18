@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Blueprint Scaffolding | Compass API
+</title>
+</head>
+<body class=' reference blueprint' id='reference-blueprint-scaffolding'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/blueprint/stylesheets/blueprint/_scaffolding.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Blueprint Scaffolding</h1>
+<p>
+Training wheels... So that your site doesn't look too bad
+when you're starting out.
+</p>
+
+<p>
+This file can be imported using:
+<code>@import "blueprint/scaffolding"</code>
+</p>
+
+<h2>Imports</h2>
+<ol>
+<li>
+<a href="/reference/blueprint/form/" title="@import form">Form</a>
+</li>
+<li>
+<a href="/reference/blueprint/grid/" title="@import grid">Grid</a>
+</li>
+</ol><h2>Mixins</h2>
+<a href="#mixin-blueprint-scaffolding-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-blueprint-scaffolding">
+<a class="permalink" href="#mixin-blueprint-scaffolding">blueprint-scaffolding(<span class="arg" data-default-value="deprecated">$nested</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-blueprint-scaffolding-source">
+<pre class="brush: sass source-code sass">=blueprint-scaffolding($nested: deprecated)
+  @if $nested != deprecated
+    @warn "It is no longer necessary to pass any argument to the blueprint-scaffolding mixin."
+  +blueprint-scaffolding-defaults
+</pre>
+<pre class="brush: scss source-code scss">@mixin blueprint-scaffolding($nested: deprecated) {
+  @if $nested != deprecated {
+    @warn "It is no longer necessary to pass any argument to the blueprint-scaffolding mixin.";
+  }
+  @include blueprint-scaffolding-defaults;
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>The styles contained here are meant to provide for an attractive experience out of the box
+and are expected to be removed once custom visual design begins.
+The +blueprint-scaffolding mixin must be mixed into the top level of your stylesheet.
+However, you can customize the body selector if you wish to control the scope
+of this mixin. Examples:
+Apply to any page including the stylesheet:
+  +blueprint-scaffolding
+Scoped by a single presentational body class:
+  +blueprint-scaffolding("body.blueprint")
+Semantically:
+  +blueprint-scaffolding("body#page-1, body#page-2, body.a-special-page-type")
+  Alternatively, you can use the +blueprint-scaffolding-body and +blueprint-scaffolding-defaults
+  mixins to construct your own semantic style rules.
+@deprecated It is no longer necessary to pass any argument.</p>
+
+</div>
+<a href="#mixin-blueprint-scaffolding-body-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-blueprint-scaffolding-body">
+<a class="permalink" href="#mixin-blueprint-scaffolding-body">blueprint-scaffolding-body</a>
+</h3>
+<div class="mixin-source" id="mixin-blueprint-scaffolding-body-source">
+<pre class="brush: sass source-code sass">=blueprint-scaffolding-body
+  margin: 1.5em 0
+</pre>
+<pre class="brush: scss source-code scss">@mixin blueprint-scaffolding-body {
+  margin: 1.5em 0;
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>The styles this mixin provides were deprecated in Blueprint 0.9 and is no
+longer part of the main scaffolding, but the mixin is still available if
+you want to use it.</p>
+
+</div>
+<a href="#mixin-box-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-box">
+<a class="permalink" href="#mixin-box">box</a>
+</h3>
+<div class="mixin-source" id="mixin-box-source">
+<pre class="brush: sass source-code sass">=box
+  padding: 1.5em
+  margin-bottom: 1.5em
+  background: #e5ecf9
+</pre>
+<pre class="brush: scss source-code scss">@mixin box {
+  padding: 1.5em;
+  margin-bottom: 1.5em;
+  background: #e5ecf9;
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Mixin +box to create a padded box inside a column.</p>
+
+</div>
+<a href="#mixin-blueprint-scaffolding-defaults-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-blueprint-scaffolding-defaults">
+<a class="permalink" href="#mixin-blueprint-scaffolding-defaults">blueprint-scaffolding-defaults</a>
+</h3>
+<div class="mixin-source" id="mixin-blueprint-scaffolding-defaults-source">
+<pre class="brush: sass source-code sass">=blueprint-scaffolding-defaults
+  .box
+    +box
+  // Border on right hand side of a column. You can comment this out if you don't plan to use it.
+  .border
+    +border
+  // Border with more whitespace, spans one column.
+  .colborder
+    +colborder
+  hr
+    +colruler
+  hr.space
+    +colspacer
+  form.inline
+    +blueprint-inline-form
+</pre>
+<pre class="brush: scss source-code scss">@mixin blueprint-scaffolding-defaults {
+  .box {
+    @include box;
+  }
+  // Border on right hand side of a column. You can comment this out if you don't plan to use it.
+  .border {
+    @include border;
+  }
+  // Border with more whitespace, spans one column.
+  .colborder {
+    @include colborder;
+  }
+  hr {
+    @include colruler;
+  }
+  hr.space {
+    @include colspacer;
+  }
+  form.inline {
+    @include blueprint-inline-form;
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div></section>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass CSS Regions | Compass API
+</title>
+</head>
+<body class=' reference core css3' id='reference-compass-css3-regions'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/compass/stylesheets/compass/css3/_regions.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Compass CSS Regions</h1>
+<p>
+Provides two mixins for CSS regions, properties which allow you to flow content into new containers. See <a href="http://dev.w3.org/csswg/css3-regions/">the spec draft</a> and <a href="http://labs.adobe.com/technologies/cssregions/">Adobe's page on the topic</a>.
+</p>
+
+<p>
+This file can be imported using:
+<code>@import "compass/css3/regions"</code>
+</p>
+<h2>Examples</h2>
+<dl class="examples">
+<dt><a href="/examples/compass/css3/regions/">CSS Regions</a></dt>
+<dd>css3 mixin for css regions</dd>
+</dl><h2>Imports</h2>
+<ol>
+<li>
+<a href="/reference/compass/css3/shared/" title="@import shared">Shared Utilities</a>
+</li>
+</ol><h2>Mixins</h2>
+<a href="#mixin-flow-into-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-flow-into">
+<a class="permalink" href="#mixin-flow-into">flow-into(<span class="arg">$target</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-flow-into-source">
+<pre class="brush: sass source-code sass">=flow-into($target)
+  $target: unquote($target)
+  +experimental(flow-into, $target, not -moz, -webkit, not -o, -ms, not -khtml, not official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin flow-into($target) {
+  $target: unquote($target);
+  @include experimental(flow-into, $target, not -moz, -webkit, not -o, -ms, not -khtml, not official);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Webkit, IE10 and future support for <a href="http://dev.w3.org/csswg/css3-regions/">CSS Regions</a></p>
+
+<p>$target is a value you use to link two regions of your css. Give the source of your content the flow-into property, and give your target container the flow-from property.</p>
+
+<p>For a visual explanation, see the diagrams at Chris Coyier's
+<a href="http://css-tricks.com/content-folding/">CSS-Tricks</a></p>
+
+</div>
+<a href="#mixin-flow-from-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-flow-from">
+<a class="permalink" href="#mixin-flow-from">flow-from(<span class="arg">$target</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-flow-from-source">
+<pre class="brush: sass source-code sass">=flow-from($target)
+  $target: unquote($target)
+  +experimental(flow-from, $target, not -moz, -webkit, not -o, -ms, not -khtml, not official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin flow-from($target) {
+  $target: unquote($target);
+  @include experimental(flow-from, $target, not -moz, -webkit, not -o, -ms, not -khtml, not official);
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div></section>
+
+</body>
+</html>

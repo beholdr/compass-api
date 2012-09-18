@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Blueprint Liquid | Compass API
+</title>
+</head>
+<body class=' reference blueprint' id='reference-blueprint-liquid'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/blueprint/stylesheets/blueprint/_liquid.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Blueprint Liquid</h1>
+<p>Import this to have a liquid grid.</p>
+
+<p>The original liquid grid documentation is
+<a href="http://groups.google.com/group/blueprintcss/msg/d7171a8bef20b9a2">here</a>.</p>
+
+<p>By default the container takes 80% of the canvas, you can override this:</p>
+
+<pre class="brush: scss source-code scss">
+.container {
+  width: 99%
+}</pre>
+
+<p>
+This file can be imported using:
+<code>@import "blueprint/liquid"</code>
+</p>
+
+<h2>Imports</h2>
+<ol>
+<li>
+<a href="/reference/compass/utilities/general/clearfix/" title="@import compass/utilities/general/clearfix">Clearfix</a>
+– Mixins for clearfixing.
+</li>
+<li>
+<a href="/reference/compass/utilities/general/float/" title="@import compass/utilities/general/float">Float</a>
+– Mixins for cross-browser floats.
+</li>
+</ol><h2>
+Configurable Variables
+<a class="help" href="/help/tutorials/configurable-variables/">help</a>
+</h2>
+<h3 class="constant" id="const-blueprint-liquid-grid-columns">
+<a class="permalink" href="#const-blueprint-liquid-grid-columns">$blueprint-liquid-grid-columns</a>
+<code>24</code>
+</h3>
+<p></p><p>Main layout grid, override these constants to build your grid and container sizes.
+The width shown gives the right floored percentage values.</p>
+
+<h3 class="constant" id="const-blueprint-liquid-grid-width">
+<a class="permalink" href="#const-blueprint-liquid-grid-width">$blueprint-liquid-grid-width</a>
+<code>3.167%</code>
+</h3>
+<h3 class="constant" id="const-blueprint-liquid-grid-margin">
+<a class="permalink" href="#const-blueprint-liquid-grid-margin">$blueprint-liquid-grid-margin</a>
+<code>1.042%</code>
+</h3>
+<h3 class="constant" id="const-blueprint-liquid-container-width">
+<a class="permalink" href="#const-blueprint-liquid-container-width">$blueprint-liquid-container-width</a>
+<code>80%</code>
+</h3>
+<p></p><p>Do not edit below this line unless you really know what you're doing.</p>
+
+<h3 class="constant" id="const-blueprint-liquid-container-min-width">
+<a class="permalink" href="#const-blueprint-liquid-container-min-width">$blueprint-liquid-container-min-width</a>
+<code>950px</code>
+</h3>
+<h3 class="constant" id="const-blueprint-liquid-grid-push-pull">
+<a class="permalink" href="#const-blueprint-liquid-grid-push-pull">$blueprint-liquid-grid-push-pull</a>
+<code>-($blueprint-liquid-grid-margin + $blueprint-liquid-grid-width)</code>
+</h3>
+
+
+<h2>Functions</h2>
+<a href="#function-span-fluid-source" rel="view source">view source</a>
+<h3 class="function" id="function-span-fluid">
+<a class="permalink" href="#function-span-fluid">span-fluid(<span class="arg">$n</span>)</a>
+</h3>
+<div class="function-source" id="function-span-fluid-source">
+<pre class="brush: sass source-code sass">@function span-fluid($n)
+  @return $blueprint-liquid-grid-width * $n + $blueprint-liquid-grid-margin * ($n - 1)
+</pre>
+<pre class="brush: scss source-code scss">@function span-fluid($n) {
+  @return $blueprint-liquid-grid-width * $n + $blueprint-liquid-grid-margin * ($n - 1);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Return the width of <code>$n</code> columns in percents.</p>
+
+</div>
+
+<h2>Mixins</h2>
+<a href="#mixin-blueprint-liquid-grid-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-blueprint-liquid-grid">
+<a class="permalink" href="#mixin-blueprint-liquid-grid">blueprint-liquid-grid</a>
+</h3>
+<div class="mixin-source" id="mixin-blueprint-liquid-grid-source">
+<pre class="brush: sass source-code sass">=blueprint-liquid-grid
+  // A container should group all your columns
+  .container
+    +container
+  // Use these classes (or mixins) to set the width of a column.
+  @for $n from 1 to $blueprint-liquid-grid-columns + 1
+    .span-#{$n}
+      width: span-fluid($n)
+    div
+      &amp;.span-#{$n}
+        +column($n, $n == $blueprint-liquid-grid-columns)
+  // The last column in a row needs this class (or mixin) or it will end up on the next row.
+  div.last
+    +last
+  // Add these to a column to append empty cols.
+  @for $n from 1 to $blueprint-liquid-grid-columns
+    .append-#{$n}
+      +append($n)
+  // Add these to a column to prepend empty cols.
+  @for $n from 1 to $blueprint-liquid-grid-columns
+    .prepend-#{$n}
+      +prepend($n)
+  // Use these classes on an element to push it into the
+  // next column, or to pull it into the previous column.
+  @for $n from 1 to $blueprint-liquid-grid-columns + 1
+    .pull-#{$n}
+      +pull($n)
+  @for $n from 1 to $blueprint-liquid-grid-columns + 1
+    .push-#{$n}
+      +push($n)
+</pre>
+<pre class="brush: scss source-code scss">@mixin blueprint-liquid-grid {
+  // A container should group all your columns
+  .container {
+    @include container;
+  }
+  // Use these classes (or mixins) to set the width of a column.
+  @for $n from 1 to $blueprint-liquid-grid-columns + 1 {
+    .span-#{$n} {
+      width: span-fluid($n);
+    }
+    div {
+      &amp;.span-#{$n} {
+        @include column($n, $n == $blueprint-liquid-grid-columns);
+      }
+    }
+  }
+  // The last column in a row needs this class (or mixin) or it will end up on the next row.
+  div.last {
+    @include last;
+  }
+  // Add these to a column to append empty cols.
+  @for $n from 1 to $blueprint-liquid-grid-columns {
+    .append-#{$n} {
+      @include append($n);
+    }
+  }
+  // Add these to a column to prepend empty cols.
+  @for $n from 1 to $blueprint-liquid-grid-columns {
+    .prepend-#{$n} {
+      @include prepend($n);
+    }
+  }
+  // Use these classes on an element to push it into the
+  // next column, or to pull it into the previous column.
+  @for $n from 1 to $blueprint-liquid-grid-columns + 1 {
+    .pull-#{$n} {
+      @include pull($n);
+    }
+  }
+  @for $n from 1 to $blueprint-liquid-grid-columns + 1 {
+    .push-#{$n} {
+      @include push($n);
+    }
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-container-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-container">
+<a class="permalink" href="#mixin-container">container</a>
+</h3>
+<div class="mixin-source" id="mixin-container-source">
+<pre class="brush: sass source-code sass">=container
+  min-width: $blueprint-liquid-container-min-width
+  width: $blueprint-liquid-container-width
+  margin: 0 auto
+  +clearfix
+</pre>
+<pre class="brush: scss source-code scss">@mixin container {
+  min-width: $blueprint-liquid-container-min-width;
+  width: $blueprint-liquid-container-width;
+  margin: 0 auto;
+  @include clearfix;
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-span-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-span">
+<a class="permalink" href="#mixin-span">span(<span class="arg">$n</span>, <span class="arg" data-default-value="false">$important</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-span-source">
+<pre class="brush: sass source-code sass">=span($n, $important: false)
+  @warn "The span mixin is deprecated. Please use the span-fluid function instead. E.g. width: span-fluid(#{$n})"
+  $width: span-fluid($n)
+  @if $important
+    width: $width !important
+  @else
+    width: $width
+</pre>
+<pre class="brush: scss source-code scss">@mixin span($n, $important: false) {
+  @warn "The span mixin is deprecated. Please use the span-fluid function instead. E.g. width: span-fluid(#{$n})";
+  $width: span-fluid($n);
+  @if $important {
+    width: $width !important;
+  }
+  @else {
+    width: $width;
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-last-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-last">
+<a class="permalink" href="#mixin-last">last</a>
+</h3>
+<div class="mixin-source" id="mixin-last-source">
+<pre class="brush: sass source-code sass">=last
+  margin-right: 0
+</pre>
+<pre class="brush: scss source-code scss">@mixin last {
+  margin-right: 0;
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-column-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-column">
+<a class="permalink" href="#mixin-column">column(<span class="arg">$n</span>, <span class="arg" data-default-value="false">$last</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-column-source">
+<pre class="brush: sass source-code sass">=column($n, $last: false)
+  +float-left
+  overflow: hidden
+  width: span-fluid($n)
+  @if $last
+    +last
+  @else
+    margin-right: $blueprint-liquid-grid-margin
+</pre>
+<pre class="brush: scss source-code scss">@mixin column($n, $last: false) {
+  @include float-left;
+  overflow: hidden;
+  width: span-fluid($n);
+  @if $last {
+    @include last;
+  }
+  @else {
+    margin-right: $blueprint-liquid-grid-margin;
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-append-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-append">
+<a class="permalink" href="#mixin-append">append(<span class="arg">$n</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-append-source">
+<pre class="brush: sass source-code sass">=append($n)
+  padding-right: ($blueprint-liquid-grid-width + $blueprint-liquid-grid-margin) * $n
+</pre>
+<pre class="brush: scss source-code scss">@mixin append($n) {
+  padding-right: ($blueprint-liquid-grid-width + $blueprint-liquid-grid-margin) * $n;
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-prepend-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-prepend">
+<a class="permalink" href="#mixin-prepend">prepend(<span class="arg">$n</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-prepend-source">
+<pre class="brush: sass source-code sass">=prepend($n)
+  padding-left: ($blueprint-liquid-grid-width + $blueprint-liquid-grid-margin) * $n
+</pre>
+<pre class="brush: scss source-code scss">@mixin prepend($n) {
+  padding-left: ($blueprint-liquid-grid-width + $blueprint-liquid-grid-margin) * $n;
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-pull-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-pull">
+<a class="permalink" href="#mixin-pull">pull(<span class="arg">$n</span>, <span class="arg" data-default-value="false">$last</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-pull-source">
+<pre class="brush: sass source-code sass">=pull($n, $last: false)
+  margin-left: $blueprint-liquid-grid-push-pull * $n
+</pre>
+<pre class="brush: scss source-code scss">@mixin pull($n, $last: false) {
+  margin-left: $blueprint-liquid-grid-push-pull * $n;
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-push-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-push">
+<a class="permalink" href="#mixin-push">push(<span class="arg">$n</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-push-source">
+<pre class="brush: sass source-code sass">=push($n)
+  +float-right
+  margin:
+    top: 0
+    left: $blueprint-liquid-grid-margin
+    right: $blueprint-liquid-grid-push-pull * $n
+    bottom: 0
+</pre>
+<pre class="brush: scss source-code scss">@mixin push($n) {
+  @include float-right;
+  margin: {
+    top: 0;
+    left: $blueprint-liquid-grid-margin;
+    right: $blueprint-liquid-grid-push-pull * $n;
+    bottom: 0;
+  };
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-border-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-border">
+<a class="permalink" href="#mixin-border">border</a>
+</h3>
+<div class="mixin-source" id="mixin-border-source">
+<pre class="brush: sass source-code sass">=border
+  border-right: 1px solid #eeeeee
+</pre>
+<pre class="brush: scss source-code scss">@mixin border {
+  border-right: 1px solid #eeeeee;
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-colborder-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-colborder">
+<a class="permalink" href="#mixin-colborder">colborder</a>
+</h3>
+<div class="mixin-source" id="mixin-colborder-source">
+<pre class="brush: sass source-code sass">=colborder
+  padding-right: $blueprint-liquid-grid-margin * 2
+  margin-right: $blueprint-liquid-grid-margin * 2
+  +border
+</pre>
+<pre class="brush: scss source-code scss">@mixin colborder {
+  padding-right: $blueprint-liquid-grid-margin * 2;
+  margin-right: $blueprint-liquid-grid-margin * 2;
+  @include border;
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-colruler-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-colruler">
+<a class="permalink" href="#mixin-colruler">colruler</a>
+</h3>
+<div class="mixin-source" id="mixin-colruler-source">
+<pre class="brush: sass source-code sass">=colruler
+  background: #dddddd
+  color: #dddddd
+  clear: both
+  width: 100%
+  height: 0.083em
+  margin: 0
+  margin-left: $blueprint-liquid-grid-margin * 2
+  margin-right: $blueprint-liquid-grid-margin * 2
+  border: none
+</pre>
+<pre class="brush: scss source-code scss">@mixin colruler {
+  background: #dddddd;
+  color: #dddddd;
+  clear: both;
+  width: 100%;
+  height: 0.083em;
+  margin: 0;
+  margin-left: $blueprint-liquid-grid-margin * 2;
+  margin-right: $blueprint-liquid-grid-margin * 2;
+  border: none;
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-colspacer-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-colspacer">
+<a class="permalink" href="#mixin-colspacer">colspacer</a>
+</h3>
+<div class="mixin-source" id="mixin-colspacer-source">
+<pre class="brush: sass source-code sass">=colspacer
+  +colruler
+  background: white
+  color: white
+</pre>
+<pre class="brush: scss source-code scss">@mixin colspacer {
+  @include colruler;
+  background: white;
+  color: white;
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div></section>
+
+</body>
+</html>

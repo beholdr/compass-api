@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Blueprint Reset Utilities | Compass API
+</title>
+</head>
+<body class=' reference blueprint' id='reference-blueprint-reset-utilities'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/blueprint/stylesheets/blueprint/reset/_utilities.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Blueprint Reset Utilities</h1>
+<p>
+Utility mixins for applying a reset and base styling.
+</p>
+
+<p>
+This file can be imported using:
+<code>@import "blueprint/reset/utilities"</code>
+</p>
+
+
+
+
+<h2>Mixins</h2>
+<a href="#mixin-blueprint-global-reset-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-blueprint-global-reset">
+<a class="permalink" href="#mixin-blueprint-global-reset">blueprint-global-reset</a>
+</h3>
+<div class="mixin-source" id="mixin-blueprint-global-reset-source">
+<pre class="brush: sass source-code sass">=blueprint-global-reset
+  html
+    +blueprint-reset-box-model
+  body
+    @extend .bp-reset-element
+  +blueprint-nested-reset
+</pre>
+<pre class="brush: scss source-code scss">@mixin blueprint-global-reset {
+  html {
+    @include blueprint-reset-box-model;
+  }
+  body {
+    @extend .bp-reset-element;
+  }
+  @include blueprint-nested-reset;
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Global reset rules.
+For more specific resets, use the reset mixins provided below</p>
+
+</div>
+<a href="#mixin-blueprint-nested-reset-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-blueprint-nested-reset">
+<a class="permalink" href="#mixin-blueprint-nested-reset">blueprint-nested-reset</a>
+</h3>
+<div class="mixin-source" id="mixin-blueprint-nested-reset-source">
+<pre class="brush: sass source-code sass">=blueprint-nested-reset
+  .bp-reset-element,
+  div, span, object, iframe, p,
+  pre, a, abbr, acronym, address,
+  code, del, dfn, em, img,
+  dl, dt, dd, ol, ul, li, fieldset,
+  form, label, legend,
+  caption, tbody, tfoot, thead, tr
+    +blueprint-basic-reset
+  #{headers(all)}
+    +blueprint-basic-reset(bp-reset-element)
+  #{elements-of-type(html5-block)}
+    +blueprint-reset-html5-element(bp-reset-element)
+  blockquote, q
+    +blueprint-reset-quotation(bp-reset-element)
+  th, td, caption
+    +blueprint-reset-table-cell(bp-reset-element)
+  table
+    +blueprint-reset-table(bp-reset-element)
+  a img
+    border: none
+</pre>
+<pre class="brush: scss source-code scss">@mixin blueprint-nested-reset {
+  .bp-reset-element,
+  div, span, object, iframe, p,
+  pre, a, abbr, acronym, address,
+  code, del, dfn, em, img,
+  dl, dt, dd, ol, ul, li, fieldset,
+  form, label, legend,
+  caption, tbody, tfoot, thead, tr {
+    @include blueprint-basic-reset;
+  }
+  #{headers(all)} {
+    @include blueprint-basic-reset(bp-reset-element);
+  }
+  #{elements-of-type(html5-block)} {
+    @include blueprint-reset-html5-element(bp-reset-element);
+  }
+  blockquote, q {
+    @include blueprint-reset-quotation(bp-reset-element);
+  }
+  th, td, caption {
+    @include blueprint-reset-table-cell(bp-reset-element);
+  }
+  table {
+    @include blueprint-reset-table(bp-reset-element);
+  }
+  a img {
+    border: none;
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Reset all elements within some selector scope.To reset the selector itself,
+mixin the appropriate reset mixin for that element type as well. This could be
+useful if you want to style a part of your page in a dramatically different way.</p>
+
+</div>
+<a href="#mixin-blueprint-reset-html5-element-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-blueprint-reset-html5-element">
+<a class="permalink" href="#mixin-blueprint-reset-html5-element">blueprint-reset-html5-element(<span class="arg" data-default-value="false">$reset-base-class</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-blueprint-reset-html5-element-source">
+<pre class="brush: sass source-code sass">=blueprint-reset-html5-element($reset-base-class: false)
+  @if $reset-base-class
+    @extend .#{$reset-base-class}
+  @else
+    +blueprint-reset
+  display: block
+</pre>
+<pre class="brush: scss source-code scss">@mixin blueprint-reset-html5-element($reset-base-class: false) {
+  @if $reset-base-class {
+    @extend .#{$reset-base-class};
+  }
+  @else {
+    @include blueprint-reset;
+  }
+  display: block;
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-blueprint-reset-box-model-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-blueprint-reset-box-model">
+<a class="permalink" href="#mixin-blueprint-reset-box-model">blueprint-reset-box-model</a>
+</h3>
+<div class="mixin-source" id="mixin-blueprint-reset-box-model-source">
+<pre class="brush: sass source-code sass">=blueprint-reset-box-model
+  margin: 0
+  padding: 0
+  border: 0
+</pre>
+<pre class="brush: scss source-code scss">@mixin blueprint-reset-box-model {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-blueprint-reset-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-blueprint-reset">
+<a class="permalink" href="#mixin-blueprint-reset">blueprint-reset</a>
+</h3>
+<div class="mixin-source" id="mixin-blueprint-reset-source">
+<pre class="brush: sass source-code sass">=blueprint-reset
+  @warn "The blueprint-reset mixin is deprecated. Please use blueprint-basic-reset instead."
+  +blueprint-basic-reset
+</pre>
+<pre class="brush: scss source-code scss">@mixin blueprint-reset {
+  @warn "The blueprint-reset mixin is deprecated. Please use blueprint-basic-reset instead.";
+  @include blueprint-basic-reset;
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-blueprint-basic-reset-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-blueprint-basic-reset">
+<a class="permalink" href="#mixin-blueprint-basic-reset">blueprint-basic-reset(<span class="arg" data-default-value="false">$reset-base-class</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-blueprint-basic-reset-source">
+<pre class="brush: sass source-code sass">=blueprint-basic-reset($reset-base-class: false)
+  @if $reset-base-class
+    @extend .#{$reset-base-class}
+  @else
+    +blueprint-reset-box-model
+    +blueprint-reset-typography
+</pre>
+<pre class="brush: scss source-code scss">@mixin blueprint-basic-reset($reset-base-class: false) {
+  @if $reset-base-class {
+    @extend .#{$reset-base-class};
+  }
+  @else {
+    @include blueprint-reset-box-model;
+    @include blueprint-reset-typography;
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-blueprint-reset-typography-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-blueprint-reset-typography">
+<a class="permalink" href="#mixin-blueprint-reset-typography">blueprint-reset-typography</a>
+</h3>
+<div class="mixin-source" id="mixin-blueprint-reset-typography-source">
+<pre class="brush: sass source-code sass">=blueprint-reset-typography
+  font:
+    weight: inherit
+    style: inherit
+    size: 100%
+    family: inherit
+  vertical-align: baseline
+</pre>
+<pre class="brush: scss source-code scss">@mixin blueprint-reset-typography {
+  font: {
+    weight: inherit;
+    style: inherit;
+    size: 100%;
+    family: inherit;
+  };
+  vertical-align: baseline;
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-blueprint-reset-quotation-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-blueprint-reset-quotation">
+<a class="permalink" href="#mixin-blueprint-reset-quotation">blueprint-reset-quotation(<span class="arg" data-default-value="false">$reset-base-class</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-blueprint-reset-quotation-source">
+<pre class="brush: sass source-code sass">=blueprint-reset-quotation($reset-base-class: false)
+  @if $reset-base-class
+    @extend .#{$reset-base-class}
+  @else
+    +blueprint-reset
+  quotes: "" ""
+  &amp;:before,
+  &amp;:after
+    content: ""
+</pre>
+<pre class="brush: scss source-code scss">@mixin blueprint-reset-quotation($reset-base-class: false) {
+  @if $reset-base-class {
+    @extend .#{$reset-base-class};
+  }
+  @else {
+    @include blueprint-reset;
+  }
+  quotes: "" "";
+  &amp;:before,
+  &amp;:after {
+    content: "";
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-blueprint-reset-table-cell-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-blueprint-reset-table-cell">
+<a class="permalink" href="#mixin-blueprint-reset-table-cell">blueprint-reset-table-cell(<span class="arg" data-default-value="false">$reset-base-class</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-blueprint-reset-table-cell-source">
+<pre class="brush: sass source-code sass">=blueprint-reset-table-cell($reset-base-class: false)
+  @if $reset-base-class
+    @extend .#{$reset-base-class}
+  @else
+    +blueprint-reset
+  float: none !important
+  text-align: left
+  font-weight: normal
+  vertical-align: middle
+</pre>
+<pre class="brush: scss source-code scss">@mixin blueprint-reset-table-cell($reset-base-class: false) {
+  @if $reset-base-class {
+    @extend .#{$reset-base-class};
+  }
+  @else {
+    @include blueprint-reset;
+  }
+  float: none !important;
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-blueprint-reset-table-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-blueprint-reset-table">
+<a class="permalink" href="#mixin-blueprint-reset-table">blueprint-reset-table(<span class="arg" data-default-value="false">$reset-base-class</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-blueprint-reset-table-source">
+<pre class="brush: sass source-code sass">=blueprint-reset-table($reset-base-class: false)
+  @if $reset-base-class
+    @extend .#{$reset-base-class}
+  @else
+    +blueprint-reset
+  border-collapse: separate
+  border-spacing: 0
+  vertical-align: middle
+</pre>
+<pre class="brush: scss source-code scss">@mixin blueprint-reset-table($reset-base-class: false) {
+  @if $reset-base-class {
+    @extend .#{$reset-base-class};
+  }
+  @else {
+    @include blueprint-reset;
+  }
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle;
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div></section>
+
+</body>
+</html>

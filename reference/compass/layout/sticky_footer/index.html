@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Sticky Footer | Compass API
+</title>
+</head>
+<body class=' reference core layout' id='reference-compass-layout-sticky-footer'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/compass/stylesheets/compass/layout/_sticky-footer.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Compass Sticky Footer</h1>
+<p>This module provides tools needed to lay out your footer such
+that it sticks to the bottom of the page.</p>
+
+<p>Mix in to the top level of your stylesheet, so the footer stays
+at the bottom of the screen. This mixin relies on the following
+HTML structure, and a fixed-height <code>#footer</code> element:</p>
+
+<pre><code>&lt;body&gt;
+  &lt;div id="root"&gt;
+    &lt;div id="root_footer"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div id="footer"&gt;
+    Footer content goes here.
+  &lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+
+<p>If you use the default selectors, this mixin is simple to use.
+Just mix it into the top level of your stylesheet:</p>
+
+<pre><code>@include sticky-footer(54px)
+</code></pre>
+
+<p>You can also define the selectors yourself:</p>
+
+<pre><code>@include sticky-footer(54px, "#my-root", "#my-root-footer", "#my-footer")
+</code></pre>
+
+<p>
+This file can be imported using:
+<code>@import "compass/layout/sticky-footer"</code>
+</p>
+<h2>Examples</h2>
+<dl class="examples">
+<dt><a href="/examples/compass/layout/sticky-footer/">Compass Sticky Footer Example</a></dt>
+<dd>How to use the sticky footer mixin.</dd>
+</dl><h2>Mixins</h2>
+<a href="#mixin-sticky-footer-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-sticky-footer">
+<a class="permalink" href="#mixin-sticky-footer">sticky-footer(<span class="arg">$footer-height</span>, <span class="arg" data-default-value='unquote("#root")'>$root-selector</span>, <span class="arg" data-default-value='unquote("#root_footer")'>$root-footer-selector</span>, <span class="arg" data-default-value='unquote("#footer")'>$footer-selector</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-sticky-footer-source">
+<pre class="brush: sass source-code sass">=sticky-footer($footer-height, $root-selector: unquote("#root"), $root-footer-selector: unquote("#root_footer"), $footer-selector: unquote("#footer"))
+  html, body
+    height: 100%
+  #{$root-selector}
+    clear: both
+    min-height: 100%
+    height: auto !important
+    height: 100%
+    margin-bottom: -$footer-height
+    #{$root-footer-selector}
+      height: $footer-height
+  #{$footer-selector}
+    clear: both
+    position: relative
+    height: $footer-height
+</pre>
+<pre class="brush: scss source-code scss">@mixin sticky-footer($footer-height, $root-selector: unquote("#root"), $root-footer-selector: unquote("#root_footer"), $footer-selector: unquote("#footer")) {
+  html, body {
+    height: 100%;
+  }
+  #{$root-selector} {
+    clear: both;
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin-bottom: -$footer-height;
+    #{$root-footer-selector} {
+      height: $footer-height;
+    }
+  }
+  #{$footer-selector} {
+    clear: both;
+    position: relative;
+    height: $footer-height;
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Based on a <a href="http://ryanfait.com/resources/footer-stick-to-bottom-of-page/">blog post by Ryan Fait</a>.</p>
+
+<p>Must be mixed into the top level of your stylesheet.</p>
+
+<p>Footer element must be outside of root wrapper element.</p>
+
+<p>Footer must be a fixed height.</p>
+
+</div></section>
+
+</body>
+</html>

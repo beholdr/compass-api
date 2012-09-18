@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Stretching | Compass API
+</title>
+</head>
+<body class=' reference core layout' id='reference-compass-layout-stretching'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/compass/stylesheets/compass/layout/_stretching.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Compass Stretching</h1>
+<p>
+The stretch mixins allow you to style absolutely positioned elements
+such that they will stretch to fill their positioning parent.
+</p>
+
+<p>
+This file can be imported using:
+<code>@import "compass/layout/stretching"</code>
+</p>
+<h2>Examples</h2>
+<dl class="examples">
+<dt><a href="/examples/compass/layout/stretching/">Compass Stretch Layout Example</a></dt>
+<dd>How to do stretch out your elements.</dd>
+</dl><h2>Mixins</h2>
+<a href="#mixin-stretch-y-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-stretch-y">
+<a class="permalink" href="#mixin-stretch-y">stretch-y(<span class="arg" data-default-value="0">$offset-top</span>, <span class="arg" data-default-value="0">$offset-bottom</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-stretch-y-source">
+<pre class="brush: sass source-code sass">=stretch-y($offset-top: 0, $offset-bottom: 0)
+  +stretch($offset-top, false, $offset-bottom, false)
+</pre>
+<pre class="brush: scss source-code scss">@mixin stretch-y($offset-top: 0, $offset-bottom: 0) {
+  @include stretch($offset-top, false, $offset-bottom, false);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>stretch element height to specified top and bottom position</p>
+
+</div>
+<a href="#mixin-stretch-x-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-stretch-x">
+<a class="permalink" href="#mixin-stretch-x">stretch-x(<span class="arg" data-default-value="0">$offset-left</span>, <span class="arg" data-default-value="0">$offset-right</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-stretch-x-source">
+<pre class="brush: sass source-code sass">=stretch-x($offset-left: 0, $offset-right: 0)
+  +stretch(false, $offset-right, false, $offset-left)
+</pre>
+<pre class="brush: scss source-code scss">@mixin stretch-x($offset-left: 0, $offset-right: 0) {
+  @include stretch(false, $offset-right, false, $offset-left);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>stretch element width to specified left and right position</p>
+
+</div>
+<a href="#mixin-stretch-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-stretch">
+<a class="permalink" href="#mixin-stretch">stretch(<span class="arg" data-default-value="0">$offset-top</span>, <span class="arg" data-default-value="0">$offset-right</span>, <span class="arg" data-default-value="0">$offset-bottom</span>, <span class="arg" data-default-value="0">$offset-left</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-stretch-source">
+<pre class="brush: sass source-code sass">=stretch($offset-top: 0, $offset-right: 0, $offset-bottom: 0, $offset-left: 0)
+  position: absolute
+  @if $offset-top
+    top: $offset-top
+  @if $offset-bottom
+    bottom: $offset-bottom
+  @if $offset-left
+    left: $offset-left
+  @if $offset-right
+    right: $offset-right
+</pre>
+<pre class="brush: scss source-code scss">@mixin stretch($offset-top: 0, $offset-right: 0, $offset-bottom: 0, $offset-left: 0) {
+  position: absolute;
+  @if $offset-top {
+    top: $offset-top;
+  }
+  @if $offset-bottom {
+    bottom: $offset-bottom;
+  }
+  @if $offset-left {
+    left: $offset-left;
+  }
+  @if $offset-right {
+    right: $offset-right;
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>shorthand to stretch element height and width</p>
+
+</div></section>
+
+</body>
+</html>

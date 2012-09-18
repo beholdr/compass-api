@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Blueprint Typography | Compass API
+</title>
+</head>
+<body class=' reference blueprint' id='reference-blueprint-typography'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/blueprint/stylesheets/blueprint/_typography.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Blueprint Typography</h1>
+<p>
+A base typography for your website that follows a typographic rhythm.
+</p>
+
+<p>
+This file can be imported using:
+<code>@import "blueprint/typography"</code>
+</p>
+
+<h2>Imports</h2>
+<ol>
+<li>
+<a href="/reference/blueprint/colors/" title="@import colors">Colors</a>
+</li>
+<li>
+<a href="/reference/compass/typography/links/link_colors/" title="@import compass/typography/links/link-colors">Link Colors</a>
+– Easy assignment of colors to link states.
+</li>
+<li>
+<a href="/reference/compass/utilities/general/float/" title="@import compass/utilities/general/float">Float</a>
+– Mixins for cross-browser floats.
+</li>
+</ol><h2>
+Configurable Variables
+<a class="help" href="/help/tutorials/configurable-variables/">help</a>
+</h2>
+<h3 class="constant" id="const-blueprint-font-family">
+<a class="permalink" href="#const-blueprint-font-family">$blueprint-font-family</a>
+<code>"Helvetica Neue", Arial, Helvetica, sans-serif</code>
+</h3>
+<h3 class="constant" id="const-blueprint-fixed-font-family">
+<a class="permalink" href="#const-blueprint-fixed-font-family">$blueprint-fixed-font-family</a>
+<code>"andale mono", "lucida console", monospace</code>
+</h3>
+<h3 class="constant" id="const-blueprint-font-size">
+<a class="permalink" href="#const-blueprint-font-size">$blueprint-font-size</a>
+<code>12px</code>
+</h3>
+
+
+
+<h2>Mixins</h2>
+<a href="#mixin-blueprint-typography-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-blueprint-typography">
+<a class="permalink" href="#mixin-blueprint-typography">blueprint-typography(<span class="arg" data-default-value="false">$nested</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-blueprint-typography-source">
+<pre class="brush: sass source-code sass">=blueprint-typography($nested: false)
+  @if $nested
+    +blueprint-typography-body
+    +blueprint-typography-defaults
+  @else
+    body
+      +blueprint-typography-body
+    +blueprint-typography-defaults
+</pre>
+<pre class="brush: scss source-code scss">@mixin blueprint-typography($nested: false) {
+  @if $nested {
+    @include blueprint-typography-body;
+    @include blueprint-typography-defaults;
+  }
+  @else {
+    body {
+      @include blueprint-typography-body;
+    }
+    @include blueprint-typography-defaults;
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Usage examples:
+As a top-level mixin, apply to any page that includes the stylesheet:</p>
+
+<pre class="brush: sass source-code sass">
++blueprint-typography
+</pre>
+
+
+<p>Scoped by a presentational class:</p>
+
+<pre class="brush: sass source-code sass">
+body.blueprint
+ +blueprint-typography(true)
+</pre>
+
+
+<p>Scoped by semantic selectors:</p>
+
+<pre class="brush: sass source-code sass">
+body#page-1, body#page-2, body.a-special-page-type
+  +blueprint-typography(true)
+</pre>
+
+
+</div>
+<a href="#mixin-normal-text-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-normal-text">
+<a class="permalink" href="#mixin-normal-text">normal-text</a>
+</h3>
+<div class="mixin-source" id="mixin-normal-text-source">
+<pre class="brush: sass source-code sass">=normal-text
+  font-family: $blueprint-font-family
+  color: $font-color
+</pre>
+<pre class="brush: scss source-code scss">@mixin normal-text {
+  font-family: $blueprint-font-family;
+  color: $font-color;
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-fixed-width-text-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-fixed-width-text">
+<a class="permalink" href="#mixin-fixed-width-text">fixed-width-text</a>
+</h3>
+<div class="mixin-source" id="mixin-fixed-width-text-source">
+<pre class="brush: sass source-code sass">=fixed-width-text
+  font: 1em $blueprint-fixed-font-family
+  line-height: 1.5
+</pre>
+<pre class="brush: scss source-code scss">@mixin fixed-width-text {
+  font: 1em $blueprint-fixed-font-family;
+  line-height: 1.5;
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-header-text-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-header-text">
+<a class="permalink" href="#mixin-header-text">header-text</a>
+</h3>
+<div class="mixin-source" id="mixin-header-text-source">
+<pre class="brush: sass source-code sass">=header-text
+  font-weight: normal
+  color: $header-color
+</pre>
+<pre class="brush: scss source-code scss">@mixin header-text {
+  font-weight: normal;
+  color: $header-color;
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-quiet-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-quiet">
+<a class="permalink" href="#mixin-quiet">quiet</a>
+</h3>
+<div class="mixin-source" id="mixin-quiet-source">
+<pre class="brush: sass source-code sass">=quiet
+  color: $quiet-color
+</pre>
+<pre class="brush: scss source-code scss">@mixin quiet {
+  color: $quiet-color;
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-loud-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-loud">
+<a class="permalink" href="#mixin-loud">loud</a>
+</h3>
+<div class="mixin-source" id="mixin-loud-source">
+<pre class="brush: sass source-code sass">=loud
+  color: $loud-color
+</pre>
+<pre class="brush: scss source-code scss">@mixin loud {
+  color: $loud-color;
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-blueprint-typography-body-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-blueprint-typography-body">
+<a class="permalink" href="#mixin-blueprint-typography-body">blueprint-typography-body(<span class="arg" data-default-value="$blueprint-font-size">$font-size</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-blueprint-typography-body-source">
+<pre class="brush: sass source-code sass">=blueprint-typography-body($font-size: $blueprint-font-size)
+  line-height: 1.5
+  +normal-text
+  font-size: 100% * $font-size / 16px
+</pre>
+<pre class="brush: scss source-code scss">@mixin blueprint-typography-body($font-size: $blueprint-font-size) {
+  line-height: 1.5;
+  @include normal-text;
+  font-size: 100% * $font-size / 16px;
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-blueprint-typography-defaults-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-blueprint-typography-defaults">
+<a class="permalink" href="#mixin-blueprint-typography-defaults">blueprint-typography-defaults</a>
+</h3>
+<div class="mixin-source" id="mixin-blueprint-typography-defaults-source">
+<pre class="brush: sass source-code sass">=blueprint-typography-defaults
+  #{headers(all)}
+    +header-text
+    img
+      margin: 0
+  h1
+    font-size: 3em
+    line-height: 1
+    margin-bottom: 0.50em
+  h2
+    font-size: 2em
+    margin-bottom: 0.75em
+  h3
+    font-size: 1.5em
+    line-height: 1
+    margin-bottom: 1.00em
+  h4
+    font-size: 1.2em
+    line-height: 1.25
+    margin-bottom: 1.25em
+  h5
+    font-size: 1em
+    font-weight: bold
+    margin-bottom: 1.50em
+  h6
+    font-size: 1em
+    font-weight: bold
+  p
+    margin: 0 0 1.5em
+    .left
+      +float-left
+      margin: 1.5em 1.5em 1.5em 0
+      padding: 0
+    .right
+      +float-right
+      margin: 1.5em 0 1.5em 1.5em
+      padding: 0
+  a
+    text-decoration: underline
+    +link-colors($link-color, $link-hover-color, $link-active-color, $link-visited-color, $link-focus-color)
+  blockquote
+    margin: 1.5em
+    color: $alt-text-color
+    font-style: italic
+  strong, dfn
+    font-weight: bold
+  em, dfn
+    font-style: italic
+  sup, sub
+    line-height: 0
+  abbr, acronym
+    border-bottom: 1px dotted #666666
+  address
+    margin: 0 0 1.5em
+    font-style: italic
+  del
+    color: $alt-text-color
+  pre
+    margin: 1.5em 0
+    white-space: pre
+  pre, code, tt
+    +fixed-width-text
+  li ul, li ol
+    margin: 0
+  ul, ol
+    margin: 0 1.5em 1.5em 0
+    padding-left: 1.5em
+  ul
+    list-style-type: disc
+  ol
+    list-style-type: decimal
+  dl
+    margin: 0 0 1.5em 0
+    dt
+      font-weight: bold
+  dd
+    margin-left: 1.5em
+  table
+    margin-bottom: 1.4em
+    width: 100%
+  th
+    font-weight: bold
+  thead th
+    background: $blueprint-table-header-color
+  th, td, caption
+    padding: 4px 10px 4px 5px
+  table.striped tr:nth-child(even) td,
+  table tr.even td
+    background: $blueprint-table-stripe-color
+  tfoot
+    font-style: italic
+  caption
+    background: $blueprint-background-color
+  .quiet
+    +quiet
+  .loud
+    +loud
+</pre>
+<pre class="brush: scss source-code scss">@mixin blueprint-typography-defaults {
+  #{headers(all)} {
+    @include header-text;
+    img {
+      margin: 0;
+    }
+  }
+  h1 {
+    font-size: 3em;
+    line-height: 1;
+    margin-bottom: 0.50em;
+  }
+  h2 {
+    font-size: 2em;
+    margin-bottom: 0.75em;
+  }
+  h3 {
+    font-size: 1.5em;
+    line-height: 1;
+    margin-bottom: 1.00em;
+  }
+  h4 {
+    font-size: 1.2em;
+    line-height: 1.25;
+    margin-bottom: 1.25em;
+  }
+  h5 {
+    font-size: 1em;
+    font-weight: bold;
+    margin-bottom: 1.50em;
+  }
+  h6 {
+    font-size: 1em;
+    font-weight: bold;
+  }
+  p {
+    margin: 0 0 1.5em;
+    .left {
+      @include float-left;
+      margin: 1.5em 1.5em 1.5em 0;
+      padding: 0;
+    }
+    .right {
+      @include float-right;
+      margin: 1.5em 0 1.5em 1.5em;
+      padding: 0;
+    }
+  }
+  a {
+    text-decoration: underline;
+    @include link-colors($link-color, $link-hover-color, $link-active-color, $link-visited-color, $link-focus-color);
+  }
+  blockquote {
+    margin: 1.5em;
+    color: $alt-text-color;
+    font-style: italic;
+  }
+  strong, dfn {
+    font-weight: bold;
+  }
+  em, dfn {
+    font-style: italic;
+  }
+  sup, sub {
+    line-height: 0;
+  }
+  abbr, acronym {
+    border-bottom: 1px dotted #666666;
+  }
+  address {
+    margin: 0 0 1.5em;
+    font-style: italic;
+  }
+  del {
+    color: $alt-text-color;
+  }
+  pre {
+    margin: 1.5em 0;
+    white-space: pre;
+  }
+  pre, code, tt {
+    @include fixed-width-text;
+  }
+  li ul, li ol {
+    margin: 0;
+  }
+  ul, ol {
+    margin: 0 1.5em 1.5em 0;
+    padding-left: 1.5em;
+  }
+  ul {
+    list-style-type: disc;
+  }
+  ol {
+    list-style-type: decimal;
+  }
+  dl {
+    margin: 0 0 1.5em 0;
+    dt {
+      font-weight: bold;
+    }
+  }
+  dd {
+    margin-left: 1.5em;
+  }
+  table {
+    margin-bottom: 1.4em;
+    width: 100%;
+  }
+  th {
+    font-weight: bold;
+  }
+  thead th {
+    background: $blueprint-table-header-color;
+  }
+  th, td, caption {
+    padding: 4px 10px 4px 5px;
+  }
+  table.striped tr:nth-child(even) td,
+  table tr.even td {
+    background: $blueprint-table-stripe-color;
+  }
+  tfoot {
+    font-style: italic;
+  }
+  caption {
+    background: $blueprint-background-color;
+  }
+  .quiet {
+    @include quiet;
+  }
+  .loud {
+    @include loud;
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div></section>
+
+</body>
+</html>

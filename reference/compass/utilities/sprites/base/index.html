@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Sprite Base | Compass API
+</title>
+</head>
+<body class=' reference core utilities' id='reference-compass-utilities-sprites-base'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Compass Sprite Base</h1>
+<p>These mixins are useful for working with sprites. This file is imported by
+magic sprite imports.</p>
+
+<p>See the <a href="/help/tutorials/spriting/">Spriting Tutorial</a> for more information.</p>
+
+<p>
+This file can be imported using:
+<code>@import "compass/utilities/sprites/base"</code>
+</p>
+
+
+<h2>
+Configurable Variables
+<a class="help" href="/help/tutorials/configurable-variables/">help</a>
+</h2>
+<h3 class="constant" id="const-sprite-selectors">
+<a class="permalink" href="#const-sprite-selectors">$sprite-selectors</a>
+<code>hover, target, active</code>
+</h3>
+<p></p><p>Determines those states for which you want to enable magic sprite selectors</p>
+
+<h3 class="constant" id="const-disable-magic-sprite-selectors">
+<a class="permalink" href="#const-disable-magic-sprite-selectors">$disable-magic-sprite-selectors</a>
+<code>false</code>
+</h3>
+<p></p><p>Determines if you want to include magic selectors in your sprites</p>
+
+
+
+
+<h2>Mixins</h2>
+<a href="#mixin-sprite-dimensions-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-sprite-dimensions">
+<a class="permalink" href="#mixin-sprite-dimensions">sprite-dimensions(<span class="arg">$map</span>, <span class="arg">$sprite</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-sprite-dimensions-source">
+<pre class="brush: sass source-code sass">=sprite-dimensions($map, $sprite)
+  height: image-height(sprite-file($map, $sprite))
+  width: image-width(sprite-file($map, $sprite))
+</pre>
+<pre class="brush: scss source-code scss">@mixin sprite-dimensions($map, $sprite) {
+  height: image-height(sprite-file($map, $sprite));
+  width: image-width(sprite-file($map, $sprite));
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Set the width and height of an element to the original
+dimensions of an image before it was included in the sprite.</p>
+
+</div>
+<a href="#mixin-sprite-background-position-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-sprite-background-position">
+<a class="permalink" href="#mixin-sprite-background-position">sprite-background-position(<span class="arg">$map</span>, <span class="arg">$sprite</span>, <span class="arg" data-default-value="0">$offset-x</span>, <span class="arg" data-default-value="0">$offset-y</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-sprite-background-position-source">
+<pre class="brush: sass source-code sass">=sprite-background-position($map, $sprite, $offset-x: 0, $offset-y: 0)
+  background-position: sprite-position($map, $sprite, $offset-x, $offset-y)
+</pre>
+<pre class="brush: scss source-code scss">@mixin sprite-background-position($map, $sprite, $offset-x: 0, $offset-y: 0) {
+  background-position: sprite-position($map, $sprite, $offset-x, $offset-y);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Set the background position of the given sprite <code>$map</code> to display the
+sprite of the given <code>$sprite</code> name. You can move the image relative to its
+natural position by passing <code>$offset-x</code> and <code>$offset-y</code>.</p>
+
+</div>
+<a href="#mixin-sprite-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-sprite">
+<a class="permalink" href="#mixin-sprite">sprite(<span class="arg">$map</span>, <span class="arg">$sprite</span>, <span class="arg" data-default-value="false">$dimensions</span>, <span class="arg" data-default-value="0">$offset-x</span>, <span class="arg" data-default-value="0">$offset-y</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-sprite-source">
+<pre class="brush: sass source-code sass">=sprite($map, $sprite, $dimensions: false, $offset-x: 0, $offset-y: 0)
+  +sprite-background-position($map, $sprite, $offset-x, $offset-y)
+  @if $dimensions
+    +sprite-dimensions($map, $sprite)
+  @if not $disable-magic-sprite-selectors
+    +sprite-selectors($map, $sprite, $sprite, $offset-x, $offset-y)
+</pre>
+<pre class="brush: scss source-code scss">@mixin sprite($map, $sprite, $dimensions: false, $offset-x: 0, $offset-y: 0) {
+  @include sprite-background-position($map, $sprite, $offset-x, $offset-y);
+  @if $dimensions {
+    @include sprite-dimensions($map, $sprite);
+  }
+  @if not $disable-magic-sprite-selectors {
+    @include sprite-selectors($map, $sprite, $sprite, $offset-x, $offset-y);
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Include the position and (optionally) dimensions of this <code>$sprite</code>
+in the given sprite <code>$map</code>. The sprite url should come from either a base
+class or you can specify the <code>sprite-url</code> explicitly like this:</p>
+
+<pre><code>background: $map no-repeat;
+</code></pre>
+
+</div>
+<a href="#mixin-sprites-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-sprites">
+<a class="permalink" href="#mixin-sprites">sprites(<span class="arg">$map</span>, <span class="arg">$sprite-names</span>, <span class="arg" data-default-value="false">$base-class</span>, <span class="arg" data-default-value="false">$dimensions</span>, <span class="arg" data-default-value="sprite-map-name($map)">$prefix</span>, <span class="arg" data-default-value="0">$offset-x</span>, <span class="arg" data-default-value="0">$offset-y</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-sprites-source">
+<pre class="brush: sass source-code sass">=sprites($map, $sprite-names, $base-class: false, $dimensions: false, $prefix: sprite-map-name($map), $offset-x: 0, $offset-y: 0)
+  @each $sprite-name in $sprite-names
+    @if sprite_does_not_have_parent($map, $sprite-name)
+      $full-sprite-name: "#{$prefix}-#{$sprite-name}"
+      .#{$full-sprite-name}
+        @if $base-class
+          @extend #{$base-class}
+        +sprite($map, $sprite-name, $dimensions, $offset-x, $offset-y)
+</pre>
+<pre class="brush: scss source-code scss">@mixin sprites($map, $sprite-names, $base-class: false, $dimensions: false, $prefix: sprite-map-name($map), $offset-x: 0, $offset-y: 0) {
+  @each $sprite-name in $sprite-names {
+    @if sprite_does_not_have_parent($map, $sprite-name) {
+      $full-sprite-name: "#{$prefix}-#{$sprite-name}";
+      .#{$full-sprite-name} {
+        @if $base-class {
+          @extend #{$base-class};
+        }
+        @include sprite($map, $sprite-name, $dimensions, $offset-x, $offset-y);
+      }
+    }
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Generates a class for each space separated name in <code>$sprite-names</code>.
+The class will be of the form .<map-name>-<sprite-name>.</sprite-name></map-name></p>
+
+<p>If a base class is provided, then each class will extend it.</p>
+
+<p>If <code>$dimensions</code> is <code>true</code>, the sprite dimensions will specified.</p>
+
+</div></section>
+
+</body>
+</html>

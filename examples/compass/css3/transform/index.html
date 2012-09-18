@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Transform | Compass API
+</title>
+</head>
+<body class=' demo' id='examples-compass-css3-transform'><div id='reference'><a href="/reference/compass/css3/transform-legacy/">Reference Documentation</a></div>
+<h1>Demo: Transform</h1>
+<div id='demo'><p>
+  this div will change scale on hover
+</p>
+<div class='transform-example' id='scale'></div>
+<p>
+  this div will rotate on hover
+</p>
+<div class='transform-example' id='rotate'></div>
+<p>
+  this div will translate on hover
+</p>
+<div class='transform-example' id='translate'></div>
+<p>
+  this div will skew on hover
+</p>
+<div class='transform-example' id='skew'></div>
+<p>
+  this div will change scale, rotate, translate and skew on hover
+</p>
+<div class='transform-example' id='combo'></div>
+</div>
+
+<div id='how'>
+<section id='markup'>
+<div class='syntax_pref'>
+<a href='#' rel='html'>html</a>
+<a href='#' rel='haml'>haml</a>
+</div>
+<div class='example-source'>
+<pre class='source-code html'>&lt;p&gt;
+  this div will change scale on hover
+&lt;/p&gt;
+&lt;div class='transform-example' id='scale'&gt;&lt;/div&gt;
+&lt;p&gt;
+  this div will rotate on hover
+&lt;/p&gt;
+&lt;div class='transform-example' id='rotate'&gt;&lt;/div&gt;
+&lt;p&gt;
+  this div will translate on hover
+&lt;/p&gt;
+&lt;div class='transform-example' id='translate'&gt;&lt;/div&gt;
+&lt;p&gt;
+  this div will skew on hover
+&lt;/p&gt;
+&lt;div class='transform-example' id='skew'&gt;&lt;/div&gt;
+&lt;p&gt;
+  this div will change scale, rotate, translate and skew on hover
+&lt;/p&gt;
+&lt;div class='transform-example' id='combo'&gt;&lt;/div&gt;
+</pre>
+<pre class='source-code haml'>%p
+  this div will change scale on hover
+
+#scale.transform-example
+
+%p
+  this div will rotate on hover
+
+#rotate.transform-example
+
+%p
+  this div will translate on hover
+
+#translate.transform-example
+
+%p
+  this div will skew on hover
+
+#skew.transform-example
+
+%p
+  this div will change scale, rotate, translate and skew on hover
+
+#combo.transform-example</pre>
+</div>
+</section>
+<section id='styles'>
+<div class='syntax_pref'>
+<a href='#' rel='scss'>scss</a>
+<a href='#' rel='sass'>sass</a>
+<a href='#' rel='css'>css</a>
+</div>
+<div class='example-source'>
+<pre class='source-code scss'>@import &quot;compass/css3&quot;;
+
+@import &quot;compass/css3/transform-legacy&quot;;
+
+.transform-example {
+  width: 40px;
+  height: 40px;
+  background: red;
+  margin: 20px;
+}
+
+#scale {
+  @include scale(1);
+}
+
+#scale:hover {
+  @include scale(2);
+}
+
+#rotate {
+  @include rotate(0deg);
+}
+
+#rotate:hover {
+  @include rotate(45deg);
+}
+
+#translate {
+  @include translate(0, 0);
+}
+
+#translate:hover {
+  @include translate(20px, 20px);
+}
+
+#skew {
+  @include skew(0deg, 0deg);
+}
+
+#skew:hover {
+  @include skew(20deg, 20deg);
+}
+
+#combo {
+  @include transform(1, 0deg, 0, 0, 0deg, 0deg);
+}
+
+#combo:hover {
+  @include transform(1, 45deg, 20px, 20px, 20deg, 20deg);
+}
+</pre>
+<pre class='source-code sass'>@import compass/css3, compass/css3/transform-legacy
+
+.transform-example
+  width: 40px
+  height: 40px
+  background: red
+  margin: 20px
+
+#scale
+  +scale(1)
+
+#scale:hover
+  +scale(2)
+
+#rotate
+  +rotate(0deg)
+
+#rotate:hover
+  +rotate(45deg)
+
+#translate
+  +translate(0, 0)
+
+#translate:hover
+  +translate(20px, 20px)
+
+#skew
+  +skew(0deg, 0deg)
+
+#skew:hover
+  +skew(20deg, 20deg)
+
+#combo
+  +transform(1, 0deg, 0, 0, 0deg, 0deg)
+
+#combo:hover
+  +transform(1, 45deg, 20px, 20px, 20deg, 20deg)</pre>
+<pre class='source-code css'>.transform-example{width:40px;height:40px;background:red;margin:20px}#scale{-webkit-transform:scale(1);-moz-transform:scale(1);-o-transform:scale(1);transform:scale(1)}#scale:hover{-webkit-transform:scale(2);-moz-transform:scale(2);-o-transform:scale(2);transform:scale(2)}#rotate{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-o-transform:rotate(0deg);transform:rotate(0deg)}#rotate:hover{-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);transform:rotate(45deg)}#translate{-webkit-transform:translate(0, 0);-moz-transform:translate(0, 0);-o-transform:translate(0, 0);transform:translate(0, 0)}#translate:hover{-webkit-transform:translate(20px, 20px);-moz-transform:translate(20px, 20px);-o-transform:translate(20px, 20px);transform:translate(20px, 20px)}#skew{-webkit-transform:skew(0deg, 0deg);-moz-transform:skew(0deg, 0deg);-o-transform:skew(0deg, 0deg);transform:skew(0deg, 0deg)}#skew:hover{-webkit-transform:skew(20deg, 20deg);-moz-transform:skew(20deg, 20deg);-o-transform:skew(20deg, 20deg);transform:skew(20deg, 20deg)}#combo{-webkit-transform:scale(1) rotate(0deg) translate(0, 0) skew(0deg, 0deg);-moz-transform:scale(1) rotate(0deg) translate(0, 0) skew(0deg, 0deg);-o-transform:scale(1) rotate(0deg) translate(0, 0) skew(0deg, 0deg);transform:scale(1) rotate(0deg) translate(0, 0) skew(0deg, 0deg)}#combo:hover{-webkit-transform:scale(1) rotate(45deg) translate(20px, 20px) skew(20deg, 20deg);-moz-transform:scale(1) rotate(45deg) translate(20px, 20px) skew(20deg, 20deg);-o-transform:scale(1) rotate(45deg) translate(20px, 20px) skew(20deg, 20deg);transform:scale(1) rotate(45deg) translate(20px, 20px) skew(20deg, 20deg)}
+</pre>
+</div>
+</section>
+</div>
+
+
+</body>
+</html>

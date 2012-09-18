@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Appearance | Compass API
+</title>
+</head>
+<body class=' reference core css3' id='reference-compass-css3-appearance'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/compass/stylesheets/compass/css3/_appearance.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Compass Appearance</h1>
+<p>Provides a mixin for <code>appearance</code>.
+See the CSS3 specification: <a href="http://www.w3.org/TR/css3-ui/#appearance">appearance</a>.</p>
+
+<p>
+This file can be imported using:
+<code>@import "compass/css3/appearance"</code>
+</p>
+
+<h2>Imports</h2>
+<ol>
+<li>
+<a href="/reference/compass/css3/shared/" title="@import shared">Shared Utilities</a>
+</li>
+</ol><h2>Mixins</h2>
+<a href="#mixin-appearance-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-appearance">
+<a class="permalink" href="#mixin-appearance">appearance(<span class="arg">$ap</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-appearance-source">
+<pre class="brush: sass source-code sass">=appearance($ap)
+  $ap: unquote($ap)
+  +experimental(appearance, $ap, -moz, -webkit, not -o, not -ms, not -khtml, official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin appearance($ap) {
+  $ap: unquote($ap);
+  @include experimental(appearance, $ap, -moz, -webkit, not -o, not -ms, not -khtml, official);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Change the appearance for Mozilla, Webkit and possibly the future.
+The appearance property is currently not present in any newer CSS specification.</p>
+
+<p>There is no official list of accepted values, but you might check these source:</p>
+
+<ul>
+<li><a href="https://developer.mozilla.org/en/CSS/-moz-appearance">Mozilla</a></li>
+<li>
+<a href="http://code.google.com/p/webkit-mirror/source/browse/Source/WebCore/css/CSSValueKeywords.in?spec=svnf1aea559dcd025a8946aa7da6e4e8306f5c1b604&amp;r=63c7d1af44430b314233fea342c3ddb2a052e365">Webkit</a>
+(search for 'appearance' within the page)</li>
+</ul>
+</div></section>
+
+</body>
+</html>

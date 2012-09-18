@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Truncating Text with Ellipses | Compass API
+</title>
+</head>
+<body class=' reference core typography' id='reference-compass-typography-text-ellipsis'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/compass/stylesheets/compass/typography/text/_ellipsis.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Truncating Text with Ellipses</h1>
+<p>There is an XML file that must be installed into your stylesheet
+directory in order for this utility to work correctly. To install it:</p>
+
+<pre><code>compass install compass/ellipsis
+</code></pre>
+
+<p>
+This file can be imported using:
+<code>@import "compass/typography/text/ellipsis"</code>
+</p>
+
+<h2>Imports</h2>
+<ol>
+<li>
+<a href="/reference/compass/css3/shared/" title="@import compass/css3/shared">Shared Utilities</a>
+</li>
+</ol><h2>
+Configurable Variables
+<a class="help" href="/help/tutorials/configurable-variables/">help</a>
+</h2>
+<h3 class="constant" id="const-use-mozilla-ellipsis-binding">
+<a class="permalink" href="#const-use-mozilla-ellipsis-binding">$use-mozilla-ellipsis-binding</a>
+<code>false</code>
+</h3>
+<p></p><p>To get full firefox support, you must install the ellipsis pattern:</p>
+
+<pre><code>compass install compass/ellipsis
+</code></pre>
+
+
+
+
+<h2>Mixins</h2>
+<a href="#mixin-ellipsis-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-ellipsis">
+<a class="permalink" href="#mixin-ellipsis">ellipsis(<span class="arg" data-default-value="true">$no-wrap</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-ellipsis-source">
+<pre class="brush: sass source-code sass">=ellipsis($no-wrap: true)
+  @if $no-wrap
+    white-space: nowrap
+  overflow: hidden
+  +experimental(text-overflow, ellipsis, not -moz, not -webkit, -o, -ms, not -khtml, official)
+  @if $experimental-support-for-mozilla and $use-mozilla-ellipsis-binding
+    -moz-binding: stylesheet-url(unquote("xml/ellipsis.xml#ellipsis"))
+</pre>
+<pre class="brush: scss source-code scss">@mixin ellipsis($no-wrap: true) {
+  @if $no-wrap {
+    white-space: nowrap;
+  }
+  overflow: hidden;
+  @include experimental(text-overflow, ellipsis, not -moz, not -webkit, -o, -ms, not -khtml, official);
+  @if $experimental-support-for-mozilla and $use-mozilla-ellipsis-binding {
+    -moz-binding: stylesheet-url(unquote("xml/ellipsis.xml#ellipsis"));
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>This technique, by <a href="http://code404.com/">Justin Maxwell</a>, was originally
+published <a href="http://mattsnider.com/css/css-string-truncation-with-ellipsis/">here</a>.
+Firefox implementation by <a href="http://www.rikkertkoppes.com/thoughts/2008/6/">Rikkert Koppes</a>.</p>
+
+</div></section>
+
+</body>
+</html>

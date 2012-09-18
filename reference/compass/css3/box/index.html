@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Box | Compass API
+</title>
+</head>
+<body class=' reference' id='reference-compass-css3-box'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/compass/stylesheets/compass/css3/_box.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Compass Box</h1>
+<p>
+This module provides mixins that pertain to the CSS3 Flexible Box.
+</p>
+
+<p>
+This file can be imported using:
+<code>@import "compass/css3/box"</code>
+</p>
+<h2>Examples</h2>
+<dl class="examples">
+<dt><a href="/examples/compass/css3/box/">CSS3 Flexible Box</a></dt>
+<dd>mixins for the CSS3 flexible box</dd>
+</dl><h2>Imports</h2>
+<ol>
+<li>
+<a href="/reference/compass/css3/shared/" title="@import shared">Shared Utilities</a>
+</li>
+</ol><h2>
+Configurable Variables
+<a class="help" href="/help/tutorials/configurable-variables/">help</a>
+</h2>
+<h3 class="constant" id="const-default-box-orient">
+<a class="permalink" href="#const-default-box-orient">$default-box-orient</a>
+<code>horizontal</code>
+</h3>
+<p></p><p>Default box orientation, assuming that the user wants something less block-like</p>
+
+<h3 class="constant" id="const-default-box-align">
+<a class="permalink" href="#const-default-box-align">$default-box-align</a>
+<code>stretch</code>
+</h3>
+<p></p><p>Default box-align</p>
+
+<h3 class="constant" id="const-default-box-flex">
+<a class="permalink" href="#const-default-box-flex">$default-box-flex</a>
+<code>0</code>
+</h3>
+<p></p><p>Default box flex</p>
+
+<h3 class="constant" id="const-default-box-flex-group">
+<a class="permalink" href="#const-default-box-flex-group">$default-box-flex-group</a>
+<code>1</code>
+</h3>
+<p></p><p>Default flex group</p>
+
+<h3 class="constant" id="const-default-box-ordinal-group">
+<a class="permalink" href="#const-default-box-ordinal-group">$default-box-ordinal-group</a>
+<code>1</code>
+</h3>
+<p></p><p>default for ordinal group</p>
+
+<h3 class="constant" id="const-default-box-direction">
+<a class="permalink" href="#const-default-box-direction">$default-box-direction</a>
+<code>normal</code>
+</h3>
+<p></p><p>Box direction default value</p>
+
+<h3 class="constant" id="const-default-box-lines">
+<a class="permalink" href="#const-default-box-lines">$default-box-lines</a>
+<code>single</code>
+</h3>
+<p></p><p>default for box lines</p>
+
+<h3 class="constant" id="const-default-box-pack">
+<a class="permalink" href="#const-default-box-pack">$default-box-pack</a>
+<code>start</code>
+</h3>
+<p></p><p>default for box pack</p>
+
+
+
+
+<h2>Mixins</h2>
+<a href="#mixin-display-box-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-display-box">
+<a class="permalink" href="#mixin-display-box">display-box</a>
+</h3>
+<div class="mixin-source" id="mixin-display-box-source">
+<pre class="brush: sass source-code sass">=display-box
+  +experimental-value(display, box, -moz, -webkit, not -o, -ms, not -khtml, official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin display-box {
+  @include experimental-value(display, box, -moz, -webkit, not -o, -ms, not -khtml, official);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>display:box; must be used for any of the other flexbox mixins to work properly</p>
+
+</div>
+<a href="#mixin-box-orient-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-box-orient">
+<a class="permalink" href="#mixin-box-orient">box-orient(<span class="arg" data-default-value="$default-box-orient">$orientation</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-box-orient-source">
+<pre class="brush: sass source-code sass">=box-orient($orientation: $default-box-orient)
+  $orientation: unquote($orientation)
+  +experimental(box-orient, $orientation, -moz, -webkit, not -o, -ms, not -khtml, official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin box-orient($orientation: $default-box-orient) {
+  $orientation: unquote($orientation);
+  @include experimental(box-orient, $orientation, -moz, -webkit, not -o, -ms, not -khtml, official);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Box orientation [ horizontal | vertical | inline-axis | block-axis | inherit ]</p>
+
+</div>
+<a href="#mixin-box-align-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-box-align">
+<a class="permalink" href="#mixin-box-align">box-align(<span class="arg" data-default-value="$default-box-align">$alignment</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-box-align-source">
+<pre class="brush: sass source-code sass">=box-align($alignment: $default-box-align)
+  $alignment: unquote($alignment)
+  +experimental(box-align, $alignment, -moz, -webkit, not -o, -ms, not -khtml, official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin box-align($alignment: $default-box-align) {
+  $alignment: unquote($alignment);
+  @include experimental(box-align, $alignment, -moz, -webkit, not -o, -ms, not -khtml, official);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Box align [ start | end | center | baseline | stretch ]</p>
+
+</div>
+<a href="#mixin-box-flex-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-box-flex">
+<a class="permalink" href="#mixin-box-flex">box-flex(<span class="arg" data-default-value="$default-box-flex">$flex</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-box-flex-source">
+<pre class="brush: sass source-code sass">=box-flex($flex: $default-box-flex)
+  +experimental(box-flex, $flex, -moz, -webkit, not -o, -ms, not -khtml, official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin box-flex($flex: $default-box-flex) {
+  @include experimental(box-flex, $flex, -moz, -webkit, not -o, -ms, not -khtml, official);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>mixin which takes an int argument for box flex. Apply this to the children inside the box.</p>
+
+<p>For example: "div.display-box &gt; div.child-box" would get the box flex mixin.</p>
+
+</div>
+<a href="#mixin-box-flex-group-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-box-flex-group">
+<a class="permalink" href="#mixin-box-flex-group">box-flex-group(<span class="arg" data-default-value="$default-box-flex-group">$group</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-box-flex-group-source">
+<pre class="brush: sass source-code sass">=box-flex-group($group: $default-box-flex-group)
+  +experimental(box-flex-group, $group, -moz, -webkit, not -o, -ms, not -khtml, official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin box-flex-group($group: $default-box-flex-group) {
+  @include experimental(box-flex-group, $group, -moz, -webkit, not -o, -ms, not -khtml, official);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>mixin which takes an int argument for flexible grouping</p>
+
+</div>
+<a href="#mixin-box-ordinal-group-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-box-ordinal-group">
+<a class="permalink" href="#mixin-box-ordinal-group">box-ordinal-group(<span class="arg" data-default-value="$default-ordinal-flex-group">$group</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-box-ordinal-group-source">
+<pre class="brush: sass source-code sass">=box-ordinal-group($group: $default-ordinal-flex-group)
+  +experimental(box-ordinal-group, $group, -moz, -webkit, not -o, -ms, not -khtml, official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin box-ordinal-group($group: $default-ordinal-flex-group) {
+  @include experimental(box-ordinal-group, $group, -moz, -webkit, not -o, -ms, not -khtml, official);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>mixin which takes an int argument for ordinal grouping and rearranging the order</p>
+
+</div>
+<a href="#mixin-box-direction-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-box-direction">
+<a class="permalink" href="#mixin-box-direction">box-direction(<span class="arg" data-default-value="$default-box-direction">$direction</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-box-direction-source">
+<pre class="brush: sass source-code sass">=box-direction($direction: $default-box-direction)
+  $direction: unquote($direction)
+  +experimental(box-direction, $direction, -moz, -webkit, not -o, -ms, not -khtml, official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin box-direction($direction: $default-box-direction) {
+  $direction: unquote($direction);
+  @include experimental(box-direction, $direction, -moz, -webkit, not -o, -ms, not -khtml, official);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>mixin for box-direction [ normal | reverse | inherit ]</p>
+
+</div>
+<a href="#mixin-box-lines-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-box-lines">
+<a class="permalink" href="#mixin-box-lines">box-lines(<span class="arg" data-default-value="$default-box-lines">$lines</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-box-lines-source">
+<pre class="brush: sass source-code sass">=box-lines($lines: $default-box-lines)
+  $lines: unquote($lines)
+  +experimental(box-lines, $lines, -moz, -webkit, not -o, -ms, not -khtml, official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin box-lines($lines: $default-box-lines) {
+  $lines: unquote($lines);
+  @include experimental(box-lines, $lines, -moz, -webkit, not -o, -ms, not -khtml, official);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>mixin for box lines [ single | multiple ]</p>
+
+</div>
+<a href="#mixin-box-pack-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-box-pack">
+<a class="permalink" href="#mixin-box-pack">box-pack(<span class="arg" data-default-value="$default-box-pack">$pack</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-box-pack-source">
+<pre class="brush: sass source-code sass">=box-pack($pack: $default-box-pack)
+  $pack: unquote($pack)
+  +experimental(box-pack, $pack, -moz, -webkit, not -o, -ms, not -khtml, official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin box-pack($pack: $default-box-pack) {
+  $pack: unquote($pack);
+  @include experimental(box-pack, $pack, -moz, -webkit, not -o, -ms, not -khtml, official);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>mixin for box pack [ start | end | center | justify ]</p>
+
+</div></section>
+
+</body>
+</html>

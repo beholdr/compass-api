@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Inline-Block List | Compass API
+</title>
+</head>
+<body class=' reference core typography' id='reference-compass-typography-lists-inline-block-list'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/compass/stylesheets/compass/typography/lists/_inline-block-list.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Compass Inline-Block List</h1>
+<p>Easy mode using simple descendant li selectors:</p>
+
+<pre><code>ul.nav
+  +inline-block-list
+</code></pre>
+
+<p>Advanced mode:
+If you need to target the list items using a different selector then use
++inline-block-list-container on your ul/ol and +inline-block-list-item on
+your li. This may help when working on layouts involving nested lists. For
+example:</p>
+
+<pre><code>ul.nav
+  +inline-block-list-container
+  &gt; li
+    +inline-block-list-item
+</code></pre>
+
+<p>
+This file can be imported using:
+<code>@import "compass/typography/lists/inline-block-list"</code>
+</p>
+
+<h2>Imports</h2>
+<ol>
+<li>
+<a href="/reference/compass/typography/lists/bullets/" title="@import bullets">Bullets</a>
+– Mixins for managing list bullets.
+</li>
+<li>
+<a href="/reference/compass/css3/inline_block/" title="@import compass/css3/inline-block">Inline Block</a>
+– Declare an element inline block for all browsers.
+</li>
+<li>
+<a href="/reference/compass/utilities/general/float/" title="@import compass/utilities/general/float">Float</a>
+– Mixins for cross-browser floats.
+</li>
+<li>
+<a href="/reference/compass/typography/lists/horizontal_list/" title="@import horizontal-list">Horizontal List</a>
+– Float a list so it appears horizontally.
+</li>
+</ol><h2>Mixins</h2>
+<a href="#mixin-inline-block-list-container-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-inline-block-list-container">
+<a class="permalink" href="#mixin-inline-block-list-container">inline-block-list-container</a>
+</h3>
+<div class="mixin-source" id="mixin-inline-block-list-container-source">
+<pre class="brush: sass source-code sass">=inline-block-list-container
+  +horizontal-list-container
+</pre>
+<pre class="brush: scss source-code scss">@mixin inline-block-list-container {
+  @include horizontal-list-container;
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Can be mixed into any selector that target a ul or ol that is meant
+to have an inline-block layout. Used to implement <code>inline-block-list</code>.</p>
+
+</div>
+<a href="#mixin-inline-block-list-item-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-inline-block-list-item">
+<a class="permalink" href="#mixin-inline-block-list-item">inline-block-list-item(<span class="arg" data-default-value="false">$padding</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-inline-block-list-item-source">
+<pre class="brush: sass source-code sass">=inline-block-list-item($padding: false)
+  +no-bullet
+  +inline-block
+  white-space: nowrap
+  @if $padding
+    padding:
+      left: $padding
+      right: $padding
+</pre>
+<pre class="brush: scss source-code scss">@mixin inline-block-list-item($padding: false) {
+  @include no-bullet;
+  @include inline-block;
+  white-space: nowrap;
+  @if $padding {
+    padding: {
+      left: $padding;
+      right: $padding;
+    };
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Can be mixed into any li selector that is meant to participate in a horizontal layout.
+Used to implement <code>inline-block-list</code>.</p>
+
+</div>
+<a href="#mixin-inline-block-list-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-inline-block-list">
+<a class="permalink" href="#mixin-inline-block-list">inline-block-list(<span class="arg" data-default-value="false">$padding</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-inline-block-list-source">
+<pre class="brush: sass source-code sass">=inline-block-list($padding: false)
+  +inline-block-list-container
+  li
+    +inline-block-list-item($padding)
+</pre>
+<pre class="brush: scss source-code scss">@mixin inline-block-list($padding: false) {
+  @include inline-block-list-container;
+  li {
+    @include inline-block-list-item($padding);
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>A list(ol,ul) that is layed out such that the elements are inline-block and won't wrap.</p>
+
+</div></section>
+
+</body>
+</html>

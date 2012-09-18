@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Columns | Compass API
+</title>
+</head>
+<body class=' reference core css3' id='reference-compass-css3-columns'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/compass/stylesheets/compass/css3/_columns.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Compass Columns</h1>
+<p>
+Provides a mixin for the CSS3 Multi-column layout module. See <a href="http://www.w3.org/TR/css3-multicol/">CSS3 spec: Multi-colum layout module</a>.
+</p>
+
+<p>
+This file can be imported using:
+<code>@import "compass/css3/columns"</code>
+</p>
+<h2>Examples</h2>
+<dl class="examples">
+<dt><a href="/examples/compass/css3/columns/">Columns</a></dt>
+<dd>css3 mixin for css columns</dd>
+</dl><h2>Imports</h2>
+<ol>
+<li>
+<a href="/reference/compass/css3/shared/" title="@import shared">Shared Utilities</a>
+</li>
+</ol><h2>Mixins</h2>
+<a href="#mixin-columns-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-columns">
+<a class="permalink" href="#mixin-columns">columns(<span class="arg">$width-and-count</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-columns-source">
+<pre class="brush: sass source-code sass">=columns($width-and-count)
+  +experimental(columns, $width-and-count, -moz, -webkit, -o, -ms, not -khtml, official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin columns($width-and-count) {
+  @include experimental(columns, $width-and-count, -moz, -webkit, -o, -ms, not -khtml, official);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Specify the shorthand <code>columns</code> property.</p>
+
+<p>Example:</p>
+
+<pre><code>@include columns(20em 2)
+</code></pre>
+
+</div>
+<a href="#mixin-column-count-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-column-count">
+<a class="permalink" href="#mixin-column-count">column-count(<span class="arg">$count</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-column-count-source">
+<pre class="brush: sass source-code sass">=column-count($count)
+  +experimental(column-count, $count, -moz, -webkit, -o, -ms, not -khtml, official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin column-count($count) {
+  @include experimental(column-count, $count, -moz, -webkit, -o, -ms, not -khtml, official);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Specify the number of columns</p>
+
+</div>
+<a href="#mixin-column-gap-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-column-gap">
+<a class="permalink" href="#mixin-column-gap">column-gap(<span class="arg">$width</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-column-gap-source">
+<pre class="brush: sass source-code sass">=column-gap($width)
+  +experimental(column-gap, $width, -moz, -webkit, -o, -ms, not -khtml, official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin column-gap($width) {
+  @include experimental(column-gap, $width, -moz, -webkit, -o, -ms, not -khtml, official);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Specify the gap between columns e.g. <code>20px</code></p>
+
+</div>
+<a href="#mixin-column-width-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-column-width">
+<a class="permalink" href="#mixin-column-width">column-width(<span class="arg">$width</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-column-width-source">
+<pre class="brush: sass source-code sass">=column-width($width)
+  +experimental(column-width, $width, -moz, -webkit, -o, -ms, not -khtml, official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin column-width($width) {
+  @include experimental(column-width, $width, -moz, -webkit, -o, -ms, not -khtml, official);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Specify the width of columns e.g. <code>100px</code></p>
+
+</div>
+<a href="#mixin-column-rule-width-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-column-rule-width">
+<a class="permalink" href="#mixin-column-rule-width">column-rule-width(<span class="arg">$width</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-column-rule-width-source">
+<pre class="brush: sass source-code sass">=column-rule-width($width)
+  +experimental(column-rule-width, $width, -moz, -webkit, -o, -ms, not -khtml, official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin column-rule-width($width) {
+  @include experimental(column-rule-width, $width, -moz, -webkit, -o, -ms, not -khtml, official);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Specify the width of the rule between columns e.g. <code>1px</code></p>
+
+</div>
+<a href="#mixin-column-rule-style-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-column-rule-style">
+<a class="permalink" href="#mixin-column-rule-style">column-rule-style(<span class="arg">$style</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-column-rule-style-source">
+<pre class="brush: sass source-code sass">=column-rule-style($style)
+  +experimental(column-rule-style, unquote($style), -moz, -webkit, -o, -ms, not -khtml, official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin column-rule-style($style) {
+  @include experimental(column-rule-style, unquote($style), -moz, -webkit, -o, -ms, not -khtml, official);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Specify the style of the rule between columns e.g. <code>dotted</code>.
+This works like border-style.</p>
+
+</div>
+<a href="#mixin-column-rule-color-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-column-rule-color">
+<a class="permalink" href="#mixin-column-rule-color">column-rule-color(<span class="arg">$color</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-column-rule-color-source">
+<pre class="brush: sass source-code sass">=column-rule-color($color)
+  +experimental(column-rule-color, $color, -moz, -webkit, -o, -ms, not -khtml, official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin column-rule-color($color) {
+  @include experimental(column-rule-color, $color, -moz, -webkit, -o, -ms, not -khtml, official);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Specify the color of the rule between columns e.g. <code>blue</code>.
+This works like border-color.</p>
+
+</div>
+<a href="#mixin-column-rule-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-column-rule">
+<a class="permalink" href="#mixin-column-rule">column-rule(<span class="arg">$width</span>, <span class="arg" data-default-value="false">$style</span>, <span class="arg" data-default-value="false">$color</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-column-rule-source">
+<pre class="brush: sass source-code sass">=column-rule($width, $style: false, $color: false)
+  $full: -compass-space-list(compact($width, $style, $color))
+  +experimental(column-rule, $full, -moz, -webkit, -o, -ms, not -khtml, official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin column-rule($width, $style: false, $color: false) {
+  $full: -compass-space-list(compact($width, $style, $color));
+  @include experimental(column-rule, $full, -moz, -webkit, -o, -ms, not -khtml, official);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Mixin encompassing all column rule properties
+For example:</p>
+
+<pre><code>@include column-rule(1px, solid, #c00)
+</code></pre>
+
+<p>Or the values can be space separated:</p>
+
+<pre><code>@include column-rule(1px solid #c00)
+</code></pre>
+
+</div>
+<a href="#mixin-column-break-before-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-column-break-before">
+<a class="permalink" href="#mixin-column-break-before">column-break-before(<span class="arg" data-default-value="auto">$value</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-column-break-before-source">
+<pre class="brush: sass source-code sass">=column-break-before($value: auto)
+  +experimental(column-break-before, $value, not -moz, -webkit, not -o, not -ms, not -khtml, official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin column-break-before($value: auto) {
+  @include experimental(column-break-before, $value, not -moz, -webkit, not -o, not -ms, not -khtml, official);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Mixin for setting column-break-before</p>
+
+<ul>
+<li>legal values are auto, always, avoid, left, right, page, column, avoid-page, avoid-column</li>
+</ul>
+<p> Example:
+   h2.before {@include column-break-before(always);}</p>
+
+<p> Which generates:</p>
+
+<p> h2.before {  <br>
+   -webkit-column-break-before: always;
+   column-break-before: always;}</p>
+
+</div>
+<a href="#mixin-column-break-after-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-column-break-after">
+<a class="permalink" href="#mixin-column-break-after">column-break-after(<span class="arg" data-default-value="auto">$value</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-column-break-after-source">
+<pre class="brush: sass source-code sass">=column-break-after($value: auto)
+  +experimental(column-break-after, $value, not -moz, -webkit, not -o, not -ms, not -khtml, official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin column-break-after($value: auto) {
+  @include experimental(column-break-after, $value, not -moz, -webkit, not -o, not -ms, not -khtml, official);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Mixin for setting column-break-after</p>
+
+<ul>
+<li>legal values are auto, always, avoid, left, right, page, column, avoid-page, avoid-column</li>
+</ul>
+<p> Example:
+   h2.after {@include column-break-after(always); }</p>
+
+<p> Which generates:</p>
+
+<p> h2.after {
+   -webkit-column-break-after: always;
+   column-break-after: always; }</p>
+
+</div>
+<a href="#mixin-column-break-inside-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-column-break-inside">
+<a class="permalink" href="#mixin-column-break-inside">column-break-inside(<span class="arg" data-default-value="auto">$value</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-column-break-inside-source">
+<pre class="brush: sass source-code sass">=column-break-inside($value: auto)
+  +experimental(column-break-inside, $value, not -moz, -webkit, not -o, not -ms, not -khtml, official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin column-break-inside($value: auto) {
+  @include experimental(column-break-inside, $value, not -moz, -webkit, not -o, not -ms, not -khtml, official);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Mixin for setting column-break-inside</p>
+
+<ul>
+<li>legal values are auto, avoid, avoid-page, avoid-column</li>
+</ul>
+<p> Example:
+   h2.inside {@include column-break-inside();}
+ Which generates:</p>
+
+<p> h2.inside {
+   -webkit-column-break-inside: auto;
+   column-break-inside: auto;}</p>
+
+</div>
+<a href="#mixin-column-break-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-column-break">
+<a class="permalink" href="#mixin-column-break">column-break(<span class="arg" data-default-value="before">$type</span>, <span class="arg" data-default-value="auto">$value</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-column-break-source">
+<pre class="brush: sass source-code sass">=column-break($type: before, $value: auto)
+  +experimental("column-break-#{$type}", $value, not -moz, -webkit, not -o, not -ms, not -khtml, official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin column-break($type: before, $value: auto) {
+  @include experimental("column-break-#{$type}", $value, not -moz, -webkit, not -o, not -ms, not -khtml, official);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>All-purpose mixin for setting column breaks.</p>
+
+<ul>
+<li>legal values for $type : before, after, inside</li>
+<li>legal values for '$value' are dependent on $type
+
+<ul>
+<li>when $type = before, legal values are auto, always, avoid, left, right, page, column, avoid-page, avoid-column</li>
+<li>when $type = after, legal values are auto, always, avoid, left, right, page, column, avoid-page, avoid-column</li>
+<li>when $type = inside, legal values are auto, avoid, avoid-page, avoid-column</li>
+</ul>
+</li>
+</ul>
+<p> Examples:
+   h2.before {@include column-break(before, always);}
+   h2.after {@include column-break(after, always); }
+   h2.inside {@include column-break(inside); }</p>
+
+<p> Which generates:
+ h2.before {  <br>
+   -webkit-column-break-before: always;
+   column-break-before: always;}</p>
+
+<p> h2.after {
+   -webkit-column-break-after: always;
+   column-break-after: always; }</p>
+
+<p> h2.inside {
+   -webkit-column-break-inside: auto;
+   column-break-inside: auto;}</p>
+
+</div></section>
+
+</body>
+</html>

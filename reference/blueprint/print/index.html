@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Blueprint Print | Compass API
+</title>
+</head>
+<body class=' reference blueprint' id='reference-blueprint-print'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/blueprint/stylesheets/blueprint/_print.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Blueprint Print</h1>
+<p>The print stylesheet does sensible things for the printed page.</p>
+
+<p>It's important to note that the grid layout is not applied to the printed page.</p>
+
+<p>You probably want to set non-content sections like headers, footers, asides, and navs
+to <code>display: none;</code> in your printed page.</p>
+
+<p>See the <a href="/reference/compass/utilities/print/">compass print utilities</a> for related functionality.</p>
+
+<p>
+This file can be imported using:
+<code>@import "blueprint/print"</code>
+</p>
+
+<h2>Imports</h2>
+<ol>
+<li>
+<a href="/reference/compass/utilities/general/float/" title="@import compass/utilities/general/float">Float</a>
+– Mixins for cross-browser floats.
+</li>
+<li>
+<a href="/reference/blueprint/typography/" title="@import typography">Typography</a>
+</li>
+</ol><h2>Mixins</h2>
+<a href="#mixin-blueprint-print-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-blueprint-print">
+<a class="permalink" href="#mixin-blueprint-print">blueprint-print(<span class="arg" data-default-value="false">$nested</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-blueprint-print-source">
+<pre class="brush: sass source-code sass">=blueprint-print($nested: false)
+  @if $nested
+    +blueprint-print-body
+    +blueprint-print-defaults
+  @else
+    body
+      +blueprint-print-body
+    +blueprint-print-defaults
+</pre>
+<pre class="brush: scss source-code scss">@mixin blueprint-print($nested: false) {
+  @if $nested {
+    @include blueprint-print-body;
+    @include blueprint-print-defaults;
+  }
+  @else {
+    body {
+      @include blueprint-print-body;
+    }
+    @include blueprint-print-defaults;
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Usage examples:
+As a top-level mixin, apply to any page that includes the stylesheet:</p>
+
+<pre class="brush: sass source-code sass">
++blueprint-print
+</pre>
+
+
+<p>Scoped by a presentational class:</p>
+
+<pre class="brush: sass source-code sass">
+body.blueprint
+ +blueprint-print(true)
+</pre>
+
+
+<p>Scoped by semantic selectors:</p>
+
+<pre class="brush: sass source-code sass">
+body#page-1, body#page-2, body.a-special-page-type
+  +blueprint-print(true)
+</pre>
+
+
+</div>
+<a href="#mixin-blueprint-show-link-urls-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-blueprint-show-link-urls">
+<a class="permalink" href="#mixin-blueprint-show-link-urls">blueprint-show-link-urls</a>
+</h3>
+<div class="mixin-source" id="mixin-blueprint-show-link-urls-source">
+<pre class="brush: sass source-code sass">=blueprint-show-link-urls
+  &amp;:after
+    content: " (" attr(href) ")"
+    font-size: 90%
+</pre>
+<pre class="brush: scss source-code scss">@mixin blueprint-show-link-urls {
+  &amp;:after {
+    content: " (" attr(href) ")";
+    font-size: 90%;
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>This style is in blueprint, but it can be annoying and
+it doesn't work in all browsers.
+Feel free to mix it into anchors where you want it.</p>
+
+</div>
+<a href="#mixin-blueprint-print-body-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-blueprint-print-body">
+<a class="permalink" href="#mixin-blueprint-print-body">blueprint-print-body</a>
+</h3>
+<div class="mixin-source" id="mixin-blueprint-print-body-source">
+<pre class="brush: sass source-code sass">=blueprint-print-body
+  line-height: 1.5
+  font-family: $blueprint-font-family
+  color: black
+  background: none
+  font-size: 10pt
+</pre>
+<pre class="brush: scss source-code scss">@mixin blueprint-print-body {
+  line-height: 1.5;
+  font-family: $blueprint-font-family;
+  color: black;
+  background: none;
+  font-size: 10pt;
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-blueprint-print-defaults-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-blueprint-print-defaults">
+<a class="permalink" href="#mixin-blueprint-print-defaults">blueprint-print-defaults</a>
+</h3>
+<div class="mixin-source" id="mixin-blueprint-print-defaults-source">
+<pre class="brush: sass source-code sass">=blueprint-print-defaults
+  .container
+    background: none
+  hr
+    background: #cccccc
+    color: #cccccc
+    width: 100%
+    height: 2px
+    margin: 2em 0
+    padding: 0
+    border: none
+    &amp;.space
+      background: white
+      color: white
+  h1, h2, h3, h4, h5, h6
+    font-family: $blueprint-font-family
+  code
+    font:
+      size: 0.9em
+      family: $blueprint-fixed-font-family
+  a
+    img
+      border: none
+    &amp;:link,
+    &amp;:visited
+      background: transparent
+      font-weight: 700
+      text-decoration: underline
+  p img.top
+    margin-top: 0
+  blockquote
+    margin: 1.5em
+    padding: 1em
+    font-style: italic
+    font-size: 0.9em
+  .small
+    font-size: 0.9em
+  .large
+    font-size: 1.1em
+  .quiet
+    color: #999999
+  .hide
+    display: none
+</pre>
+<pre class="brush: scss source-code scss">@mixin blueprint-print-defaults {
+  .container {
+    background: none;
+  }
+  hr {
+    background: #cccccc;
+    color: #cccccc;
+    width: 100%;
+    height: 2px;
+    margin: 2em 0;
+    padding: 0;
+    border: none;
+    &amp;.space {
+      background: white;
+      color: white;
+    }
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: $blueprint-font-family;
+  }
+  code {
+    font: {
+      size: 0.9em;
+      family: $blueprint-fixed-font-family;
+    };
+  }
+  a {
+    img {
+      border: none;
+    }
+    &amp;:link,
+    &amp;:visited {
+      background: transparent;
+      font-weight: 700;
+      text-decoration: underline;
+    }
+  }
+  p img.top {
+    margin-top: 0;
+  }
+  blockquote {
+    margin: 1.5em;
+    padding: 1em;
+    font-style: italic;
+    font-size: 0.9em;
+  }
+  .small {
+    font-size: 0.9em;
+  }
+  .large {
+    font-size: 1.1em;
+  }
+  .quiet {
+    color: #999999;
+  }
+  .hide {
+    display: none;
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div></section>
+
+</body>
+</html>

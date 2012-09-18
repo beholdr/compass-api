@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Two Column Layout | Compass API
+</title>
+</head>
+<body class=' demo' id='examples-blueprint-grid-two-cols'><div id='reference'><a href="/reference/blueprint/grid/">Reference Documentation</a></div>
+<h1>Demo: Two Column Layout</h1>
+<div id='demo'><div class='two-col'>
+  <div id='header'>
+    <h1>This is the Header</h1>
+  </div>
+  <div id='sidebar'>
+    <ul>
+      <li>
+        <a href='#'>Nav #1</a>
+      </li>
+      <li>
+        <a href='#'>Nav #2</a>
+      </li>
+      <li>
+        <a href='#'>Nav #3</a>
+      </li>
+    </ul>
+  </div>
+  <div id='content'>
+    <p>
+      Lorem ipsum dolor sit amet,
+      consectetur adipisicing elit, sed do
+      eiusmod tempor incididunt ut labore et
+      dolore magna aliqua.
+    </p>
+  </div>
+  <div id='footer'>
+    This is the footer.
+  </div>
+</div>
+</div>
+
+<div id='how'>
+<section id='markup'>
+<div class='syntax_pref'>
+<a href='#' rel='html'>html</a>
+<a href='#' rel='haml'>haml</a>
+</div>
+<div class='example-source'>
+<pre class='source-code html'>&lt;div class='two-col'&gt;
+  &lt;div id='header'&gt;
+    &lt;h1&gt;This is the Header&lt;/h1&gt;
+  &lt;/div&gt;
+  &lt;div id='sidebar'&gt;
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;a href='#'&gt;Nav #1&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;a href='#'&gt;Nav #2&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;a href='#'&gt;Nav #3&lt;/a&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+  &lt;div id='content'&gt;
+    &lt;p&gt;
+      Lorem ipsum dolor sit amet,
+      consectetur adipisicing elit, sed do
+      eiusmod tempor incididunt ut labore et
+      dolore magna aliqua.
+    &lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div id='footer'&gt;
+    This is the footer.
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+<pre class='source-code haml'>.two-col
+  #header
+    %h1 This is the Header
+  #sidebar
+    %ul
+      %li
+        %a(href=&quot;#&quot;) Nav #1
+      %li
+        %a(href=&quot;#&quot;) Nav #2
+      %li
+        %a(href=&quot;#&quot;) Nav #3
+  #content
+    %p
+      Lorem ipsum dolor sit amet,
+      consectetur adipisicing elit, sed do
+      eiusmod tempor incididunt ut labore et
+      dolore magna aliqua.
+  #footer
+    This is the footer.
+</pre>
+</div>
+</section>
+<section id='styles'>
+<div class='syntax_pref'>
+<a href='#' rel='scss'>scss</a>
+<a href='#' rel='sass'>sass</a>
+<a href='#' rel='css'>css</a>
+</div>
+<div class='example-source'>
+<pre class='source-code scss'>$blueprint_grid_columns: 8;
+$blueprint_grid_width: 40px;
+
+@import &quot;blueprint&quot;;
+
+.two-col {
+  @include container;
+  background-color: #cccccc;
+  #header, #footer {
+    @include column(8);
+  }
+  #sidebar {
+    @include column(3);
+  }
+  #content {
+    @include column(5, true);
+  }
+}
+</pre>
+<pre class='source-code sass'>$blueprint_grid_columns : 8
+$blueprint_grid_width : 40px
+
+@import blueprint
+
+.two-col
+  +container
+  background-color: #ccc
+  #header, #footer
+    +column(8)
+  #sidebar
+    +column(3)
+  #content
+    +column(5, true)
+  
+ </pre>
+<pre class='source-code css'>.two-col{width:390px;margin:0 auto;overflow:hidden;*zoom:1;background-color:#ccc}.two-col #header,.two-col #footer{display:inline;float:left;margin-right:10px;width:390px}* html .two-col #header,* html .two-col #footer{overflow-x:hidden}.two-col #sidebar{display:inline;float:left;margin-right:10px;width:140px}* html .two-col #sidebar{overflow-x:hidden}.two-col #content{display:inline;float:left;margin-right:0;width:240px}* html .two-col #content{overflow-x:hidden}
+</pre>
+</div>
+</section>
+</div>
+
+
+</body>
+</html>

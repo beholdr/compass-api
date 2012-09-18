@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Background Clip | Compass API
+</title>
+</head>
+<body class=' reference core css3' id='reference-compass-css3-background-clip'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/compass/stylesheets/compass/css3/_background-clip.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Compass Background Clip</h1>
+<p>
+Provides a mixin for <code>background-clip</code>. See <a href="http://www.w3.org/TR/2009/CR-css3-background-20091217/#background-clip">CSS3 spec: background-clip</a>.
+</p>
+
+<p>
+This file can be imported using:
+<code>@import "compass/css3/background-clip"</code>
+</p>
+<h2>Examples</h2>
+<dl class="examples">
+<dt><a href="/examples/compass/css3/background-clip/">Background Clip</a></dt>
+<dd>See background-clip in action.</dd>
+</dl><h2>Imports</h2>
+<ol>
+<li>
+<a href="/reference/compass/css3/shared/" title="@import shared">Shared Utilities</a>
+</li>
+</ol><h2>
+Configurable Variables
+<a class="help" href="/help/tutorials/configurable-variables/">help</a>
+</h2>
+<h3 class="constant" id="const-default-background-clip">
+<a class="permalink" href="#const-default-background-clip">$default-background-clip</a>
+<code>padding-box</code>
+</h3>
+<p></p><p>The default value is <code>padding-box</code> -- the box model used by modern browsers.</p>
+
+<p>If you wish to do so, you can override the default constant with <code>border-box</code></p>
+
+<p>To override to the default border-box model, use this code:</p>
+
+<pre><code>$default-background-clip: border-box
+</code></pre>
+
+
+
+
+<h2>Mixins</h2>
+<a href="#mixin-background-clip-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-background-clip">
+<a class="permalink" href="#mixin-background-clip">background-clip(<span class="arg" data-default-value="$default-background-clip">$clip</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-background-clip-source">
+<pre class="brush: sass source-code sass">=background-clip($clip: $default-background-clip)
+  // webkit and mozilla use the deprecated short [border | padding]
+  $clip: unquote($clip)
+  $deprecated: $clip
+  @if $clip == padding-box
+    $deprecated: padding
+  @if $clip == border-box
+    $deprecated: border
+  // Support for webkit and mozilla's use of the deprecated short form
+  +experimental(background-clip, $deprecated, -moz, -webkit, not -o, not -ms, not -khtml, not official)
+  +experimental(background-clip, $clip, not -moz, not -webkit, not -o, not -ms, -khtml, official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin background-clip($clip: $default-background-clip) {
+  // webkit and mozilla use the deprecated short [border | padding]
+  $clip: unquote($clip);
+  $deprecated: $clip;
+  @if $clip == padding-box {
+    $deprecated: padding;
+  }
+  @if $clip == border-box {
+    $deprecated: border;
+  }
+  // Support for webkit and mozilla's use of the deprecated short form
+  @include experimental(background-clip, $deprecated, -moz, -webkit, not -o, not -ms, not -khtml, not official);
+  @include experimental(background-clip, $clip, not -moz, not -webkit, not -o, not -ms, -khtml, official);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Clip the background (image and color) at the edge of the padding or border.</p>
+
+<p>Legal Values:</p>
+
+<ul>
+<li>padding-box</li>
+<li>border-box</li>
+<li>text</li>
+</ul>
+</div></section>
+
+</body>
+</html>

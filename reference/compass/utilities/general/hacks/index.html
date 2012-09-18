@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Hacks | Compass API
+</title>
+</head>
+<body class=' reference core utilities' id='reference-compass-utilities-general-hacks'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/compass/stylesheets/compass/utilities/general/_hacks.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Compass Hacks</h1>
+<p>
+A collection of mixins for hacking specific browsers.
+</p>
+
+<p>
+This file can be imported using:
+<code>@import "compass/utilities/general/hacks"</code>
+</p>
+
+<h2>Imports</h2>
+<ol>
+<li>
+<a href="/reference/compass/support/" title="@import compass/support">Browser Support</a>
+– Provides configuration options for the Compass Browser Support Matrix.
+</li>
+</ol><h2>
+Configurable Variables
+<a class="help" href="/help/tutorials/configurable-variables/">help</a>
+</h2>
+<h3 class="constant" id="const-default-has-layout-approach">
+<a class="permalink" href="#const-default-has-layout-approach">$default-has-layout-approach</a>
+<code>zoom</code>
+</h3>
+<p></p><p>The <code>zoom</code> approach generates less CSS but does not validate.
+Set this to <code>block</code> to use the display-property to hack the
+element to gain layout.</p>
+
+
+
+
+<h2>Mixins</h2>
+<a href="#mixin-has-layout-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-has-layout">
+<a class="permalink" href="#mixin-has-layout">has-layout(<span class="arg" data-default-value="$default-has-layout-approach">$approach</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-has-layout-source">
+<pre class="brush: sass source-code sass">=has-layout($approach: $default-has-layout-approach)
+  @if $legacy-support-for-ie
+    @if $approach == zoom
+      +has-layout-zoom
+    @else if $approach == block
+      +has-layout-block
+    @else
+      @warn "Unknown has-layout approach: #{$approach}"
+      +has-layout-zoom
+</pre>
+<pre class="brush: scss source-code scss">@mixin has-layout($approach: $default-has-layout-approach) {
+  @if $legacy-support-for-ie {
+    @if $approach == zoom {
+      @include has-layout-zoom;
+    }
+    @else if $approach == block {
+      @include has-layout-block;
+    }
+    @else {
+      @warn "Unknown has-layout approach: #{$approach}";
+      @include has-layout-zoom;
+    }
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>This mixin causes an element matching the selector
+to gain the "hasLayout" property in internet explorer.
+More information on <a href="http://reference.sitepoint.com/css/haslayout">hasLayout</a>.</p>
+
+</div>
+<a href="#mixin-has-layout-zoom-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-has-layout-zoom">
+<a class="permalink" href="#mixin-has-layout-zoom">has-layout-zoom</a>
+</h3>
+<div class="mixin-source" id="mixin-has-layout-zoom-source">
+<pre class="brush: sass source-code sass">=has-layout-zoom
+  @if $legacy-support-for-ie6 or $legacy-support-for-ie7
+    *zoom: 1
+</pre>
+<pre class="brush: scss source-code scss">@mixin has-layout-zoom {
+  @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
+    *zoom: 1;
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-has-layout-block-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-has-layout-block">
+<a class="permalink" href="#mixin-has-layout-block">has-layout-block</a>
+</h3>
+<div class="mixin-source" id="mixin-has-layout-block-source">
+<pre class="brush: sass source-code sass">=has-layout-block
+  @if $legacy-support-for-ie
+    // This makes ie6 get layout
+    display: inline-block
+    // and this puts it back to block
+    &amp;
+      display: block
+</pre>
+<pre class="brush: scss source-code scss">@mixin has-layout-block {
+  @if $legacy-support-for-ie {
+    // This makes ie6 get layout
+    display: inline-block;
+    // and this puts it back to block
+    &amp; {
+      display: block;
+    }
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-bang-hack-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-bang-hack">
+<a class="permalink" href="#mixin-bang-hack">bang-hack(<span class="arg">$property</span>, <span class="arg">$value</span>, <span class="arg">$ie6-value</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-bang-hack-source">
+<pre class="brush: sass source-code sass">=bang-hack($property, $value, $ie6-value)
+  @if $legacy-support-for-ie6
+    #{$property}: #{$value} !important
+    #{$property}: #{$ie6-value}
+</pre>
+<pre class="brush: scss source-code scss">@mixin bang-hack($property, $value, $ie6-value) {
+  @if $legacy-support-for-ie6 {
+    #{$property}: #{$value} !important;
+    #{$property}: #{$ie6-value};
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>A hack to supply IE6 (and below) with a different property value.
+<a href="http://www.cssportal.com/css-hacks/#in_css-important">Read more</a>.</p>
+
+</div></section>
+
+</body>
+</html>

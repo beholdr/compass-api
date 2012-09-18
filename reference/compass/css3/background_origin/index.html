@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Background Origin | Compass API
+</title>
+</head>
+<body class=' reference core css3' id='reference-compass-css3-background-origin'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/compass/stylesheets/compass/css3/_background-origin.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Compass Background Origin</h1>
+<p>
+Provides a mixin for the background origin property. See <a href="http://www.w3.org/TR/css3-background/#the-background-origin">CSS3 spec: background-origin property</a>.
+</p>
+
+<p>
+This file can be imported using:
+<code>@import "compass/css3/background-origin"</code>
+</p>
+<h2>Examples</h2>
+<dl class="examples">
+<dt><a href="/examples/compass/css3/background-origin/">Background Origin</a></dt>
+<dd>See background-origin in action.</dd>
+</dl><h2>Imports</h2>
+<ol>
+<li>
+<a href="/reference/compass/css3/shared/" title="@import shared">Shared Utilities</a>
+</li>
+</ol><h2>
+Configurable Variables
+<a class="help" href="/help/tutorials/configurable-variables/">help</a>
+</h2>
+<h3 class="constant" id="const-default-background-origin">
+<a class="permalink" href="#const-default-background-origin">$default-background-origin</a>
+<code>content-box</code>
+</h3>
+
+
+
+<h2>Mixins</h2>
+<a href="#mixin-background-origin-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-background-origin">
+<a class="permalink" href="#mixin-background-origin">background-origin(<span class="arg" data-default-value="$default-background-origin">$origin</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-background-origin-source">
+<pre class="brush: sass source-code sass">=background-origin($origin: $default-background-origin)
+  $origin: unquote($origin)
+  // webkit and mozilla use the deprecated short [border | padding | content]
+  $deprecated: $origin
+  @if $origin == padding-box
+    $deprecated: padding
+  @if $origin == border-box
+    $deprecated: border
+  @if $origin == content-box
+    $deprecated: content
+  // Support for webkit and mozilla's use of the deprecated short form
+  +experimental(background-origin, $deprecated, -moz, -webkit, not -o, not -ms, not -khtml, not official)
+  +experimental(background-origin, $origin, not -moz, not -webkit, -o, -ms, -khtml, official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin background-origin($origin: $default-background-origin) {
+  $origin: unquote($origin);
+  // webkit and mozilla use the deprecated short [border | padding | content]
+  $deprecated: $origin;
+  @if $origin == padding-box {
+    $deprecated: padding;
+  }
+  @if $origin == border-box {
+    $deprecated: border;
+  }
+  @if $origin == content-box {
+    $deprecated: content;
+  }
+  // Support for webkit and mozilla's use of the deprecated short form
+  @include experimental(background-origin, $deprecated, -moz, -webkit, not -o, not -ms, not -khtml, not official);
+  @include experimental(background-origin, $origin, not -moz, not -webkit, -o, -ms, -khtml, official);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Position the background off the edge of the padding, border or content</p>
+
+<ul>
+<li>Possible values:
+
+<ul>
+<li><code>padding-box</code></li>
+<li><code>border-box</code></li>
+<li><code>content-box</code></li>
+</ul>
+</li>
+<li>browser defaults to <code>padding-box</code>
+</li>
+<li>mixin defaults to <code>content-box</code>
+</li>
+</ul>
+</div></section>
+
+</body>
+</html>

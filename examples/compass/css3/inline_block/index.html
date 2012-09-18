@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Inline-block | Compass API
+</title>
+</head>
+<body class=' demo' id='examples-compass-css3-inline-block'><div id='reference'><a href="/reference/compass/css3/inline_block/">Reference Documentation</a></div>
+<h1>Demo: Inline-block</h1>
+<div id='demo'><p>
+  this is an
+  <span id='inline-block'>inline block</span>
+</p>
+</div>
+
+<div id='how'>
+<section id='markup'>
+<div class='syntax_pref'>
+<a href='#' rel='html'>html</a>
+<a href='#' rel='haml'>haml</a>
+</div>
+<div class='example-source'>
+<pre class='source-code html'>&lt;p&gt;
+  this is an
+  &lt;span id='inline-block'&gt;inline block&lt;/span&gt;
+&lt;/p&gt;
+</pre>
+<pre class='source-code haml'>%p
+  this is an
+  %span(id=&quot;inline-block&quot;) inline block
+</pre>
+</div>
+</section>
+<section id='styles'>
+<div class='syntax_pref'>
+<a href='#' rel='scss'>scss</a>
+<a href='#' rel='sass'>sass</a>
+<a href='#' rel='css'>css</a>
+</div>
+<div class='example-source'>
+<pre class='source-code scss'>@import &quot;compass/css3&quot;;
+
+#inline-block {
+  @include inline-block;
+  padding: 4px 10px;
+  background: red;
+  color: white;
+}
+</pre>
+<pre class='source-code sass'>@import compass/css3
+
+#inline-block
+  +inline-block
+  padding: 4px 10px
+  background: red
+  color: white
+</pre>
+<pre class='source-code css'>#inline-block{display:-moz-inline-stack;display:inline-block;vertical-align:middle;*vertical-align:auto;zoom:1;*display:inline;padding:4px 10px;background:red;color:#fff}
+</pre>
+</div>
+</section>
+</div>
+
+
+</body>
+</html>

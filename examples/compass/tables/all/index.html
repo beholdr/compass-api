@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Table Example | Compass API
+</title>
+</head>
+<body class=' demo' id='examples-compass-tables-all'><div id='reference'><a href="/reference/compass/utilities/tables/">Reference Documentation</a></div>
+<h1>Demo: Compass Table Example</h1>
+<div id='demo'><div class='example'>
+  <table cellspacing='0'>
+    <thead>
+      <tr class='odd'>
+        <th>Title</th>
+        <th>One</th>
+        <th>Two</th>
+        <th>Three</th>
+        <th>Four</th>
+        <th>Row Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class='even'>
+        <th>Single</th>
+        <td class='numeric'>1.0</td>
+        <td class='numeric'>2.0</td>
+        <td class='numeric'>3.0</td>
+        <td class='numeric'>4.0</td>
+        <td class='numeric'>10.0</td>
+      </tr>
+      <tr class='odd'>
+        <th>Tens</th>
+        <td class='numeric'>10.0</td>
+        <td class='numeric'>20.0</td>
+        <td class='numeric'>30.0</td>
+        <td class='numeric'>40.0</td>
+        <td class='numeric'>100.0</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr class='even'>
+        <th>Total</th>
+        <td class='numeric'>11.0</td>
+        <td class='numeric'>22.0</td>
+        <td class='numeric'>33.0</td>
+        <td class='numeric'>44.0</td>
+        <td class='numeric'>110.0</td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+</div>
+
+<div id='how'>
+<section id='markup'>
+<div class='syntax_pref'>
+<a href='#' rel='html'>html</a>
+<a href='#' rel='haml'>haml</a>
+</div>
+<div class='example-source'>
+<pre class='source-code html'>&lt;div class='example'&gt;
+  &lt;table cellspacing='0'&gt;
+    &lt;thead&gt;
+      &lt;tr class='odd'&gt;
+        &lt;th&gt;Title&lt;/th&gt;
+        &lt;th&gt;One&lt;/th&gt;
+        &lt;th&gt;Two&lt;/th&gt;
+        &lt;th&gt;Three&lt;/th&gt;
+        &lt;th&gt;Four&lt;/th&gt;
+        &lt;th&gt;Row Total&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr class='even'&gt;
+        &lt;th&gt;Single&lt;/th&gt;
+        &lt;td class='numeric'&gt;1.0&lt;/td&gt;
+        &lt;td class='numeric'&gt;2.0&lt;/td&gt;
+        &lt;td class='numeric'&gt;3.0&lt;/td&gt;
+        &lt;td class='numeric'&gt;4.0&lt;/td&gt;
+        &lt;td class='numeric'&gt;10.0&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr class='odd'&gt;
+        &lt;th&gt;Tens&lt;/th&gt;
+        &lt;td class='numeric'&gt;10.0&lt;/td&gt;
+        &lt;td class='numeric'&gt;20.0&lt;/td&gt;
+        &lt;td class='numeric'&gt;30.0&lt;/td&gt;
+        &lt;td class='numeric'&gt;40.0&lt;/td&gt;
+        &lt;td class='numeric'&gt;100.0&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+    &lt;tfoot&gt;
+      &lt;tr class='even'&gt;
+        &lt;th&gt;Total&lt;/th&gt;
+        &lt;td class='numeric'&gt;11.0&lt;/td&gt;
+        &lt;td class='numeric'&gt;22.0&lt;/td&gt;
+        &lt;td class='numeric'&gt;33.0&lt;/td&gt;
+        &lt;td class='numeric'&gt;44.0&lt;/td&gt;
+        &lt;td class='numeric'&gt;110.0&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tfoot&gt;
+  &lt;/table&gt;
+&lt;/div&gt;
+</pre>
+<pre class='source-code haml'>.example
+  %table{:cellspacing =&gt; &quot;0&quot;}
+    %thead
+      %tr.odd
+        %th Title
+        %th One
+        %th Two
+        %th Three
+        %th Four
+        %th Row Total
+    %tbody
+      %tr.even
+        %th Single
+        %td.numeric 1.0
+        %td.numeric 2.0
+        %td.numeric 3.0
+        %td.numeric 4.0
+        %td.numeric 10.0
+      %tr.odd
+        %th Tens
+        %td.numeric 10.0
+        %td.numeric 20.0
+        %td.numeric 30.0
+        %td.numeric 40.0
+        %td.numeric 100.0
+    %tfoot
+      %tr.even
+        %th Total
+        %td.numeric 11.0
+        %td.numeric 22.0
+        %td.numeric 33.0
+        %td.numeric 44.0
+        %td.numeric 110.0
+</pre>
+</div>
+</section>
+<section id='styles'>
+<div class='syntax_pref'>
+<a href='#' rel='scss'>scss</a>
+<a href='#' rel='sass'>sass</a>
+<a href='#' rel='css'>css</a>
+</div>
+<div class='example-source'>
+<pre class='source-code scss'>@import &quot;compass/utilities/tables&quot;;
+
+.example {
+  table {
+    $table-color: #7a98c6;
+    @include table-scaffolding;
+    @include inner-table-borders(1px, darken($table-color, 40%));
+    @include outer-table-borders(2px);
+    @include alternating-rows-and-columns($table-color, adjust-hue($table-color, -120deg), #222222);
+  }
+}
+</pre>
+<pre class='source-code sass'>@import &quot;compass/utilities/tables&quot;
+.example
+  table
+    $table-color : #7a98c6
+    +table-scaffolding
+    +inner-table-borders(1px, darken($table-color, 40%))
+    +outer-table-borders(2px)
+    +alternating-rows-and-columns($table-color, adjust-hue($table-color, -120deg), #222)
+</pre>
+<pre class='source-code css'>.example table{border:2px solid #000}.example table th{text-align:center;font-weight:bold}.example table td,.example table th{padding:2px}.example table td.numeric,.example table th.numeric{text-align:right}.example table th,.example table td{border-right:1px solid #233551;border-bottom:1px solid #233551;border-left-width:0px;border-top-width:0px}.example table th:last-child,.example table th.last,.example table td:last-child,.example table td.last{border-right-width:0px}.example table tbody tr:last-child th,.example table tbody tr:last-child td,.example table tfoot tr:last-child th,.example table tfoot tr:last-child td{border-bottom-width:0px}.example table tbody tr.last th,.example table tbody tr.last td,.example table tfoot tr.last th,.example table tfoot tr.last td{border-bottom-width:0px}.example table thead th{border-bottom:2px solid #000}.example table tfoot th,.example table tfoot td{border-top:2px solid #000}.example table th:first-child{border-right:2px solid #000}.example table th{background-color:#fff}.example table th.even,.example table th:nth-child(2n){background-color:#ddd}.example table tr.odd td,.example table tr:nth-child(2n+1) td{background-color:#98c67a}.example table tr.odd td.even,.example table tr.odd td:nth-child(2n),.example table tr:nth-child(2n+1) td.even,.example table tr:nth-child(2n+1) td:nth-child(2n){background-color:#76a458}.example table tr.even td{background-color:#7a98c6}.example table tr.even td.even,.example table tr.even td:nth-child(2n){background-color:#5876a4}.example table tfoot th,.example table tfoot td{background-color:#fff}.example table tfoot th.even,.example table tfoot th:nth-child(2n),.example table tfoot td.even,.example table tfoot td:nth-child(2n){background-color:#ddd}
+</pre>
+</div>
+</section>
+</div>
+
+
+</body>
+</html>

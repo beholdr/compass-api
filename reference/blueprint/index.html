@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Blueprint Module | Compass API
+</title>
+</head>
+<body class=' reference blueprint' id='reference-blueprint'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/blueprint/stylesheets/_blueprint.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Blueprint Module</h1>
+<p>The blueprint module is a simple way of importing all of the most
+commonly used blueprint modules. In addition, it provides
+a single mixin, <code class="mixin">+blueprint</code>, that
+can be used to generate the blueprint css styles.</p>
+
+<h3>Installing</h3>
+
+<p>To create a project using blueprint:</p>
+
+<pre><code>compass create my_project --using blueprint
+</code></pre>
+
+<p>To add blueprint to an existing compass project:</p>
+
+<pre><code>compass install blueprint
+</code></pre>
+
+<p>To add blueprint and compass to a Rails project:</p>
+
+<pre><code>compass init rails --using blueprint
+</code></pre>
+
+<h3>Alternate Project Layouts</h3>
+
+<p>For any of the above commands you could have also selected
+the <code>blueprint/basic</code> or <code>blueprint/semantic</code> patterns. The basic
+pattern assumes that you'll start out using conventional class-based
+blueprint styling techniques, while the semantic template
+assumes that you'll be using mixins and <code>@extend</code> to style
+your site. Example:</p>
+
+<pre><code>compass create my_project --using blueprint/semantic
+</code></pre>
+
+<p>
+This file can be imported using:
+<code>@import "blueprint"</code>
+</p>
+
+<h2>Imports</h2>
+<ol>
+<li>
+<a href="/reference/blueprint/colors/" title="@import blueprint/colors">Colors</a>
+</li>
+<li>
+<a href="/reference/blueprint/debug/" title="@import blueprint/debug">Debug</a>
+</li>
+<li>
+<a href="/reference/blueprint/form/" title="@import blueprint/form">Form</a>
+</li>
+<li>
+<a href="/reference/blueprint/grid/" title="@import blueprint/grid">Grid</a>
+</li>
+<li>
+<a href="/reference/blueprint/ie/" title="@import blueprint/ie">Internet Explorer</a>
+</li>
+<li>
+<a href="/reference/blueprint/interaction/" title="@import blueprint/interaction">Interaction</a>
+</li>
+<li>
+<a href="/reference/blueprint/print/" title="@import blueprint/print">Print</a>
+</li>
+<li>
+<a href="/reference/blueprint/typography/" title="@import blueprint/typography">Typography</a>
+</li>
+<li>
+<a href="/reference/blueprint/utilities/" title="@import blueprint/utilities">Utilities</a>
+</li>
+</ol><h2>Mixins</h2>
+<a href="#mixin-blueprint-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-blueprint">
+<a class="permalink" href="#mixin-blueprint">blueprint(<span class="arg" data-default-value="false">$nested</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-blueprint-source">
+<pre class="brush: sass source-code sass">=blueprint($nested: false)
+  +blueprint-typography($nested)
+  +blueprint-utilities
+  +blueprint-grid
+  +blueprint-debug
+  +blueprint-interaction
+  +blueprint-form
+</pre>
+<pre class="brush: scss source-code scss">@mixin blueprint($nested: false) {
+  @include blueprint-typography($nested);
+  @include blueprint-utilities;
+  @include blueprint-grid;
+  @include blueprint-debug;
+  @include blueprint-interaction;
+  @include blueprint-form;
+}
+</pre>
+</div>
+<div class="source-documentation">
+<h3>Usage examples:</h3>
+
+<p>As a top-level mixin, apply to any page that includes the stylesheet:</p>
+
+<pre class="brush: sass source-code sass">
++blueprint
+</pre>
+
+
+<p>Scoped by a presentational class:</p>
+
+<pre class="brush: sass source-code sass">
+body.blueprint
+  +blueprint(true)
+</pre>
+
+
+<p>Scoped by semantic selectors:</p>
+
+<pre class="brush: sass source-code sass">
+body#page-1, body#page-2, body.a-special-page-type
+  +blueprint(true)
+</pre>
+
+
+</div></section>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Blueprint Utilities | Compass API
+</title>
+</head>
+<body class=' reference blueprint' id='reference-blueprint-utilities'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/blueprint/stylesheets/blueprint/_utilities.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Blueprint Utilities</h1>
+<p>
+Some utility classes.
+</p>
+
+<p>
+This file can be imported using:
+<code>@import "blueprint/utilities"</code>
+</p>
+
+<h2>Imports</h2>
+<ol>
+<li>
+<a href="/reference/compass/typography/text/nowrap/" title="@import compass/typography/text/nowrap">No Wrap</a>
+– Remembering whether or not there's a hyphen in white-space is too hard.
+</li>
+<li>
+<a href="/reference/compass/utilities/general/clearfix/" title="@import compass/utilities/general/clearfix">Clearfix</a>
+– Mixins for clearfixing.
+</li>
+</ol><h2>Mixins</h2>
+<a href="#mixin-blueprint-utilities-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-blueprint-utilities">
+<a class="permalink" href="#mixin-blueprint-utilities">blueprint-utilities</a>
+</h3>
+<div class="mixin-source" id="mixin-blueprint-utilities-source">
+<pre class="brush: sass source-code sass">=blueprint-utilities
+  // Regular clearing apply to column that should drop below previous ones.
+  .clear
+    clear: both
+  // turn off text wrapping for the element.
+  .nowrap
+    +nowrap
+  // Apply to an element that has floated children to make the bottom
+  // of the element fall _below_ the floated children.
+  .clearfix
+    +clearfix
+  .small
+    font-size: 0.8em
+    margin-bottom: 1.875em
+    line-height: 1.875em
+  .large
+    font-size: 1.2em
+    line-height: 2.5em
+    margin-bottom: 1.25em
+  .first
+    margin-left: 0
+    padding-left: 0
+  .last
+    margin-right: 0
+    padding-right: 0
+  .top
+    margin-top: 0
+    padding-top: 0
+  .bottom
+    margin-bottom: 0
+    padding-bottom: 0
+</pre>
+<pre class="brush: scss source-code scss">@mixin blueprint-utilities {
+  // Regular clearing apply to column that should drop below previous ones.
+  .clear {
+    clear: both;
+  }
+  // turn off text wrapping for the element.
+  .nowrap {
+    @include nowrap;
+  }
+  // Apply to an element that has floated children to make the bottom
+  // of the element fall _below_ the floated children.
+  .clearfix {
+    @include clearfix;
+  }
+  .small {
+    font-size: 0.8em;
+    margin-bottom: 1.875em;
+    line-height: 1.875em;
+  }
+  .large {
+    font-size: 1.2em;
+    line-height: 2.5em;
+    margin-bottom: 1.25em;
+  }
+  .first {
+    margin-left: 0;
+    padding-left: 0;
+  }
+  .last {
+    margin-right: 0;
+    padding-right: 0;
+  }
+  .top {
+    margin-top: 0;
+    padding-top: 0;
+  }
+  .bottom {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Most of these utility classes are not "semantic". If you use them,
+you are mixing your content and presentation. For shame!</p>
+
+</div></section>
+
+</body>
+</html>

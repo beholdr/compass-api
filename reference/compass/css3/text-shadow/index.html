@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Text Shadow | Compass API
+</title>
+</head>
+<body class=' reference core css3' id='reference-compass-css3-text-shadow'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/compass/stylesheets/compass/css3/_text-shadow.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Compass Text Shadow</h1>
+<p>
+Provides a mixin for CSS text shadows. See <a href="http://www.w3.org/TR/2003/CR-css3-text-20030514/#text-shadows">CSS3 spec: text-shadow</a>.
+</p>
+
+<p>
+This file can be imported using:
+<code>@import "compass/css3/text-shadow"</code>
+</p>
+<h2>Examples</h2>
+<dl class="examples">
+<dt><a href="/examples/compass/css3/text_shadow/">Text-shadow</a></dt>
+<dd>css3 mixin for text-shadow</dd>
+</dl><h2>Imports</h2>
+<ol>
+<li>
+<a href="/reference/compass/css3/shared/" title="@import shared">Shared Utilities</a>
+</li>
+</ol><h2>
+Configurable Variables
+<a class="help" href="/help/tutorials/configurable-variables/">help</a>
+</h2>
+<h3 class="constant" id="const-default-text-shadow-color">
+<a class="permalink" href="#const-default-text-shadow-color">$default-text-shadow-color</a>
+<code><span class="color">#aaaaaa</span></code>
+</h3>
+<p></p><p>These defaults make the arguments optional for this mixin
+If you like, set different defaults in your project</p>
+
+<h3 class="constant" id="const-default-text-shadow-h-offset">
+<a class="permalink" href="#const-default-text-shadow-h-offset">$default-text-shadow-h-offset</a>
+<code>0px</code>
+</h3>
+<h3 class="constant" id="const-default-text-shadow-v-offset">
+<a class="permalink" href="#const-default-text-shadow-v-offset">$default-text-shadow-v-offset</a>
+<code>0px</code>
+</h3>
+<h3 class="constant" id="const-default-text-shadow-blur">
+<a class="permalink" href="#const-default-text-shadow-blur">$default-text-shadow-blur</a>
+<code>1px</code>
+</h3>
+<h3 class="constant" id="const-default-text-shadow-spread">
+<a class="permalink" href="#const-default-text-shadow-spread">$default-text-shadow-spread</a>
+<code>false</code>
+</h3>
+
+
+
+<h2>Mixins</h2>
+<a href="#mixin-text-shadow-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-text-shadow">
+<a class="permalink" href="#mixin-text-shadow">text-shadow(<span class="arg" data-default-value="default">$shadow-1</span>, <span class="arg" data-default-value="false">$shadow-2</span>, <span class="arg" data-default-value="false">$shadow-3</span>, <span class="arg" data-default-value="false">$shadow-4</span>, <span class="arg" data-default-value="false">$shadow-5</span>, <span class="arg" data-default-value="false">$shadow-6</span>, <span class="arg" data-default-value="false">$shadow-7</span>, <span class="arg" data-default-value="false">$shadow-8</span>, <span class="arg" data-default-value="false">$shadow-9</span>, <span class="arg" data-default-value="false">$shadow-10</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-text-shadow-source">
+<pre class="brush: sass source-code sass">=text-shadow($shadow-1: default, $shadow-2: false, $shadow-3: false, $shadow-4: false, $shadow-5: false, $shadow-6: false, $shadow-7: false, $shadow-8: false, $shadow-9: false, $shadow-10: false)
+  @if $shadow-1 == default
+    $shadow-1: compact($default-text-shadow-h-offset $default-text-shadow-v-offset $default-text-shadow-blur $default-text-shadow-spread $default-text-shadow-color)
+  $shadows-without-spread: join((), (), comma)
+  $shadows: join((), (), comma)
+  $has-spread: false
+  @each $shadow in compact($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    @if length($shadow) &gt; 4
+      $has-spread: true
+      $shadows-without-spread: append($shadows-without-spread, nth($shadow, 1) nth($shadow, 2) nth($shadow, 3) nth($shadow, 5))
+      $shadows: append($shadows, $shadow)
+    else
+      $shadows-without-spread: append($shadows-without-spread, $shadow)
+      $shadows: append($shadows, $shadow)
+  @if $has-spread
+    text-shadow: $shadows-without-spread
+  text-shadow: $shadows
+</pre>
+<pre class="brush: scss source-code scss">@mixin text-shadow($shadow-1: default, $shadow-2: false, $shadow-3: false, $shadow-4: false, $shadow-5: false, $shadow-6: false, $shadow-7: false, $shadow-8: false, $shadow-9: false, $shadow-10: false) {
+  @if $shadow-1 == default {
+    $shadow-1: compact($default-text-shadow-h-offset $default-text-shadow-v-offset $default-text-shadow-blur $default-text-shadow-spread $default-text-shadow-color);
+  }
+  $shadows-without-spread: join((), (), comma);
+  $shadows: join((), (), comma);
+  $has-spread: false;
+  @each $shadow in compact($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10) {
+    @if length($shadow) &gt; 4 {
+      $has-spread: true;
+      $shadows-without-spread: append($shadows-without-spread, nth($shadow, 1) nth($shadow, 2) nth($shadow, 3) nth($shadow, 5));
+      $shadows: append($shadows, $shadow);
+    }
+    else {
+      $shadows-without-spread: append($shadows-without-spread, $shadow);
+      $shadows: append($shadows, $shadow);
+    }
+  }
+  @if $has-spread {
+    text-shadow: $shadows-without-spread;
+  }
+  text-shadow: $shadows;
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Provides cross-browser text shadows when one or more shadows are needed.
+Each shadow argument should adhere to the standard css3 syntax for the
+text-shadow property.</p>
+
+<p>Note: if any shadow has a spread parameter, this will cause the mixin
+to emit the shadow declaration twice, first without the spread,
+then with the spread included. This allows you to progressively
+enhance the browsers that do support the spread parameter.</p>
+
+</div>
+<a href="#mixin-single-text-shadow-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-single-text-shadow">
+<a class="permalink" href="#mixin-single-text-shadow">single-text-shadow(<span class="arg" data-default-value="false">$hoff</span>, <span class="arg" data-default-value="false">$voff</span>, <span class="arg" data-default-value="false">$blur</span>, <span class="arg" data-default-value="false">$spread</span>, <span class="arg" data-default-value="false">$color</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-single-text-shadow-source">
+<pre class="brush: sass source-code sass">=single-text-shadow($hoff: false, $voff: false, $blur: false, $spread: false, $color: false)
+  // A lot of people think the color comes first. It doesn't.
+  @if type-of($hoff) == color
+    $temp-color: $hoff
+    $hoff: $voff
+    $voff: $blur
+    $blur: $spread
+    $spread: $color
+    $color: $temp-color
+  // Can't rely on default assignment with multiple supported argument orders.
+  $hoff: if($hoff, $hoff, $default-text-shadow-h-offset)
+  $voff: if($voff, $voff, $default-text-shadow-v-offset)
+  $blur: if($blur, $blur, $default-text-shadow-blur)
+  $spread: if($spread, $spread, $default-text-shadow-spread)
+  $color: if($color, $color, $default-text-shadow-color)
+  // We don't need experimental support for this property.
+  @if $color == none or $hoff == none
+    +text-shadow(none)
+  @else
+    +text-shadow(compact($hoff $voff $blur $spread $color))
+</pre>
+<pre class="brush: scss source-code scss">@mixin single-text-shadow($hoff: false, $voff: false, $blur: false, $spread: false, $color: false) {
+  // A lot of people think the color comes first. It doesn't.
+  @if type-of($hoff) == color {
+    $temp-color: $hoff;
+    $hoff: $voff;
+    $voff: $blur;
+    $blur: $spread;
+    $spread: $color;
+    $color: $temp-color;
+  }
+  // Can't rely on default assignment with multiple supported argument orders.
+  $hoff: if($hoff, $hoff, $default-text-shadow-h-offset);
+  $voff: if($voff, $voff, $default-text-shadow-v-offset);
+  $blur: if($blur, $blur, $default-text-shadow-blur);
+  $spread: if($spread, $spread, $default-text-shadow-spread);
+  $color: if($color, $color, $default-text-shadow-color);
+  // We don't need experimental support for this property.
+  @if $color == none or $hoff == none {
+    @include text-shadow(none);
+  }
+  @else {
+    @include text-shadow(compact($hoff $voff $blur $spread $color));
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Provides a single cross-browser CSS text shadow.</p>
+
+<p>Provides sensible defaults for the color, horizontal offset, vertical offset, blur, and spread
+according to the configuration defaults above.</p>
+
+</div></section>
+
+</body>
+</html>

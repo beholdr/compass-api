@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Box Shadow | Compass API
+</title>
+</head>
+<body class=' reference core css3' id='reference-compass-css3-box-shadow'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/compass/stylesheets/compass/css3/_box-shadow.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Compass Box Shadow</h1>
+<p>
+The box-shadow mixins are used to apply an inset or drop shadow to a block element.
+</p>
+
+<p>
+This file can be imported using:
+<code>@import "compass/css3/box-shadow"</code>
+</p>
+<h2>Examples</h2>
+<dl class="examples">
+<dt><a href="/examples/compass/css3/box_shadow/">Box-shadow</a></dt>
+<dd>css3 mixin for box-shadow</dd>
+</dl><h2>Imports</h2>
+<ol>
+<li>
+<a href="/reference/compass/css3/shared/" title="@import shared">Shared Utilities</a>
+</li>
+</ol><h2>
+Configurable Variables
+<a class="help" href="/help/tutorials/configurable-variables/">help</a>
+</h2>
+<h3 class="constant" id="const-default-box-shadow-color">
+<a class="permalink" href="#const-default-box-shadow-color">$default-box-shadow-color</a>
+<code><span class="color">#333333</span></code>
+</h3>
+<p></p><p>The default color for box shadows</p>
+
+<h3 class="constant" id="const-default-box-shadow-h-offset">
+<a class="permalink" href="#const-default-box-shadow-h-offset">$default-box-shadow-h-offset</a>
+<code>0px</code>
+</h3>
+<p></p><p>The default horizontal offset. Positive is to the right.</p>
+
+<h3 class="constant" id="const-default-box-shadow-v-offset">
+<a class="permalink" href="#const-default-box-shadow-v-offset">$default-box-shadow-v-offset</a>
+<code>0px</code>
+</h3>
+<p></p><p>The default vertical offset. Positive is down.</p>
+
+<h3 class="constant" id="const-default-box-shadow-blur">
+<a class="permalink" href="#const-default-box-shadow-blur">$default-box-shadow-blur</a>
+<code>5px</code>
+</h3>
+<p></p><p>The default blur length.</p>
+
+<h3 class="constant" id="const-default-box-shadow-spread">
+<a class="permalink" href="#const-default-box-shadow-spread">$default-box-shadow-spread</a>
+<code>false</code>
+</h3>
+<p></p><p>The default spread length.</p>
+
+<h3 class="constant" id="const-default-box-shadow-inset">
+<a class="permalink" href="#const-default-box-shadow-inset">$default-box-shadow-inset</a>
+<code>false</code>
+</h3>
+<p></p><p>The default shadow inset: inset or false (for standard shadow).</p>
+
+
+
+
+<h2>Mixins</h2>
+<a href="#mixin-box-shadow-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-box-shadow">
+<a class="permalink" href="#mixin-box-shadow">box-shadow(<span class="arg" data-default-value="default">$shadow-1</span>, <span class="arg" data-default-value="false">$shadow-2</span>, <span class="arg" data-default-value="false">$shadow-3</span>, <span class="arg" data-default-value="false">$shadow-4</span>, <span class="arg" data-default-value="false">$shadow-5</span>, <span class="arg" data-default-value="false">$shadow-6</span>, <span class="arg" data-default-value="false">$shadow-7</span>, <span class="arg" data-default-value="false">$shadow-8</span>, <span class="arg" data-default-value="false">$shadow-9</span>, <span class="arg" data-default-value="false">$shadow-10</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-box-shadow-source">
+<pre class="brush: sass source-code sass">=box-shadow($shadow-1: default, $shadow-2: false, $shadow-3: false, $shadow-4: false, $shadow-5: false, $shadow-6: false, $shadow-7: false, $shadow-8: false, $shadow-9: false, $shadow-10: false)
+  @if $shadow-1 == default
+    $shadow-1: -compass-space-list(compact(if($default-box-shadow-inset, inset, false), $default-box-shadow-h-offset, $default-box-shadow-v-offset, $default-box-shadow-blur, $default-box-shadow-spread, $default-box-shadow-color))
+  $shadow: compact($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+  +experimental(box-shadow, $shadow, -moz, -webkit, not -o, not -ms, not -khtml, official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin box-shadow($shadow-1: default, $shadow-2: false, $shadow-3: false, $shadow-4: false, $shadow-5: false, $shadow-6: false, $shadow-7: false, $shadow-8: false, $shadow-9: false, $shadow-10: false) {
+  @if $shadow-1 == default {
+    $shadow-1: -compass-space-list(compact(if($default-box-shadow-inset, inset, false), $default-box-shadow-h-offset, $default-box-shadow-v-offset, $default-box-shadow-blur, $default-box-shadow-spread, $default-box-shadow-color));
+  }
+  $shadow: compact($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10);
+  @include experimental(box-shadow, $shadow, -moz, -webkit, not -o, not -ms, not -khtml, official);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Provides cross-browser for Webkit, Gecko, and CSS3 box shadows when one or more box
+shadows are needed.
+Each shadow argument should adhere to the standard css3 syntax for the
+box-shadow property.</p>
+
+</div>
+<a href="#mixin-single-box-shadow-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-single-box-shadow">
+<a class="permalink" href="#mixin-single-box-shadow">single-box-shadow(<span class="arg" data-default-value="$default-box-shadow-color">$color</span>, <span class="arg" data-default-value="$default-box-shadow-h-offset">$hoff</span>, <span class="arg" data-default-value="$default-box-shadow-v-offset">$voff</span>, <span class="arg" data-default-value="$default-box-shadow-blur">$blur</span>, <span class="arg" data-default-value="$default-box-shadow-spread">$spread</span>, <span class="arg" data-default-value="$default-box-shadow-inset">$inset</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-single-box-shadow-source">
+<pre class="brush: sass source-code sass">=single-box-shadow($color: $default-box-shadow-color, $hoff: $default-box-shadow-h-offset, $voff: $default-box-shadow-v-offset, $blur: $default-box-shadow-blur, $spread: $default-box-shadow-spread, $inset: $default-box-shadow-inset)
+  @if not ($inset == true or $inset == false or $inset == inset)
+    @warn "$inset expected to be true or the inset keyword. Got #{$inset} instead. Using: inset"
+  @if $color == none
+    +box-shadow(none)
+  @else
+    $full: $hoff $voff
+    @if $blur
+      $full: $full $blur
+    @if $spread
+      $full: $full $spread
+    @if $color
+      $full: $full $color
+    @if $inset
+      $full: inset $full
+    +box-shadow($full)
+</pre>
+<pre class="brush: scss source-code scss">@mixin single-box-shadow($color: $default-box-shadow-color, $hoff: $default-box-shadow-h-offset, $voff: $default-box-shadow-v-offset, $blur: $default-box-shadow-blur, $spread: $default-box-shadow-spread, $inset: $default-box-shadow-inset) {
+  @if not ($inset == true or $inset == false or $inset == inset) {
+    @warn "$inset expected to be true or the inset keyword. Got #{$inset} instead. Using: inset";
+  }
+  @if $color == none {
+    @include box-shadow(none);
+  }
+  @else {
+    $full: $hoff $voff;
+    @if $blur {
+      $full: $full $blur;
+    }
+    @if $spread {
+      $full: $full $spread;
+    }
+    @if $color {
+      $full: $full $color;
+    }
+    @if $inset {
+      $full: inset $full;
+    }
+    @include box-shadow($full);
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Provides a single cross-browser CSS box shadow for Webkit, Gecko, and CSS3.
+Includes default arguments for color, horizontal offset, vertical offset, blur length, spread length, and inset.</p>
+
+</div></section>
+
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Blueprint Interaction | Compass API
+</title>
+</head>
+<body class=' reference blueprint' id='reference-blueprint-interaction'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/blueprint/stylesheets/blueprint/_interaction.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Blueprint Interaction</h1>
+<p>
+Some classes that are used in common website interactions.
+</p>
+
+<p>
+This file can be imported using:
+<code>@import "blueprint/interaction"</code>
+</p>
+
+<h2>Imports</h2>
+<ol>
+<li>
+<a href="/reference/blueprint/colors/" title="@import colors">Colors</a>
+</li>
+</ol><h2>Mixins</h2>
+<a href="#mixin-blueprint-interaction-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-blueprint-interaction">
+<a class="permalink" href="#mixin-blueprint-interaction">blueprint-interaction</a>
+</h3>
+<div class="mixin-source" id="mixin-blueprint-interaction-source">
+<pre class="brush: sass source-code sass">=blueprint-interaction
+  .feedback
+    +feedback-base
+  .error
+    +error(feedback)
+  .alert
+    @extend .error
+  .notice
+    +notice(feedback)
+  .success
+    +success(feedback)
+  .info
+    +info(feedback)
+  .hide
+    display: none
+  .highlight
+    +highlight
+  .added
+    +added
+  .removed
+    +removed
+</pre>
+<pre class="brush: scss source-code scss">@mixin blueprint-interaction {
+  .feedback {
+    @include feedback-base;
+  }
+  .error {
+    @include error(feedback);
+  }
+  .alert {
+    @extend .error;
+  }
+  .notice {
+    @include notice(feedback);
+  }
+  .success {
+    @include success(feedback);
+  }
+  .info {
+    @include info(feedback);
+  }
+  .hide {
+    display: none;
+  }
+  .highlight {
+    @include highlight;
+  }
+  .added {
+    @include added;
+  }
+  .removed {
+    @include removed;
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-feedback-base-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-feedback-base">
+<a class="permalink" href="#mixin-feedback-base">feedback-base</a>
+</h3>
+<div class="mixin-source" id="mixin-feedback-base-source">
+<pre class="brush: sass source-code sass">=feedback-base
+  padding: 0.8em
+  margin-bottom: 1em
+  border: 2px solid $feedback-border-color
+</pre>
+<pre class="brush: scss source-code scss">@mixin feedback-base {
+  padding: 0.8em;
+  margin-bottom: 1em;
+  border: 2px solid $feedback-border-color;
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-error-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-error">
+<a class="permalink" href="#mixin-error">error(<span class="arg" data-default-value="false">$feedback-base-class</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-error-source">
+<pre class="brush: sass source-code sass">=error($feedback-base-class: false)
+  @if $feedback-base-class
+    @extend .#{$feedback-base-class}
+  @else
+    +feedback-base
+  background: $error-bg-color
+  color: $error-color
+  border-color: $error-border-color
+  a
+    color: $error-color
+</pre>
+<pre class="brush: scss source-code scss">@mixin error($feedback-base-class: false) {
+  @if $feedback-base-class {
+    @extend .#{$feedback-base-class};
+  }
+  @else {
+    @include feedback-base;
+  }
+  background: $error-bg-color;
+  color: $error-color;
+  border-color: $error-border-color;
+  a {
+    color: $error-color;
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-notice-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-notice">
+<a class="permalink" href="#mixin-notice">notice(<span class="arg" data-default-value="false">$feedback-base-class</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-notice-source">
+<pre class="brush: sass source-code sass">=notice($feedback-base-class: false)
+  @if $feedback-base-class
+    @extend .#{$feedback-base-class}
+  @else
+    +feedback-base
+  background: $notice-bg-color
+  color: $notice-color
+  border-color: $notice-border-color
+  a
+    color: $notice-color
+</pre>
+<pre class="brush: scss source-code scss">@mixin notice($feedback-base-class: false) {
+  @if $feedback-base-class {
+    @extend .#{$feedback-base-class};
+  }
+  @else {
+    @include feedback-base;
+  }
+  background: $notice-bg-color;
+  color: $notice-color;
+  border-color: $notice-border-color;
+  a {
+    color: $notice-color;
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-success-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-success">
+<a class="permalink" href="#mixin-success">success(<span class="arg" data-default-value="false">$feedback-base-class</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-success-source">
+<pre class="brush: sass source-code sass">=success($feedback-base-class: false)
+  @if $feedback-base-class
+    @extend .#{$feedback-base-class}
+  @else
+    +feedback-base
+  background: $success-bg-color
+  color: $success-color
+  border-color: $success-border-color
+  a
+    color: $success-color
+</pre>
+<pre class="brush: scss source-code scss">@mixin success($feedback-base-class: false) {
+  @if $feedback-base-class {
+    @extend .#{$feedback-base-class};
+  }
+  @else {
+    @include feedback-base;
+  }
+  background: $success-bg-color;
+  color: $success-color;
+  border-color: $success-border-color;
+  a {
+    color: $success-color;
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-info-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-info">
+<a class="permalink" href="#mixin-info">info(<span class="arg" data-default-value="false">$feedback-base-class</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-info-source">
+<pre class="brush: sass source-code sass">=info($feedback-base-class: false)
+  @if $feedback-base-class
+    @extend .#{$feedback-base-class}
+  @else
+    +feedback-base
+  background: $info-bg-color
+  color: $info-color
+  border-color: $info-border-color
+  a
+    color: $info-color
+</pre>
+<pre class="brush: scss source-code scss">@mixin info($feedback-base-class: false) {
+  @if $feedback-base-class {
+    @extend .#{$feedback-base-class};
+  }
+  @else {
+    @include feedback-base;
+  }
+  background: $info-bg-color;
+  color: $info-color;
+  border-color: $info-border-color;
+  a {
+    color: $info-color;
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-highlight-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-highlight">
+<a class="permalink" href="#mixin-highlight">highlight</a>
+</h3>
+<div class="mixin-source" id="mixin-highlight-source">
+<pre class="brush: sass source-code sass">=highlight
+  background: $highlight-color
+</pre>
+<pre class="brush: scss source-code scss">@mixin highlight {
+  background: $highlight-color;
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-added-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-added">
+<a class="permalink" href="#mixin-added">added</a>
+</h3>
+<div class="mixin-source" id="mixin-added-source">
+<pre class="brush: sass source-code sass">=added
+  background: $added-bg-color
+  color: $added-color
+</pre>
+<pre class="brush: scss source-code scss">@mixin added {
+  background: $added-bg-color;
+  color: $added-color;
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div>
+<a href="#mixin-removed-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-removed">
+<a class="permalink" href="#mixin-removed">removed</a>
+</h3>
+<div class="mixin-source" id="mixin-removed-source">
+<pre class="brush: sass source-code sass">=removed
+  background: $removed-bg-color
+  color: $removed-color
+</pre>
+<pre class="brush: scss source-code scss">@mixin removed {
+  background: $removed-bg-color;
+  color: $removed-color;
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div></section>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Clearfix | Compass API
+</title>
+</head>
+<body class=' reference core utilities' id='reference-compass-utilities-general-clearfix'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Compass Clearfix</h1>
+<p>
+A clearfix will extend the bottom of the element to enclose any
+floated elements it contains.
+</p>
+
+<p>
+This file can be imported using:
+<code>@import "compass/utilities/general/clearfix"</code>
+</p>
+
+<h2>Imports</h2>
+<ol>
+<li>
+<a href="/reference/compass/utilities/general/hacks/" title="@import hacks">Hacks</a>
+– Mixins for hacking specific browsers.
+</li>
+</ol><h2>Mixins</h2>
+<a href="#mixin-clearfix-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-clearfix">
+<a class="permalink" href="#mixin-clearfix">clearfix</a>
+</h3>
+<div class="mixin-source" id="mixin-clearfix-source">
+<pre class="brush: sass source-code sass">=clearfix
+  overflow: hidden
+  +has-layout
+</pre>
+<pre class="brush: scss source-code scss">@mixin clearfix {
+  overflow: hidden;
+  @include has-layout;
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>This basic method is preferred for the usual case, when positioned
+content will not show outside the bounds of the container.</p>
+
+<p>Recommendations include using this in conjunction with a width.
+Credit: <a href="http://www.quirksmode.org/blog/archives/2005/03/clearing_floats.html">quirksmode.org</a></p>
+
+</div>
+<a href="#mixin-legacy-pie-clearfix-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-legacy-pie-clearfix">
+<a class="permalink" href="#mixin-legacy-pie-clearfix">legacy-pie-clearfix</a>
+</h3>
+<div class="mixin-source" id="mixin-legacy-pie-clearfix-source">
+<pre class="brush: sass source-code sass">=legacy-pie-clearfix
+  &amp;:after
+    content: "\0020"
+    display: block
+    height: 0
+    clear: both
+    overflow: hidden
+    visibility: hidden
+  +has-layout
+</pre>
+<pre class="brush: scss source-code scss">@mixin legacy-pie-clearfix {
+  &amp;:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    clear: both;
+    overflow: hidden;
+    visibility: hidden;
+  }
+  @include has-layout;
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>This older method from Position Is Everything called
+<a href="http://www.positioniseverything.net/easyclearing.html">Easy Clearing</a>
+has the advantage of allowing positioned elements to hang
+outside the bounds of the container at the expense of more tricky CSS.</p>
+
+</div>
+<a href="#mixin-pie-clearfix-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-pie-clearfix">
+<a class="permalink" href="#mixin-pie-clearfix">pie-clearfix</a>
+</h3>
+<div class="mixin-source" id="mixin-pie-clearfix-source">
+<pre class="brush: sass source-code sass">=pie-clearfix
+  &amp;:after
+    content: ""
+    display: table
+    clear: both
+  +has-layout
+</pre>
+<pre class="brush: scss source-code scss">@mixin pie-clearfix {
+  &amp;:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  @include has-layout;
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>This is an updated version of the PIE clearfix method that reduces the amount of CSS output.
+If you need to support Firefox before 3.5 you need to use <code>legacy-pie-clearfix</code> instead.</p>
+
+<p>Adapted from: <a href="http://nicolasgallagher.com/micro-clearfix-hack/">A new micro clearfix hack</a></p>
+
+</div></section>
+
+</body>
+</html>

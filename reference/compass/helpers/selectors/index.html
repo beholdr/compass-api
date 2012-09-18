@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Selector Helpers | Compass API
+</title>
+</head>
+<body class=' reference core helpers' id='reference-compass-helpers-selectors'><section class='article'><h1>Compass Selector Helpers</h1>
+<div class="helper" id="nest">
+<h3>
+<a href="#nest">
+nest(<span class="arg">$selector1</span>, <span class="arg">$selector2</span>, ...)
+</a>
+</h3>
+<div class="details">
+<p>
+Nest selectors as if they had been nested within a sass file.
+Each selector passed in can be a comma-delimited list of selectors
+and they will be permuted as they would be in a sass file.
+The generated selectors can be further nested within the sass file
+itself.
+</p>
+<p>
+This function can accept any number of selector arguments.
+</p>
+<dl>
+<dg><dt>nest(".foo", ".bar", ".baz")</dt>
+<dd>.foo .bar .baz</dd>
+</dg><dg><dt>nest(".foo, .bar", ".baz")</dt>
+<dd>.foo .baz, .bar .baz</dd>
+</dg><dg><dt>nest(".foo, .bar", "a, span")</dt>
+<dd>.foo a, .foo span, .bar a, .bar span</dd>
+</dg>
+</dl>
+</div>
+</div>
+<div class="helper" id="append-selector">
+<h3>
+<a href="#append-selector">
+append-selector(<span class="arg">$selector</span>, <span class="arg">$to-append</span>)
+</a>
+</h3>
+<div class="details">
+<p>
+This helper function appends any selector with some string. No space or punctuation is
+added when appending. The selector can be a comma-delimited list of selectors.
+</p>
+<dl>
+<dg><dt>append-selector(".foo", ".bar")</dt>
+<dd>.foo.bar</dd>
+</dg><dg><dt>append-selector("p, div, span", ".bar")</dt>
+<dd>p.bar, div.bar, span.bar</dd>
+</dg>
+</dl>
+</div>
+</div>
+<div class="helper" id="enumerate">
+<h3>
+<a href="#enumerate">
+enumerate(<span class="arg">$prefix</span>, <span class="arg">$from</span>, <span class="arg">$through</span>, <span class="arg" data-default-value="-">$separator</span>)
+</a>
+</h3>
+<div class="details">
+<p>
+Enumerate the given <code>$prefix</code> from <code>$from</code> through <code>$through</code>.
+</p>
+<p><em>Note:</em> Using the <code>@extend</code> directive is usually preferred to this helper, which was created before <code>@extend</code> existed.</p>
+</div>
+<div class="examples">
+<h4>Examples</h4>
+<ul>
+<li>
+<a href="/examples/compass/helpers/enumerate/">Example of enumerate</a>
+</li>
+<li>
+<a href="/examples/compass/helpers/using-extend-in-place-of-enumerate/">Example of using <code>@extend</code> in place of enumerate</a>
+</li>
+</ul>
+</div>
+</div>
+<a name="headers"></a>
+<div class="helper" id="headings">
+<h3>
+<a href="#append-selector">
+headings(<span class="arg" data-default-value="nil">$from</span>, <span class="arg" data-default-value="nil">$to</span>)
+</a>
+</h3>
+<div class="details">
+<p>
+This helper function emits headings. It's best to just see it in action:
+</p>
+<p>
+<em>Note:</em> This function is aliased to <code>headers()</code>, both can be used interchangeably.
+</p>
+<dl>
+<dg><dt>headings()</dt>
+<dd>h1, h2, h3, h4, h5, h6</dd>
+</dg><dg><dt>headings(all)</dt>
+<dd>h1, h2, h3, h4, h5, h6</dd>
+</dg><dg><dt>headings(2)</dt>
+<dd>h1, h2</dd>
+</dg><dg><dt>headings(2,5)</dt>
+<dd>h2, h3, h4, h5</dd>
+</dg>
+</dl>
+</div>
+</div></section>
+
+</body>
+</html>

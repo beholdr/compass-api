@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Box-shadow | Compass API
+</title>
+</head>
+<body class=' demo' id='examples-compass-css3-box-shadow'><div id='reference'><a href="/reference/compass/css3/box_shadow/">Reference Documentation</a></div>
+<h1>Demo: Box-shadow</h1>
+<div id='demo'><div class='box-shadow-example'>
+  <div id='box-shadow-default'></div>
+  <div id='box-shadow-custom'></div>
+  <div id='box-shadow-custom-multiple'></div>
+</div>
+</div>
+
+<div id='how'>
+<section id='markup'>
+<div class='syntax_pref'>
+<a href='#' rel='html'>html</a>
+<a href='#' rel='haml'>haml</a>
+</div>
+<div class='example-source'>
+<pre class='source-code html'>&lt;div class='box-shadow-example'&gt;
+  &lt;div id='box-shadow-default'&gt;&lt;/div&gt;
+  &lt;div id='box-shadow-custom'&gt;&lt;/div&gt;
+  &lt;div id='box-shadow-custom-multiple'&gt;&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+<pre class='source-code haml'>.box-shadow-example
+  #box-shadow-default
+  #box-shadow-custom
+  #box-shadow-custom-multiple
+</pre>
+</div>
+</section>
+<section id='styles'>
+<div class='syntax_pref'>
+<a href='#' rel='scss'>scss</a>
+<a href='#' rel='sass'>sass</a>
+<a href='#' rel='css'>css</a>
+</div>
+<div class='example-source'>
+<pre class='source-code scss'>@import &quot;compass/css3&quot;;
+
+.box-shadow-example div {
+  width: 40px;
+  height: 40px;
+  background: #eeeeee;
+  margin: 20px;
+  float: left;
+}
+
+// Default single box shadow
+#box-shadow-default {
+  @include single-box-shadow;
+}
+
+// Box shadow with custom settings
+#box-shadow-custom {
+  @include box-shadow(red 2px 2px 10px);
+}
+
+#box-shadow-custom-multiple {
+  @include box-shadow(rgba(blue, 0.4) 0 0 25px, rgba(green, 0.2) 0 0 3px 1px inset);
+}
+</pre>
+<pre class='source-code sass'>@import compass/css3
+
+.box-shadow-example div
+  width: 40px
+  height: 40px
+  background: #EEE
+  margin: 20px
+  float: left
+
+// Default single box shadow
+#box-shadow-default
+  +single-box-shadow
+
+// Box shadow with custom settings
+#box-shadow-custom
+  +box-shadow(red 2px 2px 10px)
+
+#box-shadow-custom-multiple
+  +box-shadow(rgba(blue, .4) 0 0 25px, rgba(green, .2) 0 0 3px 1px inset)
+</pre>
+<pre class='source-code css'>.box-shadow-example div{width:40px;height:40px;background:#eee;margin:20px;float:left}#box-shadow-default{-webkit-box-shadow:0px 0px 5px #333;-moz-box-shadow:0px 0px 5px #333;box-shadow:0px 0px 5px #333}#box-shadow-custom{-webkit-box-shadow:red 2px 2px 10px;-moz-box-shadow:red 2px 2px 10px;box-shadow:red 2px 2px 10px}#box-shadow-custom-multiple{-webkit-box-shadow:rgba(0,0,255,0.4) 0 0 25px,rgba(0,128,0,0.2) 0 0 3px 1px inset;-moz-box-shadow:rgba(0,0,255,0.4) 0 0 25px,rgba(0,128,0,0.2) 0 0 3px 1px inset;box-shadow:rgba(0,0,255,0.4) 0 0 25px,rgba(0,128,0,0.2) 0 0 3px 1px inset}
+</pre>
+</div>
+</section>
+</div>
+
+
+</body>
+</html>

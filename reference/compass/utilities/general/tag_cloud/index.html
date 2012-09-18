@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Tag Cloud | Compass API
+</title>
+</head>
+<body class=' reference core utilities' id='reference-compass-utilities-general-tag-cloud'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/compass/stylesheets/compass/utilities/general/_tag-cloud.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Compass Tag Cloud</h1>
+
+<p>
+This file can be imported using:
+<code>@import "compass/utilities/general/tag-cloud"</code>
+</p>
+
+
+
+
+<h2>Mixins</h2>
+<a href="#mixin-tag-cloud-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-tag-cloud">
+<a class="permalink" href="#mixin-tag-cloud">tag-cloud(<span class="arg" data-default-value="1em">$base-size</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-tag-cloud-source">
+<pre class="brush: sass source-code sass">=tag-cloud($base-size: 1em)
+  font-size: $base-size
+  line-height: 1.2 * $base-size
+  .xxs, .xs, .s, .l, .xl, .xxl
+    line-height: 1.2 * $base-size
+  .xxs
+    font-size: $base-size / 2
+  .xs
+    font-size: 2 * $base-size / 3
+  .s
+    font-size: 3 * $base-size / 4
+  .l
+    font-size: 4 * $base-size / 3
+  .xl
+    font-size: 3 * $base-size / 2
+  .xxl
+    font-size: 2 * $base-size
+</pre>
+<pre class="brush: scss source-code scss">@mixin tag-cloud($base-size: 1em) {
+  font-size: $base-size;
+  line-height: 1.2 * $base-size;
+  .xxs, .xs, .s, .l, .xl, .xxl {
+    line-height: 1.2 * $base-size;
+  }
+  .xxs {
+    font-size: $base-size / 2;
+  }
+  .xs {
+    font-size: 2 * $base-size / 3;
+  }
+  .s {
+    font-size: 3 * $base-size / 4;
+  }
+  .l {
+    font-size: 4 * $base-size / 3;
+  }
+  .xl {
+    font-size: 3 * $base-size / 2;
+  }
+  .xxl {
+    font-size: 2 * $base-size;
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Emits styles for a tag cloud</p>
+
+</div></section>
+
+</body>
+</html>

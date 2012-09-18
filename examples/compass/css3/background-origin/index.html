@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Background Origin | Compass API
+</title>
+</head>
+<body class=' demo' id='examples-compass-css3-background-origin'><div id='reference'><a href="/reference/compass/css3/background_origin/">Reference Documentation</a></div>
+<h1>Demo: Background Origin</h1>
+<div id='demo'><div class='example'>
+  <div id='padding-box'>
+    Padding Box
+  </div>
+  <div id='border-box'>
+    Border Box
+  </div>
+  <div id='content-box'>
+    Content Box
+  </div>
+</div>
+</div>
+
+<div id='how'>
+<section id='markup'>
+<div class='syntax_pref'>
+<a href='#' rel='html'>html</a>
+<a href='#' rel='haml'>haml</a>
+</div>
+<div class='example-source'>
+<pre class='source-code html'>&lt;div class='example'&gt;
+  &lt;div id='padding-box'&gt;
+    Padding Box
+  &lt;/div&gt;
+  &lt;div id='border-box'&gt;
+    Border Box
+  &lt;/div&gt;
+  &lt;div id='content-box'&gt;
+    Content Box
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+<pre class='source-code haml'>.example
+  #padding-box
+    Padding Box
+  #border-box
+    Border Box
+  #content-box
+    Content Box</pre>
+</div>
+</section>
+<section id='styles'>
+<div class='syntax_pref'>
+<a href='#' rel='scss'>scss</a>
+<a href='#' rel='sass'>sass</a>
+<a href='#' rel='css'>css</a>
+</div>
+<div class='example-source'>
+<pre class='source-code scss'>@import &quot;compass/css3&quot;;
+
+.example {
+  padding: 2em;
+  div {
+    background: {
+      image: image-url(&quot;examples/css3/bg-origin/bg.png&quot;);
+      repeat: repeat;
+      position: top left;
+    };
+    border: 10px solid rgba(255, 0, 0, 0.5);
+    color: white;
+    @include text-shadow(darken(blue, 50%) 2px 2px);
+    padding: 1em;
+    text-align: center;
+    margin-bottom: 2em;
+  }
+  #padding-box {
+    @include background-origin(padding-box);
+  }
+  #border-box {
+    @include background-origin(border-box);
+  }
+  #content-box {
+    @include background-origin(content-box);
+  }
+}
+</pre>
+<pre class='source-code sass'>@import compass/css3
+
+.example
+  padding: 2em
+  div
+    background:
+      image: image-url(&quot;examples/css3/bg-origin/bg.png&quot;)
+      repeat: repeat
+      position: top left
+    border: 10px solid rgba(255, 0, 0, 0.5)
+    color: white
+    +text-shadow(darken(#00f, 50%) 2px 2px)
+    padding: 1em
+    text-align: center
+    margin-bottom: 2em
+  #padding-box
+    +background-origin(padding-box)
+  #border-box
+    +background-origin(border-box)
+  #content-box
+    +background-origin(content-box)
+</pre>
+<pre class='source-code css'>.example{padding:2em}.example div{background-image:url('/images/examples/css3/bg-origin/bg.png?1347105993');background-repeat:repeat;background-position:top left;border:10px solid rgba(255,0,0,0.5);color:#fff;text-shadow:#000 2px 2px;padding:1em;text-align:center;margin-bottom:2em}.example #padding-box{-webkit-background-origin:padding;-moz-background-origin:padding;-ms-background-origin:padding-box;-o-background-origin:padding-box;background-origin:padding-box}.example #border-box{-webkit-background-origin:border;-moz-background-origin:border;-ms-background-origin:border-box;-o-background-origin:border-box;background-origin:border-box}.example #content-box{-webkit-background-origin:content;-moz-background-origin:content;-ms-background-origin:content-box;-o-background-origin:content-box;background-origin:content-box}
+</pre>
+</div>
+</section>
+</div>
+
+
+</body>
+</html>

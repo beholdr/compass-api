@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Table Scaffolding | Compass API
+</title>
+</head>
+<body class=' reference core utilities' id='reference-compass-utilities-tables-scaffolding'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/compass/stylesheets/compass/utilities/tables/_scaffolding.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Compass Table Scaffolding</h1>
+<p>
+Basic styling of tables to get you started.
+</p>
+
+<p>
+This file can be imported using:
+<code>@import "compass/utilities/tables/scaffolding"</code>
+</p>
+<h2>Examples</h2>
+<dl class="examples">
+<dt><a href="/examples/compass/tables/scaffolding/">Compass Table Scaffolding Example</a></dt>
+<dd>How to use the table scaffolding mixins.</dd>
+</dl><h2>Mixins</h2>
+<a href="#mixin-table-scaffolding-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-table-scaffolding">
+<a class="permalink" href="#mixin-table-scaffolding">table-scaffolding</a>
+</h3>
+<div class="mixin-source" id="mixin-table-scaffolding-source">
+<pre class="brush: sass source-code sass">=table-scaffolding
+  th
+    text-align: center
+    font-weight: bold
+  td,
+  th
+    padding: 2px
+    &amp;.numeric
+      text-align: right
+</pre>
+<pre class="brush: scss source-code scss">@mixin table-scaffolding {
+  th {
+    text-align: center;
+    font-weight: bold;
+  }
+  td,
+  th {
+    padding: 2px;
+    &amp;.numeric {
+      text-align: right;
+    }
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div></section>
+
+</body>
+</html>

@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Transform | Compass API
+</title>
+</head>
+<body class=' reference core css3' id='reference-compass-css3-transform'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/compass/stylesheets/compass/css3/_transform.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Compass Transform</h1>
+<p>
+Provides mixins for CSS3 2D and 3D transforms. See
+<a href="http://www.w3.org/TR/css3-2d-transforms/">W3C: CSS 2D transforms</a>
+and See <a href="http://www.w3.org/TR/css3-3d-transforms/">W3C: CSS 3D transforms</a>.
+</p>
+<p>
+Safari is the only browser that currently supports 3D transforms.
+Because of that it can be important to control whether a given 2D transform
+uses the full range of experimental browser prefixes, or only the 3D list.
+To make that easy, all 2D transforms include an browser-targeting toggle ($only3d)
+to switch between the two support lists. The toggle defaults to 'false' (2D),
+and also accepts 'true' (3D). Currently the lists are as follows:
+2D: Mozilla, Webkit, Opera, Official
+3D: Webkit, Official **(Only Safari Supports 3D perspective)**
+</p>
+
+<p>
+This file can be imported using:
+<code>@import "compass/css3/transform"</code>
+</p>
+
+<h2>Imports</h2>
+<ol>
+<li>
+<a href="/reference/compass/css3/shared/" title="@import shared">Shared Utilities</a>
+</li>
+</ol><h2>
+Configurable Variables
+<a class="help" href="/help/tutorials/configurable-variables/">help</a>
+</h2>
+<h3 class="constant" id="const-default-origin-x">
+<a class="permalink" href="#const-default-origin-x">$default-origin-x</a>
+<code>50%</code>
+</h3>
+<p></p><p>The default x-origin for transforms</p>
+
+<h3 class="constant" id="const-default-origin-y">
+<a class="permalink" href="#const-default-origin-y">$default-origin-y</a>
+<code>50%</code>
+</h3>
+<p></p><p>The default y-origin for transforms</p>
+
+<h3 class="constant" id="const-default-origin-z">
+<a class="permalink" href="#const-default-origin-z">$default-origin-z</a>
+<code>50%</code>
+</h3>
+<p></p><p>The default z-origin for transforms</p>
+
+<h3 class="constant" id="const-default-scale-x">
+<a class="permalink" href="#const-default-scale-x">$default-scale-x</a>
+<code>1.25</code>
+</h3>
+<p></p><p>The default x-multiplier for scaling</p>
+
+<h3 class="constant" id="const-default-scale-y">
+<a class="permalink" href="#const-default-scale-y">$default-scale-y</a>
+<code>$default-scale-x</code>
+</h3>
+<p></p><p>The default y-multiplier for scaling</p>
+
+<h3 class="constant" id="const-default-scale-z">
+<a class="permalink" href="#const-default-scale-z">$default-scale-z</a>
+<code>$default-scale-x</code>
+</h3>
+<p></p><p>The default z-multiplier for scaling</p>
+
+<h3 class="constant" id="const-default-rotate">
+<a class="permalink" href="#const-default-rotate">$default-rotate</a>
+<code>45deg</code>
+</h3>
+<p></p><p>The default angle for rotations</p>
+
+<h3 class="constant" id="const-default-vector-x">
+<a class="permalink" href="#const-default-vector-x">$default-vector-x</a>
+<code>1</code>
+</h3>
+<p></p><p>The default x-vector for the axis of 3d rotations</p>
+
+<h3 class="constant" id="const-default-vector-y">
+<a class="permalink" href="#const-default-vector-y">$default-vector-y</a>
+<code>1</code>
+</h3>
+<p></p><p>The default y-vector for the axis of 3d rotations</p>
+
+<h3 class="constant" id="const-default-vector-z">
+<a class="permalink" href="#const-default-vector-z">$default-vector-z</a>
+<code>1</code>
+</h3>
+<p></p><p>The default z-vector for the axis of 3d rotations</p>
+
+<h3 class="constant" id="const-default-translate-x">
+<a class="permalink" href="#const-default-translate-x">$default-translate-x</a>
+<code>1em</code>
+</h3>
+<p></p><p>The default x-length for translations</p>
+
+<h3 class="constant" id="const-default-translate-y">
+<a class="permalink" href="#const-default-translate-y">$default-translate-y</a>
+<code>$default-translate-x</code>
+</h3>
+<p></p><p>The default y-length for translations</p>
+
+<h3 class="constant" id="const-default-translate-z">
+<a class="permalink" href="#const-default-translate-z">$default-translate-z</a>
+<code>$default-translate-x</code>
+</h3>
+<p></p><p>The default z-length for translations</p>
+
+<h3 class="constant" id="const-default-skew-x">
+<a class="permalink" href="#const-default-skew-x">$default-skew-x</a>
+<code>5deg</code>
+</h3>
+<p></p><p>The default x-angle for skewing</p>
+
+<h3 class="constant" id="const-default-skew-y">
+<a class="permalink" href="#const-default-skew-y">$default-skew-y</a>
+<code>5deg</code>
+</h3>
+<p></p><p>The default y-angle for skewing</p>
+
+
+
+
+<h2>Mixins</h2>
+<a href="#mixin-apply-origin-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-apply-origin">
+<a class="permalink" href="#mixin-apply-origin">apply-origin(<span class="arg">$origin</span>, <span class="arg">$only3d</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-apply-origin-source">
+<pre class="brush: sass source-code sass">=apply-origin($origin, $only3d)
+  $only3d: $only3d or -compass-list-size(-compass-list($origin)) &gt; 2
+  @if $only3d
+    +experimental(transform-origin, $origin, -moz, -webkit, -o, -ms, not -khtml, official)
+  @else
+    +experimental(transform-origin, $origin, -moz, -webkit, -o, -ms, not -khtml, official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin apply-origin($origin, $only3d) {
+  $only3d: $only3d or -compass-list-size(-compass-list($origin)) &gt; 2;
+  @if $only3d {
+    @include experimental(transform-origin, $origin, -moz, -webkit, -o, -ms, not -khtml, official);
+  }
+  @else {
+    @include experimental(transform-origin, $origin, -moz, -webkit, -o, -ms, not -khtml, official);
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p><strong>Transform-origin</strong>
+Transform-origin sent as a complete string</p>
+
+<pre><code>@include apply-origin( origin [, 3D-only ] )
+</code></pre>
+
+<p>where 'origin' is a space separated list containing 1-3 (x/y/z) coordinates
+in percentages, absolute (px, cm, in, em etc..) or relative
+(left, top, right, bottom, center) units</p>
+
+<p>@param only3d Set this to true to only apply this
+mixin where browsers have 3D support.</p>
+
+</div>
+<a href="#mixin-transform-origin-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-transform-origin">
+<a class="permalink" href="#mixin-transform-origin">transform-origin(<span class="arg" data-default-value="$default-origin-x">$origin-x</span>, <span class="arg" data-default-value="$default-origin-y">$origin-y</span>, <span class="arg" data-default-value="false">$origin-z</span>, <span class="arg" data-default-value="if($origin-z, true, false)">$only3d</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-transform-origin-source">
+<pre class="brush: sass source-code sass">=transform-origin($origin-x: $default-origin-x, $origin-y: $default-origin-y, $origin-z: false, $only3d: if($origin-z, true, false))
+  $origin: unquote("")
+  @if $origin-x or $origin-y or $origin-z
+    @if $origin-x
+      $origin: $origin-x
+    @else
+      $origin: 50%
+    @if $origin-y
+      $origin: $origin $origin-y
+    @else
+      @if $origin-z
+        $origin: $origin 50%
+    @if $origin-z
+      $origin: $origin $origin-z
+    +apply-origin($origin, $only3d)
+</pre>
+<pre class="brush: scss source-code scss">@mixin transform-origin($origin-x: $default-origin-x, $origin-y: $default-origin-y, $origin-z: false, $only3d: if($origin-z, true, false)) {
+  $origin: unquote("");
+  @if $origin-x or $origin-y or $origin-z {
+    @if $origin-x {
+      $origin: $origin-x;
+    }
+    @else {
+      $origin: 50%;
+    }
+    @if $origin-y {
+      $origin: $origin $origin-y;
+    }
+    @else {
+      @if $origin-z {
+        $origin: $origin 50%;
+      }
+    }
+    @if $origin-z {
+      $origin: $origin $origin-z;
+    }
+    @include apply-origin($origin, $only3d);
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Transform-origin sent as individual arguments:</p>
+
+<pre><code>@include transform-origin( [ origin-x, origin-y, origin-z, 3D-only ] )
+</code></pre>
+
+<p>where the 3 'origin-' arguments represent x/y/z coordinates.</p>
+
+<p><strong>NOTE:</strong> setting z coordinates triggers 3D support list, leave false for 2D support</p>
+
+</div>
+<a href="#mixin-transform-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-transform">
+<a class="permalink" href="#mixin-transform">transform(<span class="arg">$transform</span>, <span class="arg" data-default-value="false">$only3d</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-transform-source">
+<pre class="brush: sass source-code sass">=transform($transform, $only3d: false)
+  @if $only3d
+    +experimental(transform, $transform, -moz, -webkit, -o, -ms, not -khtml, official)
+  @else
+    +experimental(transform, $transform, -moz, -webkit, -o, -ms, not -khtml, official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin transform($transform, $only3d: false) {
+  @if $only3d {
+    @include experimental(transform, $transform, -moz, -webkit, -o, -ms, not -khtml, official);
+  }
+  @else {
+    @include experimental(transform, $transform, -moz, -webkit, -o, -ms, not -khtml, official);
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Transform sent as a complete string:</p>
+
+<pre><code>@include transform( transforms [, 3D-only ] )
+</code></pre>
+
+<p>where 'transforms' is a space separated list of all the transforms to be applied.</p>
+
+</div>
+<a href="#mixin-transform2d-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-transform2d">
+<a class="permalink" href="#mixin-transform2d">transform2d(<span class="arg">$trans</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-transform2d-source">
+<pre class="brush: sass source-code sass">=transform2d($trans)
+  +transform($trans, false)
+</pre>
+<pre class="brush: scss source-code scss">@mixin transform2d($trans) {
+  @include transform($trans, false);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Shortcut to target all browsers with 2D transform support</p>
+
+</div>
+<a href="#mixin-transform3d-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-transform3d">
+<a class="permalink" href="#mixin-transform3d">transform3d(<span class="arg">$trans</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-transform3d-source">
+<pre class="brush: sass source-code sass">=transform3d($trans)
+  +transform($trans, true)
+</pre>
+<pre class="brush: scss source-code scss">@mixin transform3d($trans) {
+  @include transform($trans, true);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Shortcut to target only browsers with 3D transform support</p>
+
+</div>
+<a href="#mixin-perspective-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-perspective">
+<a class="permalink" href="#mixin-perspective">perspective(<span class="arg">$p</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-perspective-source">
+<pre class="brush: sass source-code sass">=perspective($p)
+  +experimental(perspective, $p, -moz, -webkit, -o, -ms, not -khtml, official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin perspective($p) {
+  @include experimental(perspective, $p, -moz, -webkit, -o, -ms, not -khtml, official);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Set the perspective of 3D transforms on the children of an element:</p>
+
+<pre><code> @include perspective( perspective )
+</code></pre>
+
+<p>where 'perspective' is a unitless number representing the depth of the
+z-axis. The higher the perspective, the more exaggerated the foreshortening.
+values from 500 to 1000 are more-or-less "normal" - a good starting-point.</p>
+
+</div>
+<a href="#mixin-perspective-origin-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-perspective-origin">
+<a class="permalink" href="#mixin-perspective-origin">perspective-origin(<span class="arg" data-default-value="50%">$origin</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-perspective-origin-source">
+<pre class="brush: sass source-code sass">=perspective-origin($origin: 50%)
+  +experimental(perspective-origin, $origin, -moz, -webkit, -o, -ms, not -khtml, official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin perspective-origin($origin: 50%) {
+  @include experimental(perspective-origin, $origin, -moz, -webkit, -o, -ms, not -khtml, official);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Set the origin position for the perspective</p>
+
+<pre><code> @include perspective-origin(origin-x [origin-y])
+</code></pre>
+
+<p>where the two arguments represent x/y coordinates</p>
+
+</div>
+<a href="#mixin-transform-style-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-transform-style">
+<a class="permalink" href="#mixin-transform-style">transform-style(<span class="arg" data-default-value="preserve-3d">$style</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-transform-style-source">
+<pre class="brush: sass source-code sass">=transform-style($style: preserve-3d)
+  +experimental(transform-style, $style, -moz, -webkit, -o, -ms, not -khtml, official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin transform-style($style: preserve-3d) {
+  @include experimental(transform-style, $style, -moz, -webkit, -o, -ms, not -khtml, official);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Determine whether a 3D objects children also live in the given 3D space</p>
+
+<pre><code> @include transform-style( [ style ] )
+</code></pre>
+
+<p>where <code>style</code> can be either <code>flat</code> or <code>preserve-3d</code>.
+Browsers default to <code>flat</code>, mixin defaults to <code>preserve-3d</code>.</p>
+
+</div>
+<a href="#mixin-backface-visibility-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-backface-visibility">
+<a class="permalink" href="#mixin-backface-visibility">backface-visibility(<span class="arg" data-default-value="hidden">$visibility</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-backface-visibility-source">
+<pre class="brush: sass source-code sass">=backface-visibility($visibility: hidden)
+  +experimental(backface-visibility, $visibility, -moz, -webkit, -o, -ms, not -khtml, official)
+</pre>
+<pre class="brush: scss source-code scss">@mixin backface-visibility($visibility: hidden) {
+  @include experimental(backface-visibility, $visibility, -moz, -webkit, -o, -ms, not -khtml, official);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Determine the visibility of an element when it's back is turned</p>
+
+<pre><code>@include backface-visibility( [ visibility ] )
+</code></pre>
+
+<p>where <code>visibility</code> can be either <code>visible</code> or <code>hidden</code>.
+Browsers default to visible, mixin defaults to hidden</p>
+
+</div>
+<a href="#mixin-scale-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-scale">
+<a class="permalink" href="#mixin-scale">scale(<span class="arg" data-default-value="$default-scale-x">$scale-x</span>, <span class="arg" data-default-value="$scale-x">$scale-y</span>, <span class="arg" data-default-value="false">$perspective</span>, <span class="arg" data-default-value="false">$only3d</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-scale-source">
+<pre class="brush: sass source-code sass">=scale($scale-x: $default-scale-x, $scale-y: $scale-x, $perspective: false, $only3d: false)
+  $trans: scale($scale-x, $scale-y)
+  @if $perspective
+    $trans: perspective($perspective) $trans
+  +transform($trans, $only3d)
+</pre>
+<pre class="brush: scss source-code scss">@mixin scale($scale-x: $default-scale-x, $scale-y: $scale-x, $perspective: false, $only3d: false) {
+  $trans: scale($scale-x, $scale-y);
+  @if $perspective {
+    $trans: perspective($perspective) $trans;
+  }
+  @include transform($trans, $only3d);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Scale an object along the x and y axis:</p>
+
+<pre><code> @include scale( [ scale-x, scale-y, perspective, 3D-only ] )
+</code></pre>
+
+<p>where the 'scale-' arguments are unitless multipliers of the x and y dimensions
+and perspective, which works the same as the stand-alone perspective property/mixin
+but applies to the individual element (multiplied with any parent perspective)</p>
+
+<p><strong>Note</strong> This mixin cannot be combined with other transform mixins.</p>
+
+</div>
+<a href="#mixin-scaleX-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-scaleX">
+<a class="permalink" href="#mixin-scaleX">scaleX(<span class="arg" data-default-value="$default-scale-x">$scale</span>, <span class="arg" data-default-value="false">$perspective</span>, <span class="arg" data-default-value="false">$only3d</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-scaleX-source">
+<pre class="brush: sass source-code sass">=scaleX($scale: $default-scale-x, $perspective: false, $only3d: false)
+  $trans: scaleX($scale)
+  @if $perspective
+    $trans: perspective($perspective) $trans
+  +transform($trans, $only3d)
+</pre>
+<pre class="brush: scss source-code scss">@mixin scaleX($scale: $default-scale-x, $perspective: false, $only3d: false) {
+  $trans: scaleX($scale);
+  @if $perspective {
+    $trans: perspective($perspective) $trans;
+  }
+  @include transform($trans, $only3d);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Scale an object along the x axis
+@include scaleX( [ scale-x, perspective, 3D-only ] )</p>
+
+<p><strong>Note</strong> This mixin cannot be combined with other transform mixins.</p>
+
+</div>
+<a href="#mixin-scaleY-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-scaleY">
+<a class="permalink" href="#mixin-scaleY">scaleY(<span class="arg" data-default-value="$default-scale-y">$scale</span>, <span class="arg" data-default-value="false">$perspective</span>, <span class="arg" data-default-value="false">$only3d</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-scaleY-source">
+<pre class="brush: sass source-code sass">=scaleY($scale: $default-scale-y, $perspective: false, $only3d: false)
+  $trans: scaleY($scale)
+  @if $perspective
+    $trans: perspective($perspective) $trans
+  +transform($trans, $only3d)
+</pre>
+<pre class="brush: scss source-code scss">@mixin scaleY($scale: $default-scale-y, $perspective: false, $only3d: false) {
+  $trans: scaleY($scale);
+  @if $perspective {
+    $trans: perspective($perspective) $trans;
+  }
+  @include transform($trans, $only3d);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Scale an object along the y axis
+@include scaleY( [ scale-y, perspective, 3D-only ] )</p>
+
+<p><strong>Note</strong> This mixin cannot be combined with other transform mixins.</p>
+
+</div>
+<a href="#mixin-scaleZ-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-scaleZ">
+<a class="permalink" href="#mixin-scaleZ">scaleZ(<span class="arg" data-default-value="$default-scale-z">$scale</span>, <span class="arg" data-default-value="false">$perspective</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-scaleZ-source">
+<pre class="brush: sass source-code sass">=scaleZ($scale: $default-scale-z, $perspective: false)
+  $trans: scaleZ($scale)
+  @if $perspective
+    $trans: perspective($perspective) $trans
+  +transform3d($trans)
+</pre>
+<pre class="brush: scss source-code scss">@mixin scaleZ($scale: $default-scale-z, $perspective: false) {
+  $trans: scaleZ($scale);
+  @if $perspective {
+    $trans: perspective($perspective) $trans;
+  }
+  @include transform3d($trans);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Scale an object along the z axis
+@include scaleZ( [ scale-z, perspective ] )</p>
+
+<p><strong>Note</strong> This mixin cannot be combined with other transform mixins.</p>
+
+</div>
+<a href="#mixin-scale3d-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-scale3d">
+<a class="permalink" href="#mixin-scale3d">scale3d(<span class="arg" data-default-value="$default-scale-x">$scale-x</span>, <span class="arg" data-default-value="$default-scale-y">$scale-y</span>, <span class="arg" data-default-value="$default-scale-z">$scale-z</span>, <span class="arg" data-default-value="false">$perspective</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-scale3d-source">
+<pre class="brush: sass source-code sass">=scale3d($scale-x: $default-scale-x, $scale-y: $default-scale-y, $scale-z: $default-scale-z, $perspective: false)
+  $trans: scale3d($scale-x, $scale-y, $scale-z)
+  @if $perspective
+    $trans: perspective($perspective) $trans
+  +transform3d($trans)
+</pre>
+<pre class="brush: scss source-code scss">@mixin scale3d($scale-x: $default-scale-x, $scale-y: $default-scale-y, $scale-z: $default-scale-z, $perspective: false) {
+  $trans: scale3d($scale-x, $scale-y, $scale-z);
+  @if $perspective {
+    $trans: perspective($perspective) $trans;
+  }
+  @include transform3d($trans);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Scale and object along all three axis
+@include scale3d( [ scale-x, scale-y, scale-z, perspective ] )</p>
+
+<p><strong>Note</strong> This mixin cannot be combined with other transform mixins.</p>
+
+</div>
+<a href="#mixin-rotate-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-rotate">
+<a class="permalink" href="#mixin-rotate">rotate(<span class="arg" data-default-value="$default-rotate">$rotate</span>, <span class="arg" data-default-value="false">$perspective</span>, <span class="arg" data-default-value="false">$only3d</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-rotate-source">
+<pre class="brush: sass source-code sass">=rotate($rotate: $default-rotate, $perspective: false, $only3d: false)
+  $trans: rotate($rotate)
+  @if $perspective
+    $trans: perspective($perspective) $trans
+  +transform($trans, $only3d)
+</pre>
+<pre class="brush: scss source-code scss">@mixin rotate($rotate: $default-rotate, $perspective: false, $only3d: false) {
+  $trans: rotate($rotate);
+  @if $perspective {
+    $trans: perspective($perspective) $trans;
+  }
+  @include transform($trans, $only3d);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Rotate an object around the z axis  (2D)
+@include rotate( [ rotation, perspective, 3D-only ] )
+where 'rotation' is an angle set in degrees (deg) or radian (rad) units</p>
+
+<p><strong>Note</strong> This mixin cannot be combined with other transform mixins.</p>
+
+</div>
+<a href="#mixin-rotateZ-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-rotateZ">
+<a class="permalink" href="#mixin-rotateZ">rotateZ(<span class="arg" data-default-value="$default-rotate">$rotate</span>, <span class="arg" data-default-value="false">$perspective</span>, <span class="arg" data-default-value="false">$only3d</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-rotateZ-source">
+<pre class="brush: sass source-code sass">=rotateZ($rotate: $default-rotate, $perspective: false, $only3d: false)
+  +rotate($rotate, $perspective, $only3d)
+</pre>
+<pre class="brush: scss source-code scss">@mixin rotateZ($rotate: $default-rotate, $perspective: false, $only3d: false) {
+  @include rotate($rotate, $perspective, $only3d);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>A longcut for 'rotate' in case you forget that 'z' is implied</p>
+
+<p><strong>Note</strong> This mixin cannot be combined with other transform mixins.</p>
+
+</div>
+<a href="#mixin-rotateX-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-rotateX">
+<a class="permalink" href="#mixin-rotateX">rotateX(<span class="arg" data-default-value="$default-rotate">$rotate</span>, <span class="arg" data-default-value="false">$perspective</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-rotateX-source">
+<pre class="brush: sass source-code sass">=rotateX($rotate: $default-rotate, $perspective: false)
+  $trans: rotateX($rotate)
+  @if $perspective
+    $trans: perspective($perspective) $trans
+  +transform3d($trans)
+</pre>
+<pre class="brush: scss source-code scss">@mixin rotateX($rotate: $default-rotate, $perspective: false) {
+  $trans: rotateX($rotate);
+  @if $perspective {
+    $trans: perspective($perspective) $trans;
+  }
+  @include transform3d($trans);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Rotate an object around the x axis (3D)
+@include rotateX( [ rotation, perspective ] )</p>
+
+<p><strong>Note</strong> This mixin cannot be combined with other transform mixins.</p>
+
+</div>
+<a href="#mixin-rotateY-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-rotateY">
+<a class="permalink" href="#mixin-rotateY">rotateY(<span class="arg" data-default-value="$default-rotate">$rotate</span>, <span class="arg" data-default-value="false">$perspective</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-rotateY-source">
+<pre class="brush: sass source-code sass">=rotateY($rotate: $default-rotate, $perspective: false)
+  $trans: rotateY($rotate)
+  @if $perspective
+    $trans: perspective($perspective) $trans
+  +transform3d($trans)
+</pre>
+<pre class="brush: scss source-code scss">@mixin rotateY($rotate: $default-rotate, $perspective: false) {
+  $trans: rotateY($rotate);
+  @if $perspective {
+    $trans: perspective($perspective) $trans;
+  }
+  @include transform3d($trans);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Rotate an object around the y axis (3D)
+@include rotate( [ rotation, perspective ] )</p>
+
+<p><strong>Note</strong> This mixin cannot be combined with other transform mixins.</p>
+
+</div>
+<a href="#mixin-rotate3d-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-rotate3d">
+<a class="permalink" href="#mixin-rotate3d">rotate3d(<span class="arg" data-default-value="$default-vector-x">$vector-x</span>, <span class="arg" data-default-value="$default-vector-y">$vector-y</span>, <span class="arg" data-default-value="$default-vector-z">$vector-z</span>, <span class="arg" data-default-value="$default-rotate">$rotate</span>, <span class="arg" data-default-value="false">$perspective</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-rotate3d-source">
+<pre class="brush: sass source-code sass">=rotate3d($vector-x: $default-vector-x, $vector-y: $default-vector-y, $vector-z: $default-vector-z, $rotate: $default-rotate, $perspective: false)
+  $trans: rotate3d($vector-x, $vector-y, $vector-z, $rotate)
+  @if $perspective
+    $trans: perspective($perspective) $trans
+  +transform3d($trans)
+</pre>
+<pre class="brush: scss source-code scss">@mixin rotate3d($vector-x: $default-vector-x, $vector-y: $default-vector-y, $vector-z: $default-vector-z, $rotate: $default-rotate, $perspective: false) {
+  $trans: rotate3d($vector-x, $vector-y, $vector-z, $rotate);
+  @if $perspective {
+    $trans: perspective($perspective) $trans;
+  }
+  @include transform3d($trans);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Rotate an object around an arbitrary axis (3D)
+@include rotate( [ vector-x, vector-y, vector-z, rotation, perspective ] )
+where the 'vector-' arguments accept unitless numbers.
+These numbers are not important on their own, but in relation to one another
+creating an axis from your transform-origin, along the axis of Xx = Yy = Zz.</p>
+
+<p><strong>Note</strong> This mixin cannot be combined with other transform mixins.</p>
+
+</div>
+<a href="#mixin-translate-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-translate">
+<a class="permalink" href="#mixin-translate">translate(<span class="arg" data-default-value="$default-translate-x">$translate-x</span>, <span class="arg" data-default-value="$default-translate-y">$translate-y</span>, <span class="arg" data-default-value="false">$perspective</span>, <span class="arg" data-default-value="false">$only3d</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-translate-source">
+<pre class="brush: sass source-code sass">=translate($translate-x: $default-translate-x, $translate-y: $default-translate-y, $perspective: false, $only3d: false)
+  $trans: translate($translate-x, $translate-y)
+  @if $perspective
+    $trans: perspective($perspective) $trans
+  +transform($trans, $only3d)
+</pre>
+<pre class="brush: scss source-code scss">@mixin translate($translate-x: $default-translate-x, $translate-y: $default-translate-y, $perspective: false, $only3d: false) {
+  $trans: translate($translate-x, $translate-y);
+  @if $perspective {
+    $trans: perspective($perspective) $trans;
+  }
+  @include transform($trans, $only3d);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Move an object along the x or y axis (2D)
+@include translate( [ translate-x, translate-y, perspective, 3D-only ] )
+where the 'translate-' arguments accept any distance in percentages or absolute (px, cm, in, em etc..) units.</p>
+
+<p><strong>Note</strong> This mixin cannot be combined with other transform mixins.</p>
+
+</div>
+<a href="#mixin-translateX-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-translateX">
+<a class="permalink" href="#mixin-translateX">translateX(<span class="arg" data-default-value="$default-translate-x">$trans-x</span>, <span class="arg" data-default-value="false">$perspective</span>, <span class="arg" data-default-value="false">$only3d</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-translateX-source">
+<pre class="brush: sass source-code sass">=translateX($trans-x: $default-translate-x, $perspective: false, $only3d: false)
+  $trans: translateX($trans-x)
+  @if $perspective
+    $trans: perspective($perspective) $trans
+  +transform($trans, $only3d)
+</pre>
+<pre class="brush: scss source-code scss">@mixin translateX($trans-x: $default-translate-x, $perspective: false, $only3d: false) {
+  $trans: translateX($trans-x);
+  @if $perspective {
+    $trans: perspective($perspective) $trans;
+  }
+  @include transform($trans, $only3d);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Move an object along the x axis (2D)
+@include translate( [ translate-x, perspective, 3D-only ] )</p>
+
+<p><strong>Note</strong> This mixin cannot be combined with other transform mixins.</p>
+
+</div>
+<a href="#mixin-translateY-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-translateY">
+<a class="permalink" href="#mixin-translateY">translateY(<span class="arg" data-default-value="$default-translate-y">$trans-y</span>, <span class="arg" data-default-value="false">$perspective</span>, <span class="arg" data-default-value="false">$only3d</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-translateY-source">
+<pre class="brush: sass source-code sass">=translateY($trans-y: $default-translate-y, $perspective: false, $only3d: false)
+  $trans: translateY($trans-y)
+  @if $perspective
+    $trans: perspective($perspective) $trans
+  +transform($trans, $only3d)
+</pre>
+<pre class="brush: scss source-code scss">@mixin translateY($trans-y: $default-translate-y, $perspective: false, $only3d: false) {
+  $trans: translateY($trans-y);
+  @if $perspective {
+    $trans: perspective($perspective) $trans;
+  }
+  @include transform($trans, $only3d);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Move an object along the y axis (2D)
+@include translate( [ translate-y, perspective, 3D-only ] )</p>
+
+<p><strong>Note</strong> This mixin cannot be combined with other transform mixins.</p>
+
+</div>
+<a href="#mixin-translateZ-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-translateZ">
+<a class="permalink" href="#mixin-translateZ">translateZ(<span class="arg" data-default-value="$default-translate-z">$trans-z</span>, <span class="arg" data-default-value="false">$perspective</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-translateZ-source">
+<pre class="brush: sass source-code sass">=translateZ($trans-z: $default-translate-z, $perspective: false)
+  $trans: translateZ($trans-z)
+  @if $perspective
+    $trans: perspective($perspective) $trans
+  +transform3d($trans)
+</pre>
+<pre class="brush: scss source-code scss">@mixin translateZ($trans-z: $default-translate-z, $perspective: false) {
+  $trans: translateZ($trans-z);
+  @if $perspective {
+    $trans: perspective($perspective) $trans;
+  }
+  @include transform3d($trans);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Move an object along the z axis (3D)
+@include translate( [ translate-z, perspective ] )</p>
+
+<p><strong>Note</strong> This mixin cannot be combined with other transform mixins.</p>
+
+</div>
+<a href="#mixin-translate3d-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-translate3d">
+<a class="permalink" href="#mixin-translate3d">translate3d(<span class="arg" data-default-value="$default-translate-x">$translate-x</span>, <span class="arg" data-default-value="$default-translate-y">$translate-y</span>, <span class="arg" data-default-value="$default-translate-z">$translate-z</span>, <span class="arg" data-default-value="false">$perspective</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-translate3d-source">
+<pre class="brush: sass source-code sass">=translate3d($translate-x: $default-translate-x, $translate-y: $default-translate-y, $translate-z: $default-translate-z, $perspective: false)
+  $trans: translate3d($translate-x, $translate-y, $translate-z)
+  @if $perspective
+    $trans: perspective($perspective) $trans
+  +transform3d($trans)
+</pre>
+<pre class="brush: scss source-code scss">@mixin translate3d($translate-x: $default-translate-x, $translate-y: $default-translate-y, $translate-z: $default-translate-z, $perspective: false) {
+  $trans: translate3d($translate-x, $translate-y, $translate-z);
+  @if $perspective {
+    $trans: perspective($perspective) $trans;
+  }
+  @include transform3d($trans);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Move an object along the x, y and z axis (3D)
+@include translate( [ translate-x, translate-y, translate-z, perspective ] )</p>
+
+<p><strong>Note</strong> This mixin cannot be combined with other transform mixins.</p>
+
+</div>
+<a href="#mixin-skew-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-skew">
+<a class="permalink" href="#mixin-skew">skew(<span class="arg" data-default-value="$default-skew-x">$skew-x</span>, <span class="arg" data-default-value="$default-skew-y">$skew-y</span>, <span class="arg" data-default-value="false">$only3d</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-skew-source">
+<pre class="brush: sass source-code sass">=skew($skew-x: $default-skew-x, $skew-y: $default-skew-y, $only3d: false)
+  $trans: skew($skew-x, $skew-y)
+  +transform($trans, $only3d)
+</pre>
+<pre class="brush: scss source-code scss">@mixin skew($skew-x: $default-skew-x, $skew-y: $default-skew-y, $only3d: false) {
+  $trans: skew($skew-x, $skew-y);
+  @include transform($trans, $only3d);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Skew an element:</p>
+
+<pre><code>@include skew( [ skew-x, skew-y, 3D-only ] )
+</code></pre>
+
+<p>where the 'skew-' arguments accept css angles in degrees (deg) or radian (rad) units.</p>
+
+<p><strong>Note</strong> This mixin cannot be combined with other transform mixins.</p>
+
+</div>
+<a href="#mixin-skewX-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-skewX">
+<a class="permalink" href="#mixin-skewX">skewX(<span class="arg" data-default-value="$default-skew-x">$skew-x</span>, <span class="arg" data-default-value="false">$only3d</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-skewX-source">
+<pre class="brush: sass source-code sass">=skewX($skew-x: $default-skew-x, $only3d: false)
+  $trans: skewX($skew-x)
+  +transform($trans, $only3d)
+</pre>
+<pre class="brush: scss source-code scss">@mixin skewX($skew-x: $default-skew-x, $only3d: false) {
+  $trans: skewX($skew-x);
+  @include transform($trans, $only3d);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Skew an element along the x axiz</p>
+
+<pre><code>@include skew( [ skew-x, 3D-only ] )
+</code></pre>
+
+<p><strong>Note</strong> This mixin cannot be combined with other transform mixins.</p>
+
+</div>
+<a href="#mixin-skewY-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-skewY">
+<a class="permalink" href="#mixin-skewY">skewY(<span class="arg" data-default-value="$default-skew-y">$skew-y</span>, <span class="arg" data-default-value="false">$only3d</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-skewY-source">
+<pre class="brush: sass source-code sass">=skewY($skew-y: $default-skew-y, $only3d: false)
+  $trans: skewY($skew-y)
+  +transform($trans, $only3d)
+</pre>
+<pre class="brush: scss source-code scss">@mixin skewY($skew-y: $default-skew-y, $only3d: false) {
+  $trans: skewY($skew-y);
+  @include transform($trans, $only3d);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Skew an element along the y axis</p>
+
+<pre><code>@include skew( [ skew-y, 3D-only ] )
+</code></pre>
+
+<p><strong>Note</strong> This mixin cannot be combined with other transform mixins.</p>
+
+</div>
+<a href="#mixin-create-transform-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-create-transform">
+<a class="permalink" href="#mixin-create-transform">create-transform(<span class="arg" data-default-value="false">$perspective</span>, <span class="arg" data-default-value="false">$scale-x</span>, <span class="arg" data-default-value="false">$scale-y</span>, <span class="arg" data-default-value="false">$scale-z</span>, <span class="arg" data-default-value="false">$rotate-x</span>, <span class="arg" data-default-value="false">$rotate-y</span>, <span class="arg" data-default-value="false">$rotate-z</span>, <span class="arg" data-default-value="false">$rotate3d</span>, <span class="arg" data-default-value="false">$trans-x</span>, <span class="arg" data-default-value="false">$trans-y</span>, <span class="arg" data-default-value="false">$trans-z</span>, <span class="arg" data-default-value="false">$skew-x</span>, <span class="arg" data-default-value="false">$skew-y</span>, <span class="arg" data-default-value="false">$origin-x</span>, <span class="arg" data-default-value="false">$origin-y</span>, <span class="arg" data-default-value="false">$origin-z</span>, <span class="arg" data-default-value="false">$only3d</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-create-transform-source">
+<pre class="brush: sass source-code sass">=create-transform($perspective: false, $scale-x: false, $scale-y: false, $scale-z: false, $rotate-x: false, $rotate-y: false, $rotate-z: false, $rotate3d: false, $trans-x: false, $trans-y: false, $trans-z: false, $skew-x: false, $skew-y: false, $origin-x: false, $origin-y: false, $origin-z: false, $only3d: false)
+  $trans: unquote("")
+  // perspective
+  @if $perspective
+    $trans: perspective($perspective)
+  // scale
+  @if $scale-x and $scale-y
+    @if $scale-z
+      $trans: $trans scale3d($scale-x, $scale-y, $scale-z)
+    @else
+      $trans: $trans scale($scale-x, $scale-y)
+  @else
+    @if $scale-x
+      $trans: $trans scaleX($scale-x)
+    @if $scale-y
+      $trans: $trans scaleY($scale-y)
+    @if $scale-z
+      $trans: $trans scaleZ($scale-z)
+  // rotate
+  @if $rotate-x
+    $trans: $trans rotateX($rotate-x)
+  @if $rotate-y
+    $trans: $trans rotateY($rotate-y)
+  @if $rotate-z
+    $trans: $trans rotateZ($rotate-z)
+  @if $rotate3d
+    $trans: $trans rotate3d($rotate3d)
+  // translate
+  @if $trans-x and $trans-y
+    @if $trans-z
+      $trans: $trans translate3d($trans-x, $trans-y, $trans-z)
+    @else
+      $trans: $trans translate($trans-x, $trans-y)
+  @else
+    @if $trans-x
+      $trans: $trans translateX($trans-x)
+    @if $trans-y
+      $trans: $trans translateY($trans-y)
+    @if $trans-z
+      $trans: $trans translateZ($trans-z)
+  // skew
+  @if $skew-x and $skew-y
+    $trans: $trans skew($skew-x, $skew-y)
+  @else
+    @if $skew-x
+      $trans: $trans skewX($skew-x)
+    @if $skew-y
+      $trans: $trans skewY($skew-y)
+  // apply it!
+  +transform($trans, $only3d)
+  +transform-origin($origin-x, $origin-y, $origin-z, $only3d)
+</pre>
+<pre class="brush: scss source-code scss">@mixin create-transform($perspective: false, $scale-x: false, $scale-y: false, $scale-z: false, $rotate-x: false, $rotate-y: false, $rotate-z: false, $rotate3d: false, $trans-x: false, $trans-y: false, $trans-z: false, $skew-x: false, $skew-y: false, $origin-x: false, $origin-y: false, $origin-z: false, $only3d: false) {
+  $trans: unquote("");
+  // perspective
+  @if $perspective {
+    $trans: perspective($perspective);
+  }
+  // scale
+  @if $scale-x and $scale-y {
+    @if $scale-z {
+      $trans: $trans scale3d($scale-x, $scale-y, $scale-z);
+    }
+    @else {
+      $trans: $trans scale($scale-x, $scale-y);
+    }
+  }
+  @else {
+    @if $scale-x {
+      $trans: $trans scaleX($scale-x);
+    }
+    @if $scale-y {
+      $trans: $trans scaleY($scale-y);
+    }
+    @if $scale-z {
+      $trans: $trans scaleZ($scale-z);
+    }
+  }
+  // rotate
+  @if $rotate-x {
+    $trans: $trans rotateX($rotate-x);
+  }
+  @if $rotate-y {
+    $trans: $trans rotateY($rotate-y);
+  }
+  @if $rotate-z {
+    $trans: $trans rotateZ($rotate-z);
+  }
+  @if $rotate3d {
+    $trans: $trans rotate3d($rotate3d);
+  }
+  // translate
+  @if $trans-x and $trans-y {
+    @if $trans-z {
+      $trans: $trans translate3d($trans-x, $trans-y, $trans-z);
+    }
+    @else {
+      $trans: $trans translate($trans-x, $trans-y);
+    }
+  }
+  @else {
+    @if $trans-x {
+      $trans: $trans translateX($trans-x);
+    }
+    @if $trans-y {
+      $trans: $trans translateY($trans-y);
+    }
+    @if $trans-z {
+      $trans: $trans translateZ($trans-z);
+    }
+  }
+  // skew
+  @if $skew-x and $skew-y {
+    $trans: $trans skew($skew-x, $skew-y);
+  }
+  @else {
+    @if $skew-x {
+      $trans: $trans skewX($skew-x);
+    }
+    @if $skew-y {
+      $trans: $trans skewY($skew-y);
+    }
+  }
+  // apply it!
+  @include transform($trans, $only3d);
+  @include transform-origin($origin-x, $origin-y, $origin-z, $only3d);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Full transform mixins
+For settings any combination of transforms as arguments
+These are complex and not highly recommended for daily use. They are mainly
+here for backward-compatibility purposes.</p>
+
+<ul>
+<li>they include origin adjustments</li>
+<li>scale takes a multiplier (unitless), rotate and skew take degrees (deg)</li>
+</ul>
+<p><strong>Note</strong> This mixin cannot be combined with other transform mixins.</p>
+
+</div>
+<a href="#mixin-simple-transform-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-simple-transform">
+<a class="permalink" href="#mixin-simple-transform">simple-transform(<span class="arg" data-default-value="false">$scale</span>, <span class="arg" data-default-value="false">$rotate</span>, <span class="arg" data-default-value="false">$trans-x</span>, <span class="arg" data-default-value="false">$trans-y</span>, <span class="arg" data-default-value="false">$skew-x</span>, <span class="arg" data-default-value="false">$skew-y</span>, <span class="arg" data-default-value="false">$origin-x</span>, <span class="arg" data-default-value="false">$origin-y</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-simple-transform-source">
+<pre class="brush: sass source-code sass">=simple-transform($scale: false, $rotate: false, $trans-x: false, $trans-y: false, $skew-x: false, $skew-y: false, $origin-x: false, $origin-y: false)
+  +create-transform(false, $scale, $scale, false, false, false, $rotate, false, $trans-x, $trans-y, false, $skew-x, $skew-y, $origin-x, $origin-y, false, false)
+</pre>
+<pre class="brush: scss source-code scss">@mixin simple-transform($scale: false, $rotate: false, $trans-x: false, $trans-y: false, $skew-x: false, $skew-y: false, $origin-x: false, $origin-y: false) {
+  @include create-transform(false, $scale, $scale, false, false, false, $rotate, false, $trans-x, $trans-y, false, $skew-x, $skew-y, $origin-x, $origin-y, false, false);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>A simplified set of options
+backwards-compatible with the previous version of the 'transform' mixin</p>
+
+</div></section>
+
+</body>
+</html>

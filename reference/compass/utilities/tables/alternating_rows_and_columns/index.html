@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Table Striping | Compass API
+</title>
+</head>
+<body class=' reference core utilities' id='reference-compass-utilities-tables-alternating-rows-and-columns'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/compass/stylesheets/compass/utilities/tables/_alternating-rows-and-columns.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Compass Table Striping</h1>
+<p>Add striping to a table in both directions based on a few colors.</p>
+
+<p>
+This file can be imported using:
+<code>@import "compass/utilities/tables/alternating-rows-and-columns"</code>
+</p>
+<h2>Examples</h2>
+<dl class="examples">
+<dt><a href="/examples/compass/tables/striping/">Compass Table Striping Example</a></dt>
+<dd>How to use the alternating-rows-and-columns mixin.</dd>
+</dl><h2>Mixins</h2>
+<a href="#mixin-alternating-rows-and-columns-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-alternating-rows-and-columns">
+<a class="permalink" href="#mixin-alternating-rows-and-columns">alternating-rows-and-columns(<span class="arg">$even-row-color</span>, <span class="arg">$odd-row-color</span>, <span class="arg">$dark-intersection</span>, <span class="arg" data-default-value="white">$header-color</span>, <span class="arg" data-default-value="white">$footer-color</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-alternating-rows-and-columns-source">
+<pre class="brush: sass source-code sass">=alternating-rows-and-columns($even-row-color, $odd-row-color, $dark-intersection, $header-color: white, $footer-color: white)
+  th
+    background-color: $header-color
+    &amp;.even, &amp;:nth-child(2n)
+      background-color: $header-color - $dark-intersection
+  tr
+    &amp;.odd, &amp;:nth-child(2n+1)
+      td
+        background-color: $odd-row-color
+        &amp;.even, &amp;:nth-child(2n)
+          background-color: $odd-row-color - $dark-intersection
+  tr.even
+    td
+      background-color: $even-row-color
+      &amp;.even, &amp;:nth-child(2n)
+        background-color: $even-row-color - $dark-intersection
+  tfoot
+    th, td
+      background-color: $footer-color
+      &amp;.even, &amp;:nth-child(2n)
+        background-color: $footer-color - $dark-intersection
+</pre>
+<pre class="brush: scss source-code scss">@mixin alternating-rows-and-columns($even-row-color, $odd-row-color, $dark-intersection, $header-color: white, $footer-color: white) {
+  th {
+    background-color: $header-color;
+    &amp;.even, &amp;:nth-child(2n) {
+      background-color: $header-color - $dark-intersection;
+    }
+  }
+  tr {
+    &amp;.odd, &amp;:nth-child(2n+1) {
+      td {
+        background-color: $odd-row-color;
+        &amp;.even, &amp;:nth-child(2n) {
+          background-color: $odd-row-color - $dark-intersection;
+        }
+      }
+    }
+  }
+  tr.even {
+    td {
+      background-color: $even-row-color;
+      &amp;.even, &amp;:nth-child(2n) {
+        background-color: $even-row-color - $dark-intersection;
+      }
+    }
+  }
+  tfoot {
+    th, td {
+      background-color: $footer-color;
+      &amp;.even, &amp;:nth-child(2n) {
+        background-color: $footer-color - $dark-intersection;
+      }
+    }
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+
+</div></section>
+
+</body>
+</html>

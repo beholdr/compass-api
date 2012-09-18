@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Columns | Compass API
+</title>
+</head>
+<body class=' demo' id='examples-compass-css3-columns'><div id='reference'><a href="/reference/compass/css3/columns/">Reference Documentation</a></div>
+<h1>Demo: Columns</h1>
+<div id='demo'><div id='two-column'>
+  Lorem ipsum dolor sit amet,
+  consectetur adipisicing elit,
+  sed do eiusmod tempor incididunt ut
+  labore et dolore magna aliqua.
+</div>
+<div id='three-column'>
+  Lorem ipsum dolor sit amet,
+  consectetur adipisicing elit,
+  sed do eiusmod tempor incididunt ut
+  labore et dolore magna aliqua.
+</div>
+<div id='four-column-with-rule'>
+  Lorem ipsum dolor sit amet,
+  consectetur adipisicing elit,
+  sed do eiusmod tempor incididunt ut
+  labore et dolore magna aliqua.
+</div>
+</div>
+
+<div id='how'>
+<section id='markup'>
+<div class='syntax_pref'>
+<a href='#' rel='html'>html</a>
+<a href='#' rel='haml'>haml</a>
+</div>
+<div class='example-source'>
+<pre class='source-code html'>&lt;div id='two-column'&gt;
+  Lorem ipsum dolor sit amet,
+  consectetur adipisicing elit,
+  sed do eiusmod tempor incididunt ut
+  labore et dolore magna aliqua.
+&lt;/div&gt;
+&lt;div id='three-column'&gt;
+  Lorem ipsum dolor sit amet,
+  consectetur adipisicing elit,
+  sed do eiusmod tempor incididunt ut
+  labore et dolore magna aliqua.
+&lt;/div&gt;
+&lt;div id='four-column-with-rule'&gt;
+  Lorem ipsum dolor sit amet,
+  consectetur adipisicing elit,
+  sed do eiusmod tempor incididunt ut
+  labore et dolore magna aliqua.
+&lt;/div&gt;
+</pre>
+<pre class='source-code haml'>%div(id=&quot;two-column&quot;)
+  Lorem ipsum dolor sit amet,
+  consectetur adipisicing elit,
+  sed do eiusmod tempor incididunt ut
+  labore et dolore magna aliqua.
+
+%div(id=&quot;three-column&quot;)
+  Lorem ipsum dolor sit amet,
+  consectetur adipisicing elit,
+  sed do eiusmod tempor incididunt ut
+  labore et dolore magna aliqua.
+
+%div(id=&quot;four-column-with-rule&quot;)
+  Lorem ipsum dolor sit amet,
+  consectetur adipisicing elit,
+  sed do eiusmod tempor incididunt ut
+  labore et dolore magna aliqua.
+</pre>
+</div>
+</section>
+<section id='styles'>
+<div class='syntax_pref'>
+<a href='#' rel='scss'>scss</a>
+<a href='#' rel='sass'>sass</a>
+<a href='#' rel='css'>css</a>
+</div>
+<div class='example-source'>
+<pre class='source-code scss'>@import &quot;compass/css3&quot;;
+
+#two-column {
+  @include column-count(2);
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+#three-column {
+  @include column-count(3);
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+#four-column-with-rule {
+  @include column-count(4);
+  @include column-rule(1px, solid, red);
+  width: 300px;
+  margin-bottom: 20px;
+}
+</pre>
+<pre class='source-code sass'>@import compass/css3
+
+#two-column
+  +column-count(2)
+  width: 300px
+  margin-bottom: 20px
+
+#three-column
+  +column-count(3)
+  width: 300px
+  margin-bottom: 20px
+
+#four-column-with-rule
+  +column-count(4)
+  +column-rule(1px, solid, red)
+  width: 300px
+  margin-bottom: 20px</pre>
+<pre class='source-code css'>#two-column{-webkit-column-count:2;-moz-column-count:2;-ms-column-count:2;-o-column-count:2;column-count:2;width:300px;margin-bottom:20px}#three-column{-webkit-column-count:3;-moz-column-count:3;-ms-column-count:3;-o-column-count:3;column-count:3;width:300px;margin-bottom:20px}#four-column-with-rule{-webkit-column-count:4;-moz-column-count:4;-ms-column-count:4;-o-column-count:4;column-count:4;-webkit-column-rule:1px solid red;-moz-column-rule:1px solid red;-ms-column-rule:1px solid red;-o-column-rule:1px solid red;column-rule:1px solid red;width:300px;margin-bottom:20px}
+</pre>
+</div>
+</section>
+</div>
+
+
+</body>
+</html>

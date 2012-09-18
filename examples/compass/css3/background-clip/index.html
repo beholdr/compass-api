@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Background Clip | Compass API
+</title>
+</head>
+<body class=' demo' id='examples-compass-css3-background-clip'><div id='reference'><a href="/reference/compass/css3/background_clip/">Reference Documentation</a></div>
+<h1>Demo: Background Clip</h1>
+<div id='demo'><div class='example'>
+  <div id='padding-box'>
+    Padding Box
+  </div>
+  <div id='border-box'>
+    Border Box
+  </div>
+</div>
+</div>
+<p>
+In this example, there's a red border with alpha transparency.
+The padding box appears pink against the white background of the page.
+The border box appears purple because it blends with the blue background instead.
+</p>
+
+<div id='how'>
+<section id='markup'>
+<div class='syntax_pref'>
+<a href='#' rel='html'>html</a>
+<a href='#' rel='haml'>haml</a>
+</div>
+<div class='example-source'>
+<pre class='source-code html'>&lt;div class='example'&gt;
+  &lt;div id='padding-box'&gt;
+    Padding Box
+  &lt;/div&gt;
+  &lt;div id='border-box'&gt;
+    Border Box
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+<pre class='source-code haml'>.example
+  #padding-box
+    Padding Box
+  #border-box
+    Border Box
+</pre>
+</div>
+</section>
+<section id='styles'>
+<div class='syntax_pref'>
+<a href='#' rel='scss'>scss</a>
+<a href='#' rel='sass'>sass</a>
+<a href='#' rel='css'>css</a>
+</div>
+<div class='example-source'>
+<pre class='source-code scss'>@import &quot;compass/css3.scss&quot;;
+
+.example {
+  padding: 2em;
+  div {
+    background-color: blue;
+    border: 10px solid rgba(255, 0, 0, 0.5);
+    color: white;
+    @include text-shadow(darken(blue, 50%) 2px 2px);
+    padding: 3px;
+    text-align: center;
+    margin-bottom: 2em;
+  }
+  #padding-box {
+    @include background-clip(padding-box);
+  }
+  #border-box {
+    @include background-clip(border-box);
+  }
+}
+</pre>
+<pre class='source-code sass'>@import compass/css3.scss
+.example
+  padding: 2em
+  div
+    background-color: blue
+    border: 10px solid rgba(255, 0, 0, 0.5)
+    color: white
+    +text-shadow(darken(#00f, 50%) 2px 2px)
+    padding: 3px
+    text-align: center
+    margin-bottom: 2em
+  #padding-box
+    +background-clip(padding-box)
+  #border-box
+    +background-clip(border-box)
+</pre>
+<pre class='source-code css'>.example{padding:2em}.example div{background-color:blue;border:10px solid rgba(255,0,0,0.5);color:#fff;text-shadow:#000 2px 2px;padding:3px;text-align:center;margin-bottom:2em}.example #padding-box{-webkit-background-clip:padding;-moz-background-clip:padding;background-clip:padding-box}.example #border-box{-webkit-background-clip:border;-moz-background-clip:border;background-clip:border-box}
+</pre>
+</div>
+</section>
+</div>
+
+</body>
+</html>

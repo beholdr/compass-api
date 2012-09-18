@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Background Size | Compass API
+</title>
+</head>
+<body class=' demo' id='examples-compass-css3-background-size'><div id='reference'><a href="/reference/compass/css3/background_size/">Reference Documentation</a></div>
+<h1>Demo: Background Size</h1>
+<div id='demo'><div class='example'>
+  <div id='auto'>
+    <code>background-size: auto</code>
+  </div>
+  <div id='contain'>
+    <code>background-size: contain</code>
+  </div>
+  <div id='cover'>
+    <code>background-size: cover</code>
+  </div>
+  <div id='percent'>
+    <code>background-size: 50% 50%</code>
+  </div>
+  <div id='absolute'>
+    <code>background-size: 100px 25px</code>
+  </div>
+</div>
+</div>
+
+<div id='how'>
+<section id='markup'>
+<div class='syntax_pref'>
+<a href='#' rel='html'>html</a>
+<a href='#' rel='haml'>haml</a>
+</div>
+<div class='example-source'>
+<pre class='source-code html'>&lt;div class='example'&gt;
+  &lt;div id='auto'&gt;
+    &lt;code&gt;background-size: auto&lt;/code&gt;
+  &lt;/div&gt;
+  &lt;div id='contain'&gt;
+    &lt;code&gt;background-size: contain&lt;/code&gt;
+  &lt;/div&gt;
+  &lt;div id='cover'&gt;
+    &lt;code&gt;background-size: cover&lt;/code&gt;
+  &lt;/div&gt;
+  &lt;div id='percent'&gt;
+    &lt;code&gt;background-size: 50% 50%&lt;/code&gt;
+  &lt;/div&gt;
+  &lt;div id='absolute'&gt;
+    &lt;code&gt;background-size: 100px 25px&lt;/code&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+<pre class='source-code haml'>.example
+  #auto
+    %code background-size: auto
+  #contain
+    %code background-size: contain
+  #cover
+    %code background-size: cover
+  #percent
+    %code background-size: 50% 50%
+  #absolute
+    %code background-size: 100px 25px</pre>
+</div>
+</section>
+<section id='styles'>
+<div class='syntax_pref'>
+<a href='#' rel='scss'>scss</a>
+<a href='#' rel='sass'>sass</a>
+<a href='#' rel='css'>css</a>
+</div>
+<div class='example-source'>
+<pre class='source-code scss'>@import &quot;compass/css3&quot;;
+
+.example {
+  padding: 2em;
+  div {
+    background: {
+      image: image-url(&quot;examples/css3/bg-origin/bg.png&quot;);
+      repeat: no-repeat;
+      position: top left;
+    };
+    border: 10px solid rgba(255, 0, 0, 0.5);
+    color: black;
+    @include text-shadow(white 1px 1px 4px);
+    padding: 1em;
+    text-align: center;
+    margin-bottom: 2em;
+  }
+  #auto {
+    @include background-size(auto);
+  }
+  #contain {
+    @include background-size(contain);
+  }
+  #cover {
+    @include background-size(cover);
+  }
+  #percent {
+    @include background-size(50% 50%);
+  }
+  #absolute {
+    @include background-size(100px 25px);
+  }
+}
+</pre>
+<pre class='source-code sass'>@import compass/css3
+
+.example
+  padding: 2em
+  div
+    background:
+      image: image-url(&quot;examples/css3/bg-origin/bg.png&quot;)
+      repeat: no-repeat
+      position: top left
+    border: 10px solid rgba(255, 0, 0, 0.5)
+    color: black
+    +text-shadow(#fff 1px 1px 4px)
+    padding: 1em
+    text-align: center
+    margin-bottom: 2em
+  #auto
+    +background-size(auto)
+  #contain
+    +background-size(contain)
+  #cover
+    +background-size(cover)
+  #percent
+    +background-size(50% 50%)
+  #absolute
+    +background-size(100px 25px)
+</pre>
+<pre class='source-code css'>.example{padding:2em}.example div{background-image:url('/images/examples/css3/bg-origin/bg.png?1347105993');background-repeat:no-repeat;background-position:top left;border:10px solid rgba(255,0,0,0.5);color:#000;text-shadow:#fff 1px 1px 4px;padding:1em;text-align:center;margin-bottom:2em}.example #auto{-webkit-background-size:auto;-moz-background-size:auto;-o-background-size:auto;background-size:auto}.example #contain{-webkit-background-size:contain;-moz-background-size:contain;-o-background-size:contain;background-size:contain}.example #cover{-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover}.example #percent{-webkit-background-size:50% 50%;-moz-background-size:50% 50%;-o-background-size:50% 50%;background-size:50% 50%}.example #absolute{-webkit-background-size:100px 25px;-moz-background-size:100px 25px;-o-background-size:100px 25px;background-size:100px 25px}
+</pre>
+</div>
+</section>
+</div>
+
+
+</body>
+</html>

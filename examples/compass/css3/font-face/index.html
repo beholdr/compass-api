@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Font Face Example | Compass API
+</title>
+</head>
+<body class=' demo' id='examples-compass-css3-font-face'><div id='reference'><a href="/reference/compass/css3/font_face/">Reference Documentation</a></div>
+<h1>Demo: Compass Font Face Example</h1>
+<div id='demo'><div class='example'>
+  <p>The Quick Brown Fox jumped over the lazy dog.</p>
+</div>
+</div>
+
+<div id='how'>
+<section id='markup'>
+<div class='syntax_pref'>
+<a href='#' rel='html'>html</a>
+<a href='#' rel='haml'>haml</a>
+</div>
+<div class='example-source'>
+<pre class='source-code html'>&lt;div class='example'&gt;
+  &lt;p&gt;The Quick Brown Fox jumped over the lazy dog.&lt;/p&gt;
+&lt;/div&gt;
+</pre>
+<pre class='source-code haml'>.example
+  %p The Quick Brown Fox jumped over the lazy dog.
+</pre>
+</div>
+</section>
+<section id='styles'>
+<div class='syntax_pref'>
+<a href='#' rel='scss'>scss</a>
+<a href='#' rel='sass'>sass</a>
+<a href='#' rel='css'>css</a>
+</div>
+<div class='example-source'>
+<pre class='source-code scss'>@import &quot;compass/css3&quot;;
+
+@include font-face(&quot;Blooming Grove&quot;, font-files(&quot;examples/bgrove.ttf&quot;, &quot;examples/bgrove.otf&quot;));
+
+.example {
+  font-family: &quot;Blooming Grove&quot;;
+  font-size: 1.5em;
+}
+</pre>
+<pre class='source-code sass'>@import compass/css3
+
++font-face(&quot;Blooming Grove&quot;, font-files(&quot;examples/bgrove.ttf&quot;, &quot;examples/bgrove.otf&quot;))
+
+.example
+  font-family: &quot;Blooming Grove&quot;
+  font-size: 1.5em
+</pre>
+<pre class='source-code css'>@font-face{font-family:&quot;Blooming Grove&quot;;src:url('/fonts/examples/bgrove.ttf') format('truetype'), url('/fonts/examples/bgrove.otf') format('opentype')}.example{font-family:&quot;Blooming Grove&quot;;font-size:1.5em}
+</pre>
+</div>
+</section>
+</div>
+
+
+</body>
+</html>

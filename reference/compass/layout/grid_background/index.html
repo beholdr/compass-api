@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Grid Backgrounds | Compass API
+</title>
+</head>
+<body class=' reference core layout' id='reference-compass-layout-grid-background'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/compass/stylesheets/compass/layout/_grid-background.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Compass Grid Backgrounds</h1>
+<p>
+The grid-background mixins allow you to generate fixed, fluid and elastic
+grid-images on-the-fly using css3 gradients. These can be used for testing
+both horizontal and vertical grids.
+</p>
+
+<p>
+This file can be imported using:
+<code>@import "compass/layout/grid-background"</code>
+</p>
+
+<h2>Imports</h2>
+<ol>
+<li>
+<a href="/reference/compass/css3/background_size/" title="@import compass/css3/background-size">Background Size</a>
+– Specify the background size for all browsers.
+</li>
+<li>
+<a href="/reference/compass/css3/images/" title="@import compass/css3/images">Images</a>
+– Specify linear gradients and radial gradients for many browsers.
+</li>
+</ol><h2>
+Configurable Variables
+<a class="help" href="/help/tutorials/configurable-variables/">help</a>
+</h2>
+<h3 class="constant" id="const-grid-background-column-color">
+<a class="permalink" href="#const-grid-background-column-color">$grid-background-column-color</a>
+<code>rgba(100, 100, 225, 0.25)</code>
+</h3>
+<p></p><p>Set the color of your columns</p>
+
+<h3 class="constant" id="const-grid-background-gutter-color">
+<a class="permalink" href="#const-grid-background-gutter-color">$grid-background-gutter-color</a>
+<code>rgba(0, 0, 0, 0)</code>
+</h3>
+<p></p><p>Set the color of your gutters</p>
+
+<h3 class="constant" id="const-grid-background-total-columns">
+<a class="permalink" href="#const-grid-background-total-columns">$grid-background-total-columns</a>
+<code>24</code>
+</h3>
+<p></p><p>Set the total number of columns in your grid</p>
+
+<h3 class="constant" id="const-grid-background-column-width">
+<a class="permalink" href="#const-grid-background-column-width">$grid-background-column-width</a>
+<code>30px</code>
+</h3>
+<p></p><p>Set the width of your columns</p>
+
+<h3 class="constant" id="const-grid-background-gutter-width">
+<a class="permalink" href="#const-grid-background-gutter-width">$grid-background-gutter-width</a>
+<code>10px</code>
+</h3>
+<p></p><p>Set the width of your gutters</p>
+
+<h3 class="constant" id="const-grid-background-offset">
+<a class="permalink" href="#const-grid-background-offset">$grid-background-offset</a>
+<code>0px</code>
+</h3>
+<p></p><p>Set the offset, if your columns are padded in from the container edge</p>
+
+<h3 class="constant" id="const-grid-background-baseline-color">
+<a class="permalink" href="#const-grid-background-baseline-color">$grid-background-baseline-color</a>
+<code>rgba(0, 0, 0, 0.5)</code>
+</h3>
+<p></p><p>Set the color of your baseline</p>
+
+<h3 class="constant" id="const-grid-background-baseline-height">
+<a class="permalink" href="#const-grid-background-baseline-height">$grid-background-baseline-height</a>
+<code>1.5em</code>
+</h3>
+<p></p><p>Set the height of your baseline grid</p>
+
+<h3 class="constant" id="const-show-column-grid-backgrounds">
+<a class="permalink" href="#const-show-column-grid-backgrounds">$show-column-grid-backgrounds</a>
+<code>true</code>
+</h3>
+<p></p><p>toggle your columns grids on and off</p>
+
+<h3 class="constant" id="const-show-baseline-grid-backgrounds">
+<a class="permalink" href="#const-show-baseline-grid-backgrounds">$show-baseline-grid-backgrounds</a>
+<code>true</code>
+</h3>
+<p></p><p>toggle your vertical grids on and off</p>
+
+<h3 class="constant" id="const-show-grid-backgrounds">
+<a class="permalink" href="#const-show-grid-backgrounds">$show-grid-backgrounds</a>
+<code>true</code>
+</h3>
+<p></p><p>toggle all your grids on and off</p>
+
+<h3 class="constant" id="const-grid-background-force-fluid">
+<a class="permalink" href="#const-grid-background-force-fluid">$grid-background-force-fluid</a>
+<code>false</code>
+</h3>
+<p></p><p>optionally force your grid-image to remain fluid
+no matter what units you used to declared your grid.</p>
+
+
+
+<h2>Functions</h2>
+<a href="#function-get-baseline-gradient-source" rel="view source">view source</a>
+<h3 class="function" id="function-get-baseline-gradient">
+<a class="permalink" href="#function-get-baseline-gradient">get-baseline-gradient(<span class="arg" data-default-value="$grid-background-baseline-color">$color</span>)</a>
+</h3>
+<div class="function-source" id="function-get-baseline-gradient-source">
+<pre class="brush: sass source-code sass">@function get-baseline-gradient($color: $grid-background-baseline-color)
+  $gradient: linear-gradient(bottom, $color 5%, rgba($color, 0) 5%)
+  @return $gradient
+</pre>
+<pre class="brush: scss source-code scss">@function get-baseline-gradient($color: $grid-background-baseline-color) {
+  $gradient: linear-gradient(bottom, $color 5%, rgba($color, 0) 5%);
+  @return $gradient;
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Create the gradient needed for baseline grids</p>
+
+</div>
+<a href="#function-build-grid-background-source" rel="view source">view source</a>
+<h3 class="function" id="function-build-grid-background">
+<a class="permalink" href="#function-build-grid-background">build-grid-background(<span class="arg" data-default-value="$grid-background-total-columns">$total</span>, <span class="arg" data-default-value="$grid-background-column-width">$column</span>, <span class="arg" data-default-value="$grid-background-gutter-width">$gutter</span>, <span class="arg" data-default-value="$grid-background-offset">$offset</span>, <span class="arg" data-default-value="$grid-background-column-color">$column-color</span>, <span class="arg" data-default-value="$grid-background-gutter-color">$gutter-color</span>)</a>
+</h3>
+<div class="function-source" id="function-build-grid-background-source">
+<pre class="brush: sass source-code sass">@function build-grid-background($total: $grid-background-total-columns, $column: $grid-background-column-width, $gutter: $grid-background-gutter-width, $offset: $grid-background-offset, $column-color: $grid-background-column-color, $gutter-color: $grid-background-gutter-color)
+  $grid: compact()
+  $grid: append($grid, $gutter-color $offset, comma)
+  @for $i from 0 to $total
+    // $a represents the start of this column, initially equal to the offset
+    $a: $offset
+    @if $i &gt; 0
+      $a: $a + ($column + $gutter) * $i
+    // $g represents the start of this gutter, equal to $a plus one column-width
+    $g: $a + $column
+    // $z represents the end of a gutter, equal to $g plus one gutter-width
+    $z: $g + $gutter
+    @if unit($a) == "%" and $i == $total - 1
+      $z: 100%
+    // and we add this column/gutter pair to our grid
+    $grid: join($grid, $column-color $a, $column-color $g, $gutter-color $g, $gutter-color $z)
+  @return $grid
+</pre>
+<pre class="brush: scss source-code scss">@function build-grid-background($total: $grid-background-total-columns, $column: $grid-background-column-width, $gutter: $grid-background-gutter-width, $offset: $grid-background-offset, $column-color: $grid-background-column-color, $gutter-color: $grid-background-gutter-color) {
+  $grid: compact();
+  $grid: append($grid, $gutter-color $offset, comma);
+  @for $i from 0 to $total {
+    // $a represents the start of this column, initially equal to the offset
+    $a: $offset;
+    @if $i &gt; 0 {
+      $a: $a + ($column + $gutter) * $i;
+    }
+    // $g represents the start of this gutter, equal to $a plus one column-width
+    $g: $a + $column;
+    // $z represents the end of a gutter, equal to $g plus one gutter-width
+    $z: $g + $gutter;
+    @if unit($a) == "%" and $i == $total - 1 {
+      $z: 100%;
+    }
+    // and we add this column/gutter pair to our grid
+    $grid: join($grid, $column-color $a, $column-color $g, $gutter-color $g, $gutter-color $z);
+  }
+  @return $grid;
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Create the color-stops needed for horizontal grids</p>
+
+</div>
+<a href="#function-get-column-gradient-source" rel="view source">view source</a>
+<h3 class="function" id="function-get-column-gradient">
+<a class="permalink" href="#function-get-column-gradient">get-column-gradient(<span class="arg" data-default-value="$grid-background-total-columns">$total</span>, <span class="arg" data-default-value="$grid-background-column-width">$column</span>, <span class="arg" data-default-value="$grid-background-gutter-width">$gutter</span>, <span class="arg" data-default-value="$grid-background-offset">$offset</span>, <span class="arg" data-default-value="$grid-background-column-color">$column-color</span>, <span class="arg" data-default-value="$grid-background-gutter-color">$gutter-color</span>, <span class="arg" data-default-value="$grid-background-force-fluid">$force-fluid</span>)</a>
+</h3>
+<div class="function-source" id="function-get-column-gradient-source">
+<pre class="brush: sass source-code sass">@function get-column-gradient($total: $grid-background-total-columns, $column: $grid-background-column-width, $gutter: $grid-background-gutter-width, $offset: $grid-background-offset, $column-color: $grid-background-column-color, $gutter-color: $grid-background-gutter-color, $force-fluid: $grid-background-force-fluid)
+  $grid: unquote("")
+  // don't force fluid grids when they are already fluid.
+  @if unit($column) == "%"
+    $force-fluid: false
+  @if $force-fluid
+    $grid: get-column-fluid-grid($total, $column, $gutter, $offset, $column-color, $gutter-color)
+  @else
+    $grid: build-grid-background($total, $column, $gutter, $offset, $column-color, $gutter-color)
+  // return the horizontal grid as a gradient
+  $gradient: linear-gradient(left, $grid)
+  @return $gradient
+</pre>
+<pre class="brush: scss source-code scss">@function get-column-gradient($total: $grid-background-total-columns, $column: $grid-background-column-width, $gutter: $grid-background-gutter-width, $offset: $grid-background-offset, $column-color: $grid-background-column-color, $gutter-color: $grid-background-gutter-color, $force-fluid: $grid-background-force-fluid) {
+  $grid: unquote("");
+  // don't force fluid grids when they are already fluid.
+  @if unit($column) == "%" {
+    $force-fluid: false;
+  }
+  @if $force-fluid {
+    $grid: get-column-fluid-grid($total, $column, $gutter, $offset, $column-color, $gutter-color);
+  }
+  @else {
+    $grid: build-grid-background($total, $column, $gutter, $offset, $column-color, $gutter-color);
+  }
+  // return the horizontal grid as a gradient
+  $gradient: linear-gradient(left, $grid);
+  @return $gradient;
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Return the gradient needed for horizontal grids</p>
+
+</div>
+<a href="#function-get-column-fluid-grid-source" rel="view source">view source</a>
+<h3 class="function" id="function-get-column-fluid-grid">
+<a class="permalink" href="#function-get-column-fluid-grid">get-column-fluid-grid(<span class="arg" data-default-value="$grid-background-total-columns">$total</span>, <span class="arg" data-default-value="$grid-background-column-width">$column</span>, <span class="arg" data-default-value="$grid-background-gutter-width">$gutter</span>, <span class="arg" data-default-value="$grid-background-offset">$offset</span>, <span class="arg" data-default-value="$grid-background-column-color">$column-color</span>, <span class="arg" data-default-value="$grid-background-gutter-color">$gutter-color</span>)</a>
+</h3>
+<div class="function-source" id="function-get-column-fluid-grid-source">
+<pre class="brush: sass source-code sass">@function get-column-fluid-grid($total: $grid-background-total-columns, $column: $grid-background-column-width, $gutter: $grid-background-gutter-width, $offset: $grid-background-offset, $column-color: $grid-background-column-color, $gutter-color: $grid-background-gutter-color)
+  $context: $column * $total + $gutter * ($total - 1) + $offset * 2
+  $offset: $offset / $context * 100%
+  $column: $column / $context * 100%
+  $gutter: $gutter / $context * 100%
+  // return the horizontal grid as a set of color-stops
+  $grid: build-grid-background($total, $column, $gutter, $offset, $column-color, $gutter-color)
+  @return $grid
+</pre>
+<pre class="brush: scss source-code scss">@function get-column-fluid-grid($total: $grid-background-total-columns, $column: $grid-background-column-width, $gutter: $grid-background-gutter-width, $offset: $grid-background-offset, $column-color: $grid-background-column-color, $gutter-color: $grid-background-gutter-color) {
+  $context: $column * $total + $gutter * ($total - 1) + $offset * 2;
+  $offset: $offset / $context * 100%;
+  $column: $column / $context * 100%;
+  $gutter: $gutter / $context * 100%;
+  // return the horizontal grid as a set of color-stops
+  $grid: build-grid-background($total, $column, $gutter, $offset, $column-color, $gutter-color);
+  @return $grid;
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Convert a grid from fixed units into percentages.</p>
+
+</div>
+
+<h2>Mixins</h2>
+<a href="#mixin-baseline-grid-background-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-baseline-grid-background">
+<a class="permalink" href="#mixin-baseline-grid-background">baseline-grid-background(<span class="arg" data-default-value="$grid-background-baseline-height">$baseline</span>, <span class="arg" data-default-value="$grid-background-baseline-color">$color</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-baseline-grid-background-source">
+<pre class="brush: sass source-code sass">=baseline-grid-background($baseline: $grid-background-baseline-height, $color: $grid-background-baseline-color)
+  @if $show-grid-backgrounds and $show-baseline-grid-backgrounds
+    +background-image(get-baseline-gradient($color))
+    +background-size(100% $baseline)
+    background-position: left top
+</pre>
+<pre class="brush: scss source-code scss">@mixin baseline-grid-background($baseline: $grid-background-baseline-height, $color: $grid-background-baseline-color) {
+  @if $show-grid-backgrounds and $show-baseline-grid-backgrounds {
+    @include background-image(get-baseline-gradient($color));
+    @include background-size(100% $baseline);
+    background-position: left top;
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Add just the baseline grid to an element's background</p>
+
+</div>
+<a href="#mixin-column-grid-background-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-column-grid-background">
+<a class="permalink" href="#mixin-column-grid-background">column-grid-background(<span class="arg" data-default-value="$grid-background-total-columns">$total</span>, <span class="arg" data-default-value="$grid-background-column-width">$column</span>, <span class="arg" data-default-value="$grid-background-gutter-width">$gutter</span>, <span class="arg" data-default-value="$grid-background-offset">$offset</span>, <span class="arg" data-default-value="$grid-background-column-color">$column-color</span>, <span class="arg" data-default-value="$grid-background-gutter-color">$gutter-color</span>, <span class="arg" data-default-value="$grid-background-force-fluid">$force-fluid</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-column-grid-background-source">
+<pre class="brush: sass source-code sass">=column-grid-background($total: $grid-background-total-columns, $column: $grid-background-column-width, $gutter: $grid-background-gutter-width, $offset: $grid-background-offset, $column-color: $grid-background-column-color, $gutter-color: $grid-background-gutter-color, $force-fluid: $grid-background-force-fluid)
+  @if $show-grid-backgrounds and $show-column-grid-backgrounds
+    +background-image(get-column-gradient($total, $column, $gutter, $offset, $column-color, $gutter-color, $force-fluid))
+    background-position: left top
+</pre>
+<pre class="brush: scss source-code scss">@mixin column-grid-background($total: $grid-background-total-columns, $column: $grid-background-column-width, $gutter: $grid-background-gutter-width, $offset: $grid-background-offset, $column-color: $grid-background-column-color, $gutter-color: $grid-background-gutter-color, $force-fluid: $grid-background-force-fluid) {
+  @if $show-grid-backgrounds and $show-column-grid-backgrounds {
+    @include background-image(get-column-gradient($total, $column, $gutter, $offset, $column-color, $gutter-color, $force-fluid));
+    background-position: left top;
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Add just the horizontal grid to an element's background</p>
+
+</div>
+<a href="#mixin-grid-background-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-grid-background">
+<a class="permalink" href="#mixin-grid-background">grid-background(<span class="arg" data-default-value="$grid-background-total-columns">$total</span>, <span class="arg" data-default-value="$grid-background-column-width">$column</span>, <span class="arg" data-default-value="$grid-background-gutter-width">$gutter</span>, <span class="arg" data-default-value="$grid-background-baseline-height">$baseline</span>, <span class="arg" data-default-value="$grid-background-offset">$offset</span>, <span class="arg" data-default-value="$grid-background-column-color">$column-color</span>, <span class="arg" data-default-value="$grid-background-gutter-color">$gutter-color</span>, <span class="arg" data-default-value="$grid-background-baseline-color">$baseline-color</span>, <span class="arg" data-default-value="$grid-background-force-fluid">$force-fluid</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-grid-background-source">
+<pre class="brush: sass source-code sass">=grid-background($total: $grid-background-total-columns, $column: $grid-background-column-width, $gutter: $grid-background-gutter-width, $baseline: $grid-background-baseline-height, $offset: $grid-background-offset, $column-color: $grid-background-column-color, $gutter-color: $grid-background-gutter-color, $baseline-color: $grid-background-baseline-color, $force-fluid: $grid-background-force-fluid)
+  @if $show-grid-backgrounds
+    @if $show-baseline-grid-backgrounds and $show-column-grid-backgrounds
+      +background-image(get-baseline-gradient($baseline-color), get-column-gradient($total, $column, $gutter, $offset, $column-color, $gutter-color, $force-fluid))
+      +background-size(100% $baseline, auto)
+      background-position: left top
+    @else
+      +baseline-grid-background($baseline, $baseline-color)
+      +column-grid-background($total, $column, $gutter, $offset, $column-color, $gutter-color, $force-fluid)
+</pre>
+<pre class="brush: scss source-code scss">@mixin grid-background($total: $grid-background-total-columns, $column: $grid-background-column-width, $gutter: $grid-background-gutter-width, $baseline: $grid-background-baseline-height, $offset: $grid-background-offset, $column-color: $grid-background-column-color, $gutter-color: $grid-background-gutter-color, $baseline-color: $grid-background-baseline-color, $force-fluid: $grid-background-force-fluid) {
+  @if $show-grid-backgrounds {
+    @if $show-baseline-grid-backgrounds and $show-column-grid-backgrounds {
+      @include background-image(get-baseline-gradient($baseline-color), get-column-gradient($total, $column, $gutter, $offset, $column-color, $gutter-color, $force-fluid));
+      @include background-size(100% $baseline, auto);
+      background-position: left top;
+    }
+    @else {
+      @include baseline-grid-background($baseline, $baseline-color);
+      @include column-grid-background($total, $column, $gutter, $offset, $column-color, $gutter-color, $force-fluid);
+    }
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Add both horizontal and baseline grids to an element's background</p>
+
+</div></section>
+
+</body>
+</html>

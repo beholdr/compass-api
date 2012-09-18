@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Stretch Layout Example | Compass API
+</title>
+</head>
+<body class=' demo' id='examples-compass-layout-stretching'><div id='reference'><a href="/reference/compass/layout/stretching/">Reference Documentation</a></div>
+<h1>Demo: Compass Stretch Layout Example</h1>
+<div id='demo'><div class='example'>
+  <ul>
+    <li class='stretch-container'>
+      <div id='stretch-full'>
+        This element is fully stretched.
+      </div>
+    </li>
+    <li class='stretch-container'>
+      <div id='stretch-offset'>
+        This element is stretched with a 1em offset on each side.
+      </div>
+    </li>
+    <li class='stretch-container'>
+      <div id='stretch-x'>
+        This
+        <br />
+        element
+        <br />
+        is
+        <br />
+        stretched
+        <br />
+        horizontally.
+      </div>
+    </li>
+    <li class='stretch-container'>
+      <div id='stretch-y'>
+        This
+        <br />
+        element
+        <br />
+        is
+        <br />
+        stretched
+        <br />
+        vertically.
+      </div>
+    </li>
+  </ul>
+</div>
+</div>
+
+<div id='how'>
+<section id='markup'>
+<div class='syntax_pref'>
+<a href='#' rel='html'>html</a>
+<a href='#' rel='haml'>haml</a>
+</div>
+<div class='example-source'>
+<pre class='source-code html'>&lt;div class='example'&gt;
+  &lt;ul&gt;
+    &lt;li class='stretch-container'&gt;
+      &lt;div id='stretch-full'&gt;
+        This element is fully stretched.
+      &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li class='stretch-container'&gt;
+      &lt;div id='stretch-offset'&gt;
+        This element is stretched with a 1em offset on each side.
+      &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li class='stretch-container'&gt;
+      &lt;div id='stretch-x'&gt;
+        This
+        &lt;br /&gt;
+        element
+        &lt;br /&gt;
+        is
+        &lt;br /&gt;
+        stretched
+        &lt;br /&gt;
+        horizontally.
+      &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li class='stretch-container'&gt;
+      &lt;div id='stretch-y'&gt;
+        This
+        &lt;br /&gt;
+        element
+        &lt;br /&gt;
+        is
+        &lt;br /&gt;
+        stretched
+        &lt;br /&gt;
+        vertically.
+      &lt;/div&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+<pre class='source-code haml'>.example
+  %ul
+    %li.stretch-container
+      #stretch-full
+        This element is fully stretched.
+    %li.stretch-container
+      #stretch-offset
+        This element is stretched with a 1em offset on each side.
+    %li.stretch-container
+      #stretch-x
+        This
+        %br
+        element
+        %br
+        is
+        %br
+        stretched
+        %br
+        horizontally.
+    %li.stretch-container
+      #stretch-y
+        This
+        %br
+        element
+        %br
+        is
+        %br
+        stretched
+        %br
+        vertically.
+</pre>
+</div>
+</section>
+<section id='styles'>
+<div class='syntax_pref'>
+<a href='#' rel='scss'>scss</a>
+<a href='#' rel='sass'>sass</a>
+<a href='#' rel='css'>css</a>
+</div>
+<div class='example-source'>
+<pre class='source-code scss'>@import &quot;compass/layout/stretching&quot;;
+@import &quot;compass/utilities&quot;;
+@import &quot;compass/css3&quot;;
+
+.stretch-container {
+  border: 1px solid #999999;
+  width: 200px;
+  height: 200px;
+  position: relative;
+  @include inline-block;
+}
+
+.stretched {
+  $stretch-color: #4c6b99;
+  border: 3px solid $stretch-color;
+  @include border-radius(8px);
+  display: block;
+  background-color: darken($stretch-color, 30%);
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0.5em;
+}
+
+#stretch-full {
+  @extend .stretched;
+  @include stretch;
+}
+
+#stretch-offset {
+  @extend .stretched;
+  @include stretch(1em, 1em, 1em, 1em);
+}
+
+#stretch-x {
+  @extend .stretched;
+  @include stretch-x;
+}
+
+#stretch-y {
+  @extend .stretched;
+  @include stretch-y;
+}
+</pre>
+<pre class='source-code sass'>@import &quot;compass/layout/stretching&quot;
+@import &quot;compass/utilities&quot;
+@import &quot;compass/css3&quot;
+
+.stretch-container
+  border: 1px solid #999
+  width: 200px
+  height: 200px
+  position: relative
+  +inline-block
+.stretched
+  $stretch-color: #4C6B99
+  border: 3px solid $stretch-color
+  +border-radius(8px)
+  display: block
+  background-color: darken($stretch-color, 30%)
+  color: white
+  text-align: center
+  vertical-align: middle
+  padding: 0.5em
+#stretch-full
+  @extend .stretched
+  +stretch
+#stretch-offset
+  @extend .stretched
+  +stretch(1em, 1em, 1em, 1em)
+#stretch-x
+  @extend .stretched
+  +stretch-x
+#stretch-y
+  @extend .stretched
+  +stretch-y
+</pre>
+<pre class='source-code css'>.stretch-container{border:1px solid #999;width:200px;height:200px;position:relative;display:-moz-inline-stack;display:inline-block;vertical-align:middle;*vertical-align:auto;zoom:1;*display:inline}.stretched,#stretch-full,#stretch-offset,#stretch-x,#stretch-y{border:3px solid #4c6b99;-webkit-border-radius:8px;-moz-border-radius:8px;-ms-border-radius:8px;-o-border-radius:8px;border-radius:8px;display:block;background-color:#192433;color:#fff;text-align:center;vertical-align:middle;padding:0.5em}#stretch-full{position:absolute;top:0;bottom:0;left:0;right:0}#stretch-offset{position:absolute;top:1em;bottom:1em;left:1em;right:1em}#stretch-x{position:absolute;left:0;right:0}#stretch-y{position:absolute;top:0;bottom:0}
+</pre>
+</div>
+</section>
+</div>
+
+
+</body>
+</html>

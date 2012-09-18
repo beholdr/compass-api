@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Shared CSS3 Utilities | Compass API
+</title>
+</head>
+<body class=' reference core css3' id='reference-compass-css3-shared'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/compass/stylesheets/compass/css3/_shared.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Shared CSS3 Utilities</h1>
+<p>
+This module provides support to the other CSS3 modules.
+You may want to use it to provide your own support for other
+CSS3 proposals as they are being worked on and before support
+is added to compass.
+</p>
+
+<p>
+This file can be imported using:
+<code>@import "compass/css3/shared"</code>
+</p>
+
+<h2>Imports</h2>
+<ol>
+<li>
+<a href="/reference/compass/support/" title="@import compass/support">Browser Support</a>
+– Provides configuration options for the Compass Browser Support Matrix.
+</li>
+</ol><h2>Mixins</h2>
+<a href="#mixin-experimental-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-experimental">
+<a class="permalink" href="#mixin-experimental">experimental(<span class="arg">$property</span>, <span class="arg">$value</span>, <span class="arg" data-default-value="$experimental-support-for-mozilla">$moz</span>, <span class="arg" data-default-value="$experimental-support-for-webkit">$webkit</span>, <span class="arg" data-default-value="$experimental-support-for-opera">$o</span>, <span class="arg" data-default-value="$experimental-support-for-microsoft">$ms</span>, <span class="arg" data-default-value="$experimental-support-for-khtml">$khtml</span>, <span class="arg" data-default-value="true">$official</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-experimental-source">
+<pre class="brush: sass source-code sass">=experimental($property, $value, $moz: $experimental-support-for-mozilla, $webkit: $experimental-support-for-webkit, $o: $experimental-support-for-opera, $ms: $experimental-support-for-microsoft, $khtml: $experimental-support-for-khtml, $official: true)
+  @if $webkit and $experimental-support-for-webkit
+    -webkit-#{$property}: $value
+  @if $khtml and $experimental-support-for-khtml
+    -khtml-#{$property}: $value
+  @if $moz and $experimental-support-for-mozilla
+    -moz-#{$property}: $value
+  @if $ms and $experimental-support-for-microsoft
+    -ms-#{$property}: $value
+  @if $o and $experimental-support-for-opera
+    -o-#{$property}: $value
+  @if $official
+    #{$property}: $value
+</pre>
+<pre class="brush: scss source-code scss">@mixin experimental($property, $value, $moz: $experimental-support-for-mozilla, $webkit: $experimental-support-for-webkit, $o: $experimental-support-for-opera, $ms: $experimental-support-for-microsoft, $khtml: $experimental-support-for-khtml, $official: true) {
+  @if $webkit and $experimental-support-for-webkit {
+    -webkit-#{$property}: $value;
+  }
+  @if $khtml and $experimental-support-for-khtml {
+    -khtml-#{$property}: $value;
+  }
+  @if $moz and $experimental-support-for-mozilla {
+    -moz-#{$property}: $value;
+  }
+  @if $ms and $experimental-support-for-microsoft {
+    -ms-#{$property}: $value;
+  }
+  @if $o and $experimental-support-for-opera {
+    -o-#{$property}: $value;
+  }
+  @if $official {
+    #{$property}: $value;
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>This mixin provides basic support for CSS3 properties and
+their corresponding experimental CSS2 properties when
+the implementations are identical except for the property
+prefix.</p>
+
+</div>
+<a href="#mixin-experimental-value-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-experimental-value">
+<a class="permalink" href="#mixin-experimental-value">experimental-value(<span class="arg">$property</span>, <span class="arg">$value</span>, <span class="arg" data-default-value="$experimental-support-for-mozilla">$moz</span>, <span class="arg" data-default-value="$experimental-support-for-webkit">$webkit</span>, <span class="arg" data-default-value="$experimental-support-for-opera">$o</span>, <span class="arg" data-default-value="$experimental-support-for-microsoft">$ms</span>, <span class="arg" data-default-value="$experimental-support-for-khtml">$khtml</span>, <span class="arg" data-default-value="true">$official</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-experimental-value-source">
+<pre class="brush: sass source-code sass">=experimental-value($property, $value, $moz: $experimental-support-for-mozilla, $webkit: $experimental-support-for-webkit, $o: $experimental-support-for-opera, $ms: $experimental-support-for-microsoft, $khtml: $experimental-support-for-khtml, $official: true)
+  @if $webkit and $experimental-support-for-webkit
+    #{$property}: -webkit-#{$value}
+  @if $khtml and $experimental-support-for-khtml
+    #{$property}: -khtml-#{$value}
+  @if $moz and $experimental-support-for-mozilla
+    #{$property}: -moz-#{$value}
+  @if $ms and $experimental-support-for-microsoft
+    #{$property}: -ms-#{$value}
+  @if $o and $experimental-support-for-opera
+    #{$property}: -o-#{$value}
+  @if $official
+    #{$property}: #{$value}
+</pre>
+<pre class="brush: scss source-code scss">@mixin experimental-value($property, $value, $moz: $experimental-support-for-mozilla, $webkit: $experimental-support-for-webkit, $o: $experimental-support-for-opera, $ms: $experimental-support-for-microsoft, $khtml: $experimental-support-for-khtml, $official: true) {
+  @if $webkit and $experimental-support-for-webkit {
+    #{$property}: -webkit-#{$value};
+  }
+  @if $khtml and $experimental-support-for-khtml {
+    #{$property}: -khtml-#{$value};
+  }
+  @if $moz and $experimental-support-for-mozilla {
+    #{$property}: -moz-#{$value};
+  }
+  @if $ms and $experimental-support-for-microsoft {
+    #{$property}: -ms-#{$value};
+  }
+  @if $o and $experimental-support-for-opera {
+    #{$property}: -o-#{$value};
+  }
+  @if $official {
+    #{$property}: #{$value};
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Same as experimental(), but for cases when the property is the same and the value is vendorized</p>
+
+</div></section>
+
+</body>
+</html>

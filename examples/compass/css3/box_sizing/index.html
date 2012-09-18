@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Box-sizing | Compass API
+</title>
+</head>
+<body class=' demo' id='examples-compass-css3-box-sizing'><div id='reference'><a href="/reference/compass/css3/box_sizing/">Reference Documentation</a></div>
+<h1>Demo: Box-sizing</h1>
+<div id='demo'><div class='box-sizing-example' id='content-box'></div>
+<div class='box-sizing-example' id='border-box'></div>
+</div>
+
+<div id='how'>
+<section id='markup'>
+<div class='syntax_pref'>
+<a href='#' rel='html'>html</a>
+<a href='#' rel='haml'>haml</a>
+</div>
+<div class='example-source'>
+<pre class='source-code html'>&lt;div class='box-sizing-example' id='content-box'&gt;&lt;/div&gt;
+&lt;div class='box-sizing-example' id='border-box'&gt;&lt;/div&gt;
+</pre>
+<pre class='source-code haml'>#content-box.box-sizing-example
+
+#border-box.box-sizing-example</pre>
+</div>
+</section>
+<section id='styles'>
+<div class='syntax_pref'>
+<a href='#' rel='scss'>scss</a>
+<a href='#' rel='sass'>sass</a>
+<a href='#' rel='css'>css</a>
+</div>
+<div class='example-source'>
+<pre class='source-code scss'>@import &quot;compass/css3&quot;;
+
+.box-sizing-example {
+  background: red;
+  padding: 20px;
+  border: 10px solid green;
+  margin: 20px;
+  width: 200px;
+}
+
+#content-box {
+  @include box-sizing(content-box);
+}
+
+#border-box {
+  @include box-sizing(border-box);
+}
+</pre>
+<pre class='source-code sass'>@import compass/css3
+
+.box-sizing-example
+  background: red
+  padding: 20px
+  border: 10px solid green
+  margin: 20px
+  width: 200px
+
+#content-box
+  +box-sizing(content-box)
+
+#border-box
+  +box-sizing(border-box)</pre>
+<pre class='source-code css'>.box-sizing-example{background:red;padding:20px;border:10px solid green;margin:20px;width:200px}#content-box{-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}#border-box{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+</pre>
+</div>
+</section>
+</div>
+
+
+</body>
+</html>

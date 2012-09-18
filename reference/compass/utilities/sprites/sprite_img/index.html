@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Sprite Image | Compass API
+</title>
+</head>
+<body class=' reference core utilities' id='reference-compass-utilities-sprites-sprite-img'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/compass/stylesheets/compass/utilities/sprites/_sprite-img.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Compass Sprite Image</h1>
+<p><strong>Example 1</strong> Simple mixins:</p>
+
+<pre><code>a.twitter
+  +sprite-img("icons-32.png", 1)
+a.facebook
+  +sprite-img("icons-32.png", 2)
+</code></pre>
+
+<p><strong>Example 2</strong> Sharing a common base:</p>
+
+<pre><code>a
+  +sprite-background("icons-32.png")
+  &amp;.twitter
+    +sprite-column(1)
+  &amp;.facebook
+    +sprite-row(2)
+</code></pre>
+
+<p>
+This file can be imported using:
+<code>@import "compass/utilities/sprites/sprite-img"</code>
+</p>
+
+
+<h2>
+Configurable Variables
+<a class="help" href="/help/tutorials/configurable-variables/">help</a>
+</h2>
+<h3 class="constant" id="const-sprite-default-size">
+<a class="permalink" href="#const-sprite-default-size">$sprite-default-size</a>
+<code>32px</code>
+</h3>
+<h3 class="constant" id="const-sprite-default-margin">
+<a class="permalink" href="#const-sprite-default-margin">$sprite-default-margin</a>
+<code>0px</code>
+</h3>
+<h3 class="constant" id="const-sprite-image-default-width">
+<a class="permalink" href="#const-sprite-image-default-width">$sprite-image-default-width</a>
+<code>$sprite-default-size</code>
+</h3>
+<h3 class="constant" id="const-sprite-image-default-height">
+<a class="permalink" href="#const-sprite-image-default-height">$sprite-image-default-height</a>
+<code>$sprite-default-size</code>
+</h3>
+
+
+
+<h2>Mixins</h2>
+<a href="#mixin-sprite-img-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-sprite-img">
+<a class="permalink" href="#mixin-sprite-img">sprite-img(<span class="arg">$img</span>, <span class="arg">$col</span>, <span class="arg" data-default-value="1">$row</span>, <span class="arg" data-default-value="$sprite-image-default-width">$width</span>, <span class="arg" data-default-value="$sprite-image-default-height">$height</span>, <span class="arg" data-default-value="$sprite-default-margin">$margin</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-sprite-img-source">
+<pre class="brush: sass source-code sass">=sprite-img($img, $col, $row: 1, $width: $sprite-image-default-width, $height: $sprite-image-default-height, $margin: $sprite-default-margin)
+  +sprite-background($img, $width, $height)
+  +sprite-position($col, $row, $width, $height, $margin)
+</pre>
+<pre class="brush: scss source-code scss">@mixin sprite-img($img, $col, $row: 1, $width: $sprite-image-default-width, $height: $sprite-image-default-height, $margin: $sprite-default-margin) {
+  @include sprite-background($img, $width, $height);
+  @include sprite-position($col, $row, $width, $height, $margin);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Sets all the rules for a sprite from a given sprite image to show just one of the sprites.
+To reduce duplication use a sprite-bg mixin for common properties and a sprite-select mixin for positioning.</p>
+
+</div>
+<a href="#mixin-sprite-background-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-sprite-background">
+<a class="permalink" href="#mixin-sprite-background">sprite-background(<span class="arg">$img</span>, <span class="arg" data-default-value="$sprite-default-size">$width</span>, <span class="arg" data-default-value="$width">$height</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-sprite-background-source">
+<pre class="brush: sass source-code sass">=sprite-background($img, $width: $sprite-default-size, $height: $width)
+  +sprite-background-rectangle($img, $width, $height)
+</pre>
+<pre class="brush: scss source-code scss">@mixin sprite-background($img, $width: $sprite-default-size, $height: $width) {
+  @include sprite-background-rectangle($img, $width, $height);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Sets rules common for all sprites, assumes you want a square, but allows a rectangular region.</p>
+
+</div>
+<a href="#mixin-sprite-background-rectangle-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-sprite-background-rectangle">
+<a class="permalink" href="#mixin-sprite-background-rectangle">sprite-background-rectangle(<span class="arg">$img</span>, <span class="arg" data-default-value="$sprite-image-default-width">$width</span>, <span class="arg" data-default-value="$sprite-image-default-height">$height</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-sprite-background-rectangle-source">
+<pre class="brush: sass source-code sass">=sprite-background-rectangle($img, $width: $sprite-image-default-width, $height: $sprite-image-default-height)
+  background: image-url($img) no-repeat
+  width: $width
+  height: $height
+  overflow: hidden
+</pre>
+<pre class="brush: scss source-code scss">@mixin sprite-background-rectangle($img, $width: $sprite-image-default-width, $height: $sprite-image-default-height) {
+  background: image-url($img) no-repeat;
+  width: $width;
+  height: $height;
+  overflow: hidden;
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Sets rules common for all sprites, assumes a rectangular region.</p>
+
+</div>
+<a href="#mixin-sprite-column-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-sprite-column">
+<a class="permalink" href="#mixin-sprite-column">sprite-column(<span class="arg">$col</span>, <span class="arg" data-default-value="$sprite-image-default-width">$width</span>, <span class="arg" data-default-value="$sprite-default-margin">$margin</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-sprite-column-source">
+<pre class="brush: sass source-code sass">=sprite-column($col, $width: $sprite-image-default-width, $margin: $sprite-default-margin)
+  +sprite-position($col, 1, $width, 0px, $margin)
+</pre>
+<pre class="brush: scss source-code scss">@mixin sprite-column($col, $width: $sprite-image-default-width, $margin: $sprite-default-margin) {
+  @include sprite-position($col, 1, $width, 0px, $margin);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Allows horizontal sprite positioning optimized for a single row of sprites.</p>
+
+</div>
+<a href="#mixin-sprite-row-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-sprite-row">
+<a class="permalink" href="#mixin-sprite-row">sprite-row(<span class="arg">$row</span>, <span class="arg" data-default-value="$sprite-image-default-height">$height</span>, <span class="arg" data-default-value="$sprite-default-margin">$margin</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-sprite-row-source">
+<pre class="brush: sass source-code sass">=sprite-row($row, $height: $sprite-image-default-height, $margin: $sprite-default-margin)
+  +sprite-position(1, $row, 0px, $height, $margin)
+</pre>
+<pre class="brush: scss source-code scss">@mixin sprite-row($row, $height: $sprite-image-default-height, $margin: $sprite-default-margin) {
+  @include sprite-position(1, $row, 0px, $height, $margin);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Allows vertical sprite positioning optimized for a single column of sprites.</p>
+
+</div>
+<a href="#mixin-sprite-position-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-sprite-position">
+<a class="permalink" href="#mixin-sprite-position">sprite-position(<span class="arg">$col</span>, <span class="arg" data-default-value="1">$row</span>, <span class="arg" data-default-value="$sprite-image-default-width">$width</span>, <span class="arg" data-default-value="$sprite-image-default-height">$height</span>, <span class="arg" data-default-value="$sprite-default-margin">$margin</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-sprite-position-source">
+<pre class="brush: sass source-code sass">=sprite-position($col, $row: 1, $width: $sprite-image-default-width, $height: $sprite-image-default-height, $margin: $sprite-default-margin)
+  $x: ($col - 1) * -$width - ($col - 1) * $margin
+  $y: ($row - 1) * -$height - ($row - 1) * $margin
+  background-position: $x $y
+</pre>
+<pre class="brush: scss source-code scss">@mixin sprite-position($col, $row: 1, $width: $sprite-image-default-width, $height: $sprite-image-default-height, $margin: $sprite-default-margin) {
+  $x: ($col - 1) * -$width - ($col - 1) * $margin;
+  $y: ($row - 1) * -$height - ($row - 1) * $margin;
+  background-position: $x $y;
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Allows vertical and horizontal sprite positioning from a grid of equal dimensioned sprites.</p>
+
+</div>
+<a href="#mixin-sprite-replace-text-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-sprite-replace-text">
+<a class="permalink" href="#mixin-sprite-replace-text">sprite-replace-text(<span class="arg">$map</span>, <span class="arg">$sprite</span>, <span class="arg" data-default-value="false">$dimensions</span>, <span class="arg" data-default-value="0">$offset-x</span>, <span class="arg" data-default-value="0">$offset-y</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-sprite-replace-text-source">
+<pre class="brush: sass source-code sass">=sprite-replace-text($map, $sprite, $dimensions: false, $offset-x: 0, $offset-y: 0)
+  +hide-text
+  +sprite($map, $sprite, $dimensions, $offset-x, $offset-y)
+  background-image: $map
+  background-repeat: no-repeat
+</pre>
+<pre class="brush: scss source-code scss">@mixin sprite-replace-text($map, $sprite, $dimensions: false, $offset-x: 0, $offset-y: 0) {
+  @include hide-text;
+  @include sprite($map, $sprite, $dimensions, $offset-x, $offset-y);
+  background-image: $map;
+  background-repeat: no-repeat;
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Similar to 'sprite-replace-text-with-dimensions' but does not autmaticly set the demensions</p>
+
+</div>
+<a href="#mixin-sprite-replace-text-with-dimensions-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-sprite-replace-text-with-dimensions">
+<a class="permalink" href="#mixin-sprite-replace-text-with-dimensions">sprite-replace-text-with-dimensions(<span class="arg">$map</span>, <span class="arg">$sprite</span>, <span class="arg" data-default-value="0">$offset-x</span>, <span class="arg" data-default-value="0">$offset-y</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-sprite-replace-text-with-dimensions-source">
+<pre class="brush: sass source-code sass">=sprite-replace-text-with-dimensions($map, $sprite, $offset-x: 0, $offset-y: 0)
+  +sprite-replace-text($map, $sprite, true, $offset-x, $offset-y)
+</pre>
+<pre class="brush: scss source-code scss">@mixin sprite-replace-text-with-dimensions($map, $sprite, $offset-x: 0, $offset-y: 0) {
+  @include sprite-replace-text($map, $sprite, true, $offset-x, $offset-y);
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Similar to 'replace-text-with-dimensions' but with sprites
+To use, create your sprite and then pass it in the <code>$map</code> param
+The name of the image in the sprite folder should be <code>$img-name</code></p>
+
+</div></section>
+
+</body>
+</html>

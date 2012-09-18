@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Link Colors | Compass API
+</title>
+</head>
+<body class=' reference core typography' id='reference-compass-typography-links-link-colors'><section class='article'><a href="http://github.com/chriseppstein/compass/blob/stable/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss" rel="github-source" title="view source for this module on github">Source on Github</a>
+<h1>Compass Link Colors</h1>
+
+<p>
+This file can be imported using:
+<code>@import "compass/typography/links/link-colors"</code>
+</p>
+
+
+
+
+<h2>Mixins</h2>
+<a href="#mixin-link-colors-source" rel="view source">view source</a>
+<h3 class="mixin" id="mixin-link-colors">
+<a class="permalink" href="#mixin-link-colors">link-colors(<span class="arg">$normal</span>, <span class="arg" data-default-value="false">$hover</span>, <span class="arg" data-default-value="false">$active</span>, <span class="arg" data-default-value="false">$visited</span>, <span class="arg" data-default-value="false">$focus</span>)</a>
+</h3>
+<div class="mixin-source" id="mixin-link-colors-source">
+<pre class="brush: sass source-code sass">=link-colors($normal, $hover: false, $active: false, $visited: false, $focus: false)
+  color: $normal
+  @if $visited
+    &amp;:visited
+      color: $visited
+  @if $focus
+    &amp;:focus
+      color: $focus
+  @if $hover
+    &amp;:hover
+      color: $hover
+  @if $active
+    &amp;:active
+      color: $active
+</pre>
+<pre class="brush: scss source-code scss">@mixin link-colors($normal, $hover: false, $active: false, $visited: false, $focus: false) {
+  color: $normal;
+  @if $visited {
+    &amp;:visited {
+      color: $visited;
+    }
+  }
+  @if $focus {
+    &amp;:focus {
+      color: $focus;
+    }
+  }
+  @if $hover {
+    &amp;:hover {
+      color: $hover;
+    }
+  }
+  @if $active {
+    &amp;:active {
+      color: $active;
+    }
+  }
+}
+</pre>
+</div>
+<div class="source-documentation">
+<p>Set all the colors for a link with one mixin call.
+Order of arguments is:</p>
+
+<ol>
+<li>normal</li>
+<li>hover</li>
+<li>active</li>
+<li>visited</li>
+<li>focus</li>
+</ol>
+<p>Those states not specified will inherit.
+Mixin to an anchor link like so:</p>
+
+<pre><code>a
+  +link-colors(#00c, #0cc, #c0c, #ccc, #cc0)
+</code></pre>
+
+</div></section>
+
+</body>
+</html>

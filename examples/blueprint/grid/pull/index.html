@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Blueprint Pull Example | Compass API
+</title>
+</head>
+<body class=' demo' id='examples-blueprint-grid-pull'><div id='reference'><a href="/reference/blueprint/grid/">Reference Documentation</a></div>
+<h1>Demo: Blueprint Pull Example</h1>
+<div id='demo'><div class='container'>
+  <div id='one'>
+    One<br />One<br />One
+  </div>
+  <div id='two'>
+    Two<br />Two<br />Two
+  </div>
+</div>
+</div>
+
+<div id='how'>
+<section id='markup'>
+<div class='syntax_pref'>
+<a href='#' rel='html'>html</a>
+<a href='#' rel='haml'>haml</a>
+</div>
+<div class='example-source'>
+<pre class='source-code html'>&lt;div class='container'&gt;
+  &lt;div id='one'&gt;
+    One&lt;br /&gt;One&lt;br /&gt;One
+  &lt;/div&gt;
+  &lt;div id='two'&gt;
+    Two&lt;br /&gt;Two&lt;br /&gt;Two
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+<pre class='source-code haml'>.container
+  #one
+    One&lt;br /&gt;One&lt;br /&gt;One
+  #two
+    Two&lt;br /&gt;Two&lt;br /&gt;Two
+</pre>
+</div>
+</section>
+<section id='styles'>
+<div class='syntax_pref'>
+<a href='#' rel='scss'>scss</a>
+<a href='#' rel='sass'>sass</a>
+<a href='#' rel='css'>css</a>
+</div>
+<div class='example-source'>
+<pre class='source-code scss'>$blueprint_grid_columns: 3;
+
+@import &quot;blueprint/grid.scss&quot;;
+
+#one {
+  @include column(2, true);
+  @include prepend(1);
+  background-color: #11770e;
+}
+
+#two {
+  @include column(1);
+  @include pull(3, true);
+  background-color: #242677;
+}
+</pre>
+<pre class='source-code sass'>$blueprint_grid_columns : 3
+
+@import blueprint/grid.scss
+
+#one
+  +column(2, true)
+  +prepend(1)
+  background-color: #11770E
+#two
+  +column(1)
+  +pull(3, true)
+  background-color: #242677
+</pre>
+<pre class='source-code css'>#one{display:inline;float:left;margin-right:0;width:70px;padding-left:40px;background-color:#11770e}* html #one{overflow-x:hidden}#two{display:inline;float:left;margin-right:10px;width:30px;display:inline;float:left;position:relative;margin-left:-110px;background-color:#242677}* html #two{overflow-x:hidden}
+</pre>
+</div>
+</section>
+</div>
+
+
+</body>
+</html>

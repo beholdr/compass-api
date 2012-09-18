@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Text-shadow | Compass API
+</title>
+</head>
+<body class=' demo' id='examples-compass-css3-text-shadow'><div id='reference'><a href="/reference/compass/css3/text-shadow/">Reference Documentation</a></div>
+<h1>Demo: Text-shadow</h1>
+<div id='demo'><div>this text has no shadow</div>
+<div class='has-single-shadow'>this text has a shadow</div>
+<div class='has-custom-shadow'>this text has a custom shadow</div>
+</div>
+
+<div id='how'>
+<section id='markup'>
+<div class='syntax_pref'>
+<a href='#' rel='html'>html</a>
+<a href='#' rel='haml'>haml</a>
+</div>
+<div class='example-source'>
+<pre class='source-code html'>&lt;div&gt;this text has no shadow&lt;/div&gt;
+&lt;div class='has-single-shadow'&gt;this text has a shadow&lt;/div&gt;
+&lt;div class='has-custom-shadow'&gt;this text has a custom shadow&lt;/div&gt;
+</pre>
+<pre class='source-code haml'>%div this text has no shadow
+.has-single-shadow this text has a shadow
+.has-custom-shadow this text has a custom shadow
+</pre>
+</div>
+</section>
+<section id='styles'>
+<div class='syntax_pref'>
+<a href='#' rel='scss'>scss</a>
+<a href='#' rel='sass'>sass</a>
+<a href='#' rel='css'>css</a>
+</div>
+<div class='example-source'>
+<pre class='source-code scss'>$default-text-shadow-color: rgba(red, 0.6);
+$default-text-shadow-blur: 3px;
+$default-text-shadow-v-offset: 1px;
+
+@import &quot;compass/css3&quot;;
+
+// Uses defaults set before the import above
+.has-single-shadow {
+  @include single-text-shadow;
+}
+
+// Can output up to ten text shadows
+.has-custom-shadow {
+  @include text-shadow(rgba(blue, 0.2) 1px 1px 0, rgba(blue, 0.2) 2px 2px 0, rgba(blue, 0.2) 3px 3px 0);
+}
+</pre>
+<pre class='source-code sass'>$default-text-shadow-color: rgba(red, .6)
+$default-text-shadow-blur: 3px
+$default-text-shadow-v-offset: 1px
+
+@import compass/css3
+
+// Uses defaults set before the import above
+.has-single-shadow
+  +single-text-shadow
+
+// Can output up to ten text shadows
+.has-custom-shadow
+  +text-shadow(rgba(blue, .2) 1px 1px 0, rgba(blue, .2) 2px 2px 0, rgba(blue, .2) 3px 3px 0)
+</pre>
+<pre class='source-code css'>.has-single-shadow{text-shadow:0px 1px 3px rgba(255,0,0,0.6)}.has-custom-shadow{text-shadow:rgba(0,0,255,0.2) 1px 1px 0,rgba(0,0,255,0.2) 2px 2px 0,rgba(0,0,255,0.2) 3px 3px 0}
+</pre>
+</div>
+</section>
+</div>
+
+
+</body>
+</html>

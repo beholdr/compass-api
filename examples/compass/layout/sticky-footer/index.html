@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Sticky Footer Example | Compass API
+</title>
+</head>
+<body class=' demo' id='examples-compass-layout-sticky-footer'><div id='reference'><a href="/reference/compass/layout/sticky_footer/">Reference Documentation</a></div>
+<h1>Demo: Compass Sticky Footer Example</h1>
+<div id='demo'><div class='example'>
+  <div id='layout'>
+    <div id='header'>
+      <h1>Sticky Footer Example</h1>
+    </div>
+    <p>
+      This is the main content area.
+    </p>
+    <p>
+      In this example you should pretend that the red box
+      is actually the browser window.
+    </p>
+    <p>
+      Because, being a contrived example, it's not actually sticking
+      to the bottom of the page.
+    </p>
+    <div id='layout_footer'></div>
+  </div>
+  <div id='footer'>
+    This is the footer area.
+  </div>
+</div>
+</div>
+
+<div id='how'>
+<section id='markup'>
+<div class='syntax_pref'>
+<a href='#' rel='html'>html</a>
+<a href='#' rel='haml'>haml</a>
+</div>
+<div class='example-source'>
+<pre class='source-code html'>&lt;div class='example'&gt;
+  &lt;div id='layout'&gt;
+    &lt;div id='header'&gt;
+      &lt;h1&gt;Sticky Footer Example&lt;/h1&gt;
+    &lt;/div&gt;
+    &lt;p&gt;
+      This is the main content area.
+    &lt;/p&gt;
+    &lt;p&gt;
+      In this example you should pretend that the red box
+      is actually the browser window.
+    &lt;/p&gt;
+    &lt;p&gt;
+      Because, being a contrived example, it's not actually sticking
+      to the bottom of the page.
+    &lt;/p&gt;
+    &lt;div id='layout_footer'&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div id='footer'&gt;
+    This is the footer area.
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+<pre class='source-code haml'>.example
+  #layout
+    #header
+      %h1 Sticky Footer Example
+
+    %p
+      This is the main content area.
+    %p
+      In this example you should pretend that the red box
+      is actually the browser window.
+    %p
+      Because, being a contrived example, it's not actually sticking
+      to the bottom of the page.
+    #layout_footer
+  #footer
+    This is the footer area.
+</pre>
+</div>
+</section>
+<section id='styles'>
+<div class='syntax_pref'>
+<a href='#' rel='scss'>scss</a>
+<a href='#' rel='sass'>sass</a>
+<a href='#' rel='css'>css</a>
+</div>
+<div class='example-source'>
+<pre class='source-code scss'>@import &quot;compass/reset.scss&quot;;
+@import &quot;compass/layout.scss&quot;;
+
+@include sticky-footer(72px, &quot;#layout&quot;, &quot;#layout_footer&quot;, &quot;#footer&quot;);
+
+#header {
+  background: #999999;
+  height: 72px;
+}
+
+#footer {
+  background: #cccccc;
+}
+
+.example {
+  height: 500px;
+  border: 3px solid red;
+  p {
+    margin: 1em 0.5em;
+  }
+}
+</pre>
+<pre class='source-code sass'>@import compass/reset.scss
+@import compass/layout.scss
+
++sticky-footer(72px, &quot;#layout&quot;, &quot;#layout_footer&quot;, &quot;#footer&quot;)
+
+#header
+  :background #999
+  :height 72px
+
+#footer
+  :background #ccc
+
+.example
+  height: 500px
+  border: 3px solid red
+  
+  p
+    margin: 1em 0.5em
+</pre>
+<pre class='source-code css'>html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font:inherit;font-size:100%;vertical-align:baseline}html{line-height:1}ol,ul{list-style:none}table{border-collapse:collapse;border-spacing:0}caption,th,td{text-align:left;font-weight:normal;vertical-align:middle}q,blockquote{quotes:none}q:before,q:after,blockquote:before,blockquote:after{content:&quot;&quot;;content:none}a img{border:none}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary{display:block}html,body{height:100%}#layout{clear:both;min-height:100%;height:auto !important;height:100%;margin-bottom:-72px}#layout #layout_footer{height:72px}#footer{clear:both;position:relative;height:72px}#header{background:#999;height:72px}#footer{background:#ccc}.example{height:500px;border:3px solid red}.example p{margin:1em 0.5em}
+</pre>
+</div>
+</section>
+</div>
+
+
+</body>
+</html>

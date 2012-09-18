@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>
+Compass Contrast Color Example | Compass API
+</title>
+</head>
+<body class=' demo' id='examples-compass-utilities-contrast'><div id='reference'><a href="/reference/compass/utilities/color/contrast/">Reference Documentation</a></div>
+<h1>Demo: Compass Contrast Color Example</h1>
+<div id='demo'><div class='example'>
+  <p class='dark'>This is a paragraph with a <em>dark</em> background and <em>light</em> text.</p>
+  <p class='light'>This is a paragraph with a <em>light</em> background and <em>dark</em> text.</p>
+</div>
+</div>
+
+<div id='how'>
+<section id='markup'>
+<div class='syntax_pref'>
+<a href='#' rel='html'>html</a>
+<a href='#' rel='haml'>haml</a>
+</div>
+<div class='example-source'>
+<pre class='source-code html'>&lt;div class='example'&gt;
+  &lt;p class='dark'&gt;This is a paragraph with a &lt;em&gt;dark&lt;/em&gt; background and &lt;em&gt;light&lt;/em&gt; text.&lt;/p&gt;
+  &lt;p class='light'&gt;This is a paragraph with a &lt;em&gt;light&lt;/em&gt; background and &lt;em&gt;dark&lt;/em&gt; text.&lt;/p&gt;
+&lt;/div&gt;
+</pre>
+<pre class='source-code haml'>.example
+  %p.dark This is a paragraph with a &lt;em&gt;dark&lt;/em&gt; background and &lt;em&gt;light&lt;/em&gt; text.
+  %p.light This is a paragraph with a &lt;em&gt;light&lt;/em&gt; background and &lt;em&gt;dark&lt;/em&gt; text.
+</pre>
+</div>
+</section>
+<section id='styles'>
+<div class='syntax_pref'>
+<a href='#' rel='scss'>scss</a>
+<a href='#' rel='sass'>sass</a>
+<a href='#' rel='css'>css</a>
+</div>
+<div class='example-source'>
+<pre class='source-code scss'>$contrasted-dark-default: #333333;
+$contrasted-light-default: #e7e7e7;
+
+@import &quot;compass/utilities/color/contrast&quot;;
+
+.example {
+  p.dark {
+    @include contrasted(#5f1210);
+  }
+  p.light {
+    @include contrasted(#c82523);
+  }
+}
+</pre>
+<pre class='source-code sass'>$contrasted-dark-default:  #333
+$contrasted-light-default: #e7e7e7
+
+@import &quot;compass/utilities/color/contrast&quot;
+
+.example
+  p.dark
+    +contrasted(#5F1210)
+  p.light
+    +contrasted(#C82523)
+
+</pre>
+<pre class='source-code css'>.example p.dark{background-color:#5f1210;color:#e7e7e7}.example p.light{background-color:#c82523;color:#333}
+</pre>
+</div>
+</section>
+</div>
+
+
+</body>
+</html>
