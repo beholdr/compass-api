@@ -1,0 +1,8 @@
+!!!5
+- # This template is just the stuff until the body tag.
+%html
+  %head
+    %meta{:charset => "utf-8"}/
+    %title
+      #{@item[:title]} | Compass API
+  %body{body_attributes(@item)}= yield

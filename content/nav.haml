@@ -1,0 +1,23 @@
+---
+title: Compass Nav
+crumb: Home
+body_id: home
+layout: basic
+---
+
+- modules = ['core', 'blueprint']
+
+%div#nav-tree
+  - modules.each do |module_name|
+    %ul.api-list><
+      - navtree(module_name).sort.each do |k, v|
+        %li.module><
+          %span><= k
+          %ul><
+            - v[:children].sort.each do |sk, sv|
+              %li><
+                = sk
+                %ul><
+                  - sv[:children].sort.each do |key, val|
+                    %li><
+                      %a{:href => "#{sv[:path]}##{val[:el_type]}-#{key}"}><= key
