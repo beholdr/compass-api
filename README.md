@@ -1,5 +1,7 @@
 API browser project for [Compass](http://compass-style.org/) documentation.
 
+- [Website](http://compass.aether.ru/)
+
 ## Instructions:
 
   - Get main repo contents: https://github.com/chriseppstein/compass
