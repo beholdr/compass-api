@@ -20,4 +20,4 @@ layout: basic
                 %ul><
                   - sv[:children].sort.each do |key, val|
                     %li><
-                      %a{:href => "#{sv[:path]}##{val[:el_type]}-#{key}"}><= key
+                      %a{ :href => "#{sv[:path]}##{val[:el_type] != '' ? val[:el_type]+'-' : ''}#{key}" }><= key
