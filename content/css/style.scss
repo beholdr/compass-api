@@ -76,7 +76,7 @@ article {
     @include box-sizing(border-box);
     position: fixed;
     top: 0;
-    width: 80%;
+    width: 80.1%; // for better rendering of border in Safari and Opera
     height: $top-panel-height;
     padding: 0 1em;
     z-index: 500;
@@ -101,7 +101,8 @@ article {
     }
   }
   #content {
-    margin: 0 1em 2em;
+    margin: 0 1em;
+    padding-bottom: 1em;
   }
   .article {
     margin-top: 3.5em;
