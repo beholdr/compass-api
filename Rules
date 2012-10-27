@@ -62,6 +62,10 @@ route '/css/*/' do
   SITE_ROOT+item.identifier.chop + '.css'
 end
 
+route '/assets/images/*/' do
+  SITE_ROOT+item.identifier.chop[7..-1]+"."+item[:extension]
+end
+
 ['/reference/*/', '/examples/*/', '/nav/', '/'].each do |ex_file|
   route ex_file do
     SITE_ROOT+item.identifier + 'index.html'
