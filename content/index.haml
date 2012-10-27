@@ -1,5 +1,5 @@
 ---
-title: Compass Home
+title: Compass Reference
 crumb: Home
 body_id: home
 layout: homepage
@@ -22,9 +22,9 @@ layout: homepage
       %a.number(href="/CHANGELOG/")= compass_version
   %section#content
     %section.article
-      %h1#main-title Compass API Browser
+      %h1#main-title Compass Reference Browser
 
-      %p Welcome to Compass/Blueprint API browser. It's generated from <a href="http://compass-style.org/reference/compass/">original API reference</a>, but has some additional features like fast AJAX-loading and search. Enjoy!
+      %p Welcome to Compass/Blueprint Reference browser. It's generated from <a href="http://compass-style.org/reference/compass/">original reference</a>, but has some additional features like fast AJAX-loading and search. Enjoy!
 
       - modules = [{:id => 'core', :name => 'Compass'}, {:id => 'blueprint', :name => 'Blueprint'}]
 
@@ -44,6 +44,19 @@ layout: homepage
                           %li><
                             %a{ :href => "#{sv[:path]}##{val[:el_type] != '' ? val[:el_type]+'-' : ''}#{key}" }><= key
 
+      %h3
+        Other cool resources for SASS:
+      %ul
+        %li
+          %a{:href => "http://sassmeister.com/"} SassMeister
+          — online playground for Sass.
+        %li
+          %a{:href => "http://css2sass.heroku.com/"} css2sass
+          — convert CSS to SASS/SCSS
+        %li
+          %a{:href => "https://addons.mozilla.org/en-US/firefox/addon/firesass-for-firebug/"} Firesass
+          — SASS extension for Firefox Firebug
+
       %h3 Credits
 
-      %p Compass Documentation by <a href="http://eppsteins.net/chris">Christopher M. Eppstein</a>. This site compiled by <a href="http://www.aether.ru/">Alexander Shabunevich</a> (<a href="http://twitter.com/beholdr">@beholdr</a>), inspired by <a href="http://jqapi.com/">jQAPI for jQuery</a>.
+      %p Compass Documentation by <a href="http://eppsteins.net/chris">Christopher M. Eppstein</a>. This site compiled by <a href="http://www.aether.ru/">Alexander Shabunevich</a> (<a href="http://twitter.com/beholdr">@beholdr</a>), inspired by <a href="http://jqapi.com/">jQAPI for jQuery</a>. Source code available at <a href="https://github.com/beholdr/compass-api">Github</a>.
